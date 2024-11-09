@@ -20,6 +20,12 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     "jsx-a11y/anchor-has-content": "off",
     "react/jsx-no-constructed-context-values": "off",
     "max-len": "off",

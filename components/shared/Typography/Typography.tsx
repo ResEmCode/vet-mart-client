@@ -24,4 +24,4 @@ const Typography = ({ tag, variant, children, className, ...props }: TypographyP
   );
 };
 
-export default Typography;
+export { Typography };

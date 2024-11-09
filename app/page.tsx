@@ -1,4 +1,4 @@
-import Typography from "@/components/shared/Typography/Typography";
+import { Typography } from "@/components/shared";
 
 const Home = () => {
   return (
