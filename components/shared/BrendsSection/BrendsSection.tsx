@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import styles from "./BrendsSection.module.css";
 
 const data = ["/brends/optimeal.png", "/brends/gourmet.png", "/brends/clubpaws.png", "/brends/royalcanin.png", "/brends/proplan.png"];

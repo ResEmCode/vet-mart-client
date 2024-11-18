@@ -34,13 +34,12 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 import { Typography } from "../Typography/Typography";
 
-import { productsData } from "./DiscountedProducts.data";
-
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ProductCard } from "./components/ProductCard/ProductCard";
+import { productsData } from "./DiscountedProducts.data";
 
 interface DiscountedProductsProps {
   product: ProductsMenu;
