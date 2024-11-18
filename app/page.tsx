@@ -1,10 +1,12 @@
-import { Typography } from "@/components/shared";
+import { Navigation } from "@/components/shared/Navigation/Navigation";
+
+import "./globals.css";
 
 const Home = () => {
   return (
-    <Typography tag="h1" variant="title48_semibold">
-      123
-    </Typography>
+    <div className="bg-[#F8F9FD] min-h-screen">
+      <Navigation />
+    </div>
   );
 };
 

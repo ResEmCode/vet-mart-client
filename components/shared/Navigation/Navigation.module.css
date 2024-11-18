@@ -1,0 +1,165 @@
+.header {
+  margin: 0 256px;
+  padding: 32px;
+  width: 1408px;
+  font-family: INTER;
+  background-color: #f8f9fd;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  margin-left: 35px;
+}
+
+.icon {
+  width: 46px;
+  height: 45px;
+  background-color: white;
+  border-radius: 50%;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 15px 16px;
+  margin: 0 auto;
+  margin: auto 0;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #ff8732;
+}
+
+.subtitle {
+  margin-left: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+  color: gray;
+  margin-right: auto;
+  color: black;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  margin-bottom: 8px;
+}
+
+.navLinks ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.navLinkItem {
+  margin-right: 8px;
+  display: flex;
+  text-align: start;
+}
+
+.navLink {
+  background-color: white;
+  padding: 12px 32px;
+  text-decoration: none;
+  color: black;
+  border-radius: 48px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  font-size: 15px;
+  line-height: 18.15px;
+}
+
+.navLink:hover {
+  color: white;
+  background-color: #ff8732;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.phone {
+  font-size: 20px;
+  line-height: 24.2px;
+  text-align: right;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.Input {
+  width: 100%;
+  max-width: 950px;
+}
+
+.email {
+  font-size: 15px;
+  line-height: 18.15px;
+  color: #ff8732;
+  text-align: right;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.category {
+  width: 313px 72px;
+  background-color: white;
+  border-radius: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 40px 12px 12px;
+  margin-right: auto;
+}
+
+.circleAndText {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: #dde5ec;
+  border-radius: 50%;
+}
+
+.categoryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.categoryText {
+  color: #8598a7;
+  font-size: 14px;
+  line-height: 16.94px;
+}
