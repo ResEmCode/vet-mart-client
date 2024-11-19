@@ -1,3 +1,13 @@
 .title48_semibold {
-  @apply text-5xl font-semibold;
+  font-size: 48px;
+  font-weight: 600;
+}
+.title24_semibold {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+}
+.title18_semibold {
+  font-size: 18px;
+  font-weight: 600;
 }

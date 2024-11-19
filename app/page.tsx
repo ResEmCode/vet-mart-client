@@ -1,10 +1,26 @@
-import { Typography } from "@/components/shared";
+import { BrendsSection, Container, DiscountedProducts, PopularCategory } from "@/components/shared";
+import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
 
-const Home = () => {
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
+
+interface HomeProps {
+  searchParams?: Promise<{ product: ProductsMenu }>;
+}
+
+const Home = async ({ searchParams }: HomeProps) => {
+  const filter = await searchParams;
+  const productQuery = filter?.product ?? "all";
+  const productItem = productsData.find((product) => product.query === productQuery)!;
+
   return (
-    <Typography tag="h1" variant="title48_semibold">
-      123
-    </Typography>
+    <>
+      <Container>
+        <PopularCategory />
+        <DiscountedProducts product={productItem} />
+      </Container>
+      <BrendsSection />
+    </>
   );
 };
 
