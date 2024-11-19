@@ -3,4 +3,5 @@
   @apply max-w-[330px] w-full;
   @apply py-6 px-20;
   @apply shadow-lg rounded-lg;
+  @apply bg-white;
 }

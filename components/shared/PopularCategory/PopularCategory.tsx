@@ -5,7 +5,7 @@ import { popularCategories } from "./PopularCategory.data";
 
 export const PopularCategory = () => {
   return (
-    <div>
+    <div className="my-24">
       <Typography variant="title48_semibold" tag="h2" className="mb-8">
         Популярные категории
       </Typography>

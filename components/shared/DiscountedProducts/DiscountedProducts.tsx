@@ -31,52 +31,25 @@
 //   );
 // };
 
-import Link from "next/link";
-
-import { Button } from "@/components/ui";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
 import { Typography } from "../Typography/Typography";
 
-import { ProductCard } from "./components/ProductCard/ProductCard";
-import { productsData } from "./DiscountedProducts.data";
+import { ProductsMenu, ProductsSlider } from "./components";
 
 interface DiscountedProductsProps {
-  product: ProductsMenu;
+  product: DiscountedProduct;
 }
 
 export const DiscountedProducts = ({ product }: DiscountedProductsProps) => {
   return (
-    <div>
+    <div className="my-24" id="discounted-products">
       <div className="flex items-center gap-16 mb-12">
         <Typography variant="title48_semibold" tag="h2">
           Товары со скидкой
         </Typography>
-        <ul className="flex items-center gap-4">
-          {productsData.map((button) => (
-            <li key={button.query}>
-              <Link href={{ pathname: "/", query: { product: button.query } }}>
-                <Button variant={button.query === product ? "default" : "secondary"}>{button.title}</Button>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ProductsMenu productQuery={product.query} />
       </div>
 
-      {/* Slider -------------------- */}
-      <Carousel className="w-full">
-        <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 ">
-              <div className="p-1">
-                <ProductCard />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+      <ProductsSlider slider={product.slider} />
     </div>
   );
 };
