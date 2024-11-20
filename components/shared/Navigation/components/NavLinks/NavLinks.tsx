@@ -1,9 +1,8 @@
-import React from "react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui";
 
-import { NAV_LINKS } from "./navigationdata";
+import { NAV_LINKS } from "../navigation.data";
 
 export const NavLinks: React.FC = () => {
   return (
@@ -20,6 +19,7 @@ export const NavLinks: React.FC = () => {
           </li>
         ))}
       </ul>
+
       <Button className="bg-[#FF8732] rounded-[48px] px-8 py-3 mr-5">Обратный звонок</Button>
 
       <div className="flex items-end ml-auto flex-col">
@@ -29,5 +29,3 @@ export const NavLinks: React.FC = () => {
     </nav>
   );
 };
-
-export default NavLinks;

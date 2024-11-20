@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { Input } from "@/components/ui";
 
-import { ICONS } from "./navigationdata";
+import { ICONS } from "../navigation.data";
 
 export const TopBar = () => {
   return (
@@ -28,5 +28,3 @@ export const TopBar = () => {
     </div>
   );
 };
-
-export default TopBar;

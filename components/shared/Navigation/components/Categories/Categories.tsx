@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { CATEGORIES } from "./navigationdata";
+import { CATEGORIES } from "../navigation.data";
 
 export const Categories: React.FC = () => {
   return (
@@ -22,5 +22,3 @@ export const Categories: React.FC = () => {
     </div>
   );
 };
-
-export default Categories;

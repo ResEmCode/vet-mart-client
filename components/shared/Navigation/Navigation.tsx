@@ -1,8 +1,7 @@
 import React from "react";
 
-import { Categories } from "@/components/shared/Navigation/Categories";
-import { NavLinks } from "@/components/shared/Navigation/NavLinks";
-import { TopBar } from "@/components/shared/Navigation/TopBar";
+import { Categories } from "./components/Categories/Categories";
+import { TopBar } from "./components/TopBar/TopBar";
 
 export const Navigation: React.FC = () => {
   return (
@@ -13,5 +12,3 @@ export const Navigation: React.FC = () => {
     </header>
   );
 };
-
-export default Navigation;
