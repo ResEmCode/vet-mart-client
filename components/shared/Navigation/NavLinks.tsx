@@ -3,34 +3,28 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui";
 
-import styles from "./Navigation.module.css";
+import { NAV_LINKS } from "./navigationdata";
 
-const NAV_LINKS = [
-  { id: 1, name: "Главная", href: "/" },
-  { id: 2, name: "О нас", href: "/about" },
-  { id: 3, name: "Оплата и доставка", href: "/payment" },
-  { id: 4, name: "Возврат и обмен", href: "/return" },
-  { id: 5, name: "Контакты", href: "/contacts" },
-  { id: 6, name: "Новости", href: "/news" },
-];
-
-const NavLinks = () => {
+export const NavLinks: React.FC = () => {
   return (
-    <nav className={styles.navLinks}>
-      <ul>
+    <nav className="flex justify-between items-center w-full font-medium mb-4 flex-nowrap">
+      <ul className="flex list-none">
         {NAV_LINKS.map((link) => (
-          <li key={link.id} className={styles.navLinkItem}>
-            <Link href={link.href} className={styles.navLink}>
+          <li key={link.id} className="mr-2 flex text-start">
+            <Link
+              href={link.href}
+              className="bg-white px-8 py-3 no-underline text-black rounded-[48px] transition-colors duration-300 text-[15px] leading-5 whitespace-nowrap hover:text-white hover:bg-[#ff8732]"
+            >
               {link.name}
             </Link>
           </li>
         ))}
       </ul>
-      <Button className="px-8 py-3 mr-5 ">Обратный звонок</Button>
+      <Button className="bg-[#FF8732] rounded-[48px] px-8 py-3 mr-5">Обратный звонок</Button>
 
-      <div className={styles.contact}>
-        <div className={styles.phone}>+ 38 (099) 967-87-57</div>
-        <div className={styles.email}>vetmart@ukr.net</div>
+      <div className="flex items-end ml-auto flex-col">
+        <div className="text-[20px] leading-6 text-right font-[600] ml-auto whitespace-nowrap">+ 38 (099) 967-87-57</div>
+        <div className="text-[15px] leading-[18.15px] text-[#ff8732] align-right">vetmart@ukr.net</div>
       </div>
     </nav>
   );

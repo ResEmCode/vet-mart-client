@@ -1,26 +1,19 @@
 import React from "react";
 import Link from "next/link";
 
-import styles from "./Navigation.module.css";
+import { CATEGORIES } from "./navigationdata";
 
-const CATEGORIES = [
-  { id: 1, name: "Кошки", href: "/cats" },
-  { id: 2, name: "Собаки", href: "/dogs" },
-  { id: 3, name: "Птицы", href: "/birds" },
-  { id: 4, name: "Ветпрепараты", href: "/vet-medicines" },
-];
-
-const Categories = () => {
+export const Categories: React.FC = () => {
   return (
-    <div className={styles.categories}>
+    <div className="w-full flex gap-[20px]">
       {CATEGORIES.map((category) => (
-        <Link key={category.id} href={category.href}>
-          <div className={styles.category}>
-            <div className={styles.circleAndText}>
-              <div className={styles.circle} />
-              <div className={styles.categoryContent}>
-                <div className={styles.categoryTitle}>{category.name}</div>
-                <div className={styles.categoryText}>Корма, ветпрепараты, игрушки</div>
+        <Link key={category.id} href={category.href} className="flex-1">
+          <div className="w-full bg-white rounded-[48px] flex items-center px-3 py-3 group hover:bg-[#ff8732] hover:text-white whitespace-nowrap transition-colors duration-300">
+            <div className="flex items-center gap-[15px] w-full">
+              <div className="w-[50px] h-[50px] bg-[#dde5ec] rounded-full flex-shrink-0" />
+              <div className="flex flex-col">
+                <div className="text-[18px] font-[600] mb-1 group-hover:text-white transition-colors duration-300">{category.name}</div>
+                <div className="text-[#8598a7] text-[14px] leading-[16.94px] whitespace-nowrap group-hover:text-white">{category.description}</div>
               </div>
             </div>
           </div>

@@ -1,14 +1,12 @@
 import React from "react";
 
-import Categories from "./Categories";
-import NavLinks from "./NavLinks";
-import TopBar from "./TopBar";
+import { Categories } from "@/components/shared/Navigation/Categories";
+import { NavLinks } from "@/components/shared/Navigation/NavLinks";
+import { TopBar } from "@/components/shared/Navigation/TopBar";
 
-import styles from "./Navigation.module.css";
-
-export const Navigation = () => {
+export const Navigation: React.FC = () => {
   return (
-    <header className={styles.header}>
+    <header className="p-8 max-w-[1408px] w-full flex flex-col items-start">
       <TopBar />
       <NavLinks />
       <Categories />

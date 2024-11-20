@@ -5,7 +5,9 @@ import "./globals.css";
 const Home = () => {
   return (
     <div className="bg-[#F8F9FD] min-h-screen">
-      <Navigation />
+      <div className="container  mx-auto">
+        <Navigation />
+      </div>
     </div>
   );
 };
