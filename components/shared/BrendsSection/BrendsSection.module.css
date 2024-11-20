@@ -1,0 +1,5 @@
+.card {
+  @apply py-12 px-6 cursor-pointer;
+  @apply border border-spacing-1 border-transparent;
+  @apply hover:border-gray-300 transition-colors;
+}

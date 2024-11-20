@@ -1,14 +1,31 @@
-import { Navigation } from "@/components/shared/Navigation/Navigation";
 
 import "./globals.css";
 
-const Home = () => {
+import { BrendsSection, Container, DiscountedProducts, PopularCategory, Navigation } from "@/components/shared";
+import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
+
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
+
+interface HomeProps {
+  searchParams?: Promise<{ product: ProductsMenu }>;
+}
+
+const Home = async ({ searchParams }: HomeProps) => {
+  const filter = await searchParams;
+  const productQuery = filter?.product ?? "all";
+  const productItem = productsData.find((product) => product.query === productQuery)!;
+
+
   return (
-    <div className="bg-[#F8F9FD] min-h-screen">
-      <div className="container  mx-auto">
+    <>
+      <Container>
         <Navigation />
-      </div>
-    </div>
+        <PopularCategory />
+        <DiscountedProducts product={productItem} />
+      </Container>
+      <BrendsSection />
+    </>
   );
 };
 
