@@ -1,4 +1,4 @@
-import { BrendsSection, Container, DiscountedProducts, PopularCategory } from "@/components/shared";
+import { About, Advantages, BrendsSection, Container, DiscountedProducts, PopularCategory, Reviews } from "@/components/shared";
 import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
 
 export const revalidate = 0;
@@ -20,6 +20,11 @@ const Home = async ({ searchParams }: HomeProps) => {
         <DiscountedProducts product={productItem} />
       </Container>
       <BrendsSection />
+      <Container>
+        <Advantages />
+        <Reviews />
+        <About />
+      </Container>
     </>
   );
 };

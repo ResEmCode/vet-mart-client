@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import "./globals.css";
+import "../styles/global.css";
 
 // const nunito = Nunito({ subsets: ["cyrillic"], variable: "--font-nunito", weight: ["400", "500", "600", "700", "800", "900"] });
 const inter = Inter({ subsets: ["cyrillic"], variable: "--font-nunito", weight: ["400", "500", "600", "700", "800", "900"] });
