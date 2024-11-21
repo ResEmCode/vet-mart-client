@@ -7,5 +7,6 @@ export { DiscountedProducts } from "./DiscountedProducts/DiscountedProducts";
 export { TopBar } from "./Navigation/components/TopBar/TopBar";
 export { Navigation } from "./Navigation/Navigation";
 export { PopularCategory } from "./PopularCategory/PopularCategory";
+export { ProductCardList } from "./ProductCardList/ProductCardList";
 export { Reviews } from "./Reviews/Reviews";
 export { Typography } from "./Typography/Typography";
