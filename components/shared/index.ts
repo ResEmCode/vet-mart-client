@@ -4,6 +4,7 @@ export { BrendsSection } from "./BrendsSection/BrendsSection";
 export { CategoryCard } from "./CategoryCard/CategoryCard";
 export { Container } from "./Container/Container";
 export { DiscountedProducts } from "./DiscountedProducts/DiscountedProducts";
+export { Header } from "./Header/Header";
 export { TopBar } from "./Navigation/components/TopBar/TopBar";
 export { Navigation } from "./Navigation/Navigation";
 export { PopularCategory } from "./PopularCategory/PopularCategory";
