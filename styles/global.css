@@ -16,6 +16,13 @@ html {
 }
 
 @layer base {
+  body {
+    @apply bg-[#F8F9FD]; /* Use the desired color */
+    min-height: 100vh; /* Ensure it spans the entire page */
+  }
+}
+
+@layer base {
   :root {
     --foreground: 20 14.3% 4.1%;
 
