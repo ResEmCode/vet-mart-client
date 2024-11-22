@@ -11,6 +11,10 @@
   font-size: 18px;
   font-weight: 600;
 }
+.title16_bold {
+  font-size: 16px;
+  font-weight: 700;
+}
 
 .default {
   color: var(--primary-color);
