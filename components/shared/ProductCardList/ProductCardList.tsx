@@ -1,10 +1,9 @@
 import React from "react";
 
 import { Typography } from "../Typography/Typography";
+import ProductCard from "./components/ProductCard/ProductCard";
 
-import { ProductCard } from "./components";
-
-export const ProductCardList = () => {
+const ProductCardList = () => {
   return (
     <div>
       <Typography variant="title48_semibold" tag="h2">
@@ -21,3 +20,5 @@ export const ProductCardList = () => {
     </div>
   );
 };
+
+export default ProductCardList;

@@ -3,8 +3,9 @@
 import React from "react";
 import Image from "next/image";
 
-import { Typography } from "@/components/shared/Typography/Typography";
+import { Typography } from "@/components/shared";
 import { Button } from "@/components/ui";
+import { useCountChange } from "@/hooks/useCountChange";
 
 interface ProductCardProps {
   title: string;
@@ -12,20 +13,8 @@ interface ProductCardProps {
   price: string;
 }
 
-export const ProductCard = ({ title, weight, price }: ProductCardProps) => {
-  const [count, setCount] = React.useState(1);
-
-  const handleCountChange = (type: "increment" | "decrement") => {
-    setCount((prevCount) => {
-      if (type === "increment") {
-        return prevCount + 1;
-      }
-      if (type === "decrement" && prevCount > 1) {
-        return prevCount - 1;
-      }
-      return prevCount;
-    });
-  };
+const ProductCard = ({ title, weight, price }: ProductCardProps) => {
+  const { count, increment, decrement } = useCountChange();
 
   return (
     <div className="flex gap-2 bg-white p-4 rounded-sm w-full p-7">
@@ -38,13 +27,13 @@ export const ProductCard = ({ title, weight, price }: ProductCardProps) => {
         </Typography>
         <div className="flex items-center gap-4">
           <div>
-            <button className="bg-orange-500 text-white p-2" onClick={() => handleCountChange("decrement")}>
+            <button className="bg-orange-500 text-white p-2" onClick={decrement}>
               -
             </button>
             <Typography className="px-2 py-1" variant="paragraph14_regular" tag="span">
               {count}
             </Typography>
-            <button className="bg-orange-500 text-white p-2" onClick={() => handleCountChange("increment")}>
+            <button className="bg-orange-500 text-white p-2" onClick={increment}>
               +
             </button>
           </div>
@@ -58,3 +47,5 @@ export const ProductCard = ({ title, weight, price }: ProductCardProps) => {
     </div>
   );
 };
+
+export default ProductCard;

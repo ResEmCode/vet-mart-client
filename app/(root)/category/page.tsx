@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Container, Navigation, ProductCardList } from "@/components/shared";
+import { Container, Navigation } from "@/components/shared";
+import ProductCardList from "@/components/shared/ProductCardList/ProductCardList";
 
-const Page = () => {
+const Category = () => {
   return (
     <Container>
       <Navigation />
@@ -19,4 +20,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Category;
