@@ -1,1 +1,1 @@
-export { Content } from "./components/Content";
+export { HeaderSlider } from "./components/HeaderSlider";
