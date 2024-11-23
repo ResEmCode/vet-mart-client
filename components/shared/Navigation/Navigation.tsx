@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Categories } from "./components/Categories/Categories";
+import { NavLinks } from "./components/NavLinks/NavLinks";
 import { TopBar } from "./components/TopBar/TopBar";
 
 export const Navigation: React.FC = () => {
