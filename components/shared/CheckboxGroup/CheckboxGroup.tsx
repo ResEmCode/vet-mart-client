@@ -1,15 +1,17 @@
 import type { ComponentProps, ReactNode } from "react";
+import clsx from "clsx";
 
 import { Typography } from "../Typography/Typography";
 
 interface CheckboxGroupProps {
   children: ReactNode;
   title?: string;
+  className?: string;
 }
 
-export const CheckboxGroup = ({ children, title }: CheckboxGroupProps) => {
+export const CheckboxGroup = ({ children, title, className }: CheckboxGroupProps) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className={clsx("flex flex-col gap-4", className)}>
       {title && (
         <Typography tag="h3" variant="title16_bold">
           {title}

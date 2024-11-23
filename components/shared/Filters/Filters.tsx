@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { Checkbox } from "@/components/ui";
 
@@ -8,15 +8,25 @@ import { CheckboxGroup } from "../CheckboxGroup/CheckboxGroup";
 
 import { DataFilters } from "./Filters.data";
 
+import styles from "./Filters.module.css";
+
 export const Filters = () => {
   const [showAll, setShopAll] = useState(false);
+  const limit = useRef<number>(2);
 
-  const listItems = showAll ? DataFilters : DataFilters.slice(0, 2);
+  const handleShowAll = () => {
+    setShopAll(!showAll);
+    if (!showAll) {
+      limit.current = DataFilters.length;
+    } else {
+      limit.current = 2;
+    }
+  };
 
   return (
     <div className="flex flex-col gap-6 w-[260px] ">
-      {listItems.map((group) => (
-        <CheckboxGroup title={group.title} key={group.title}>
+      {DataFilters.map((group, index) => (
+        <CheckboxGroup title={group.title} key={group.title} className={index < limit.current ? styles.active : styles.hidden}>
           {group.checkboxes.map((checkbox) => (
             <CheckboxGroup.Item title={checkbox} key={checkbox}>
               <Checkbox />
@@ -26,7 +36,7 @@ export const Filters = () => {
       ))}
       {DataFilters.length > 2 && (
         <div className="text-primary">
-          <button onClick={() => setShopAll(!showAll)}>{!showAll ? "+ показать всё" : "скрыть"}</button>
+          <button onClick={handleShowAll}>{!showAll ? "+ показать всё" : "скрыть"}</button>
         </div>
       )}
     </div>
