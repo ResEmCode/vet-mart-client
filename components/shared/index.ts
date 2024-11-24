@@ -1,3 +1,5 @@
+import exp from "constants";
+
 export { About } from "./About/About";
 export { Advantages } from "./Advantages/Advantages";
 export { BrendsSection } from "./BrendsSection/BrendsSection";
@@ -10,3 +12,5 @@ export { Navigation } from "./Navigation/Navigation";
 export { PopularCategory } from "./PopularCategory/PopularCategory";
 export { Reviews } from "./Reviews/Reviews";
 export { Typography } from "./Typography/Typography";
+export { Footer } from "./Footer/Footer";
+
