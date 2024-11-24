@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+
+import { useLoginForm } from "@/components/hooks/LoginFormHook/useLoginForm";
 
 import { Button, Checkbox, Input, Label } from "@/components/ui";
 
@@ -10,39 +11,20 @@ import styles from "../../Auth.module.css";
 export const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const [formData, setFormData] = useState({
+  const { formData, errorMessage, handleChange, validateForm, resetForm } = useLoginForm({
     loginOrEmail: "",
     password: "",
   });
-
-  const [errorMessage, setErrorMessage] = useState("");
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const { loginOrEmail, password } = formData;
-
-    if (!loginOrEmail) {
-      setErrorMessage("Введите логин или email.");
-      return;
+    if (validateForm()) {
+      resetForm();
     }
-    if (!password) {
-      setErrorMessage("Введите пароль.");
-      return;
-    }
-
-    setErrorMessage("");
   };
 
   return (
@@ -86,12 +68,7 @@ export const LoginForm = () => {
             className="absolute right-4 top-12 transform cursor-pointer transition-all duration-200"
             aria-label={passwordVisible ? "Hide password" : "Show password"}
           >
-            <img
-              src="/images/EyeIcon.png"
-              alt="" // Alt is left empty since aria-label is being used
-              width={30}
-              height={30}
-            />
+            <img src="/images/EyeIcon.svg" alt="" width={30} height={30} />
           </button>
         </div>
         <div className="flex items-center justify-between mt-[68px] mb-[30px]">
@@ -111,7 +88,7 @@ export const LoginForm = () => {
           Войти
         </Button>
         <Button type="button" className={styles.googleButton}>
-          <Image src="/images/Google.png" alt="Google Logo" width={20} height={20} className="mr-[6px]" />
+          <img src="/images/GoogleIcon.svg" alt="Google Logo" width={20} height={20} className="mr-[6px]" />
           Sign In with Google
         </Button>
       </form>

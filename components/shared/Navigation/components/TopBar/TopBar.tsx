@@ -32,7 +32,7 @@ export const TopBar = () => {
 
       <div className="flex gap-2 ml-[35px] cursor-pointer">
         {ICONS.map((icon) => (
-          <div
+          <button
             key={icon.id}
             className="flex justify-center items-center w-[46px] h-[45px] bg-white rounded-full justify-around"
             onClick={openModal}
@@ -45,7 +45,7 @@ export const TopBar = () => {
             tabIndex={0}
           >
             <Image width={15} height={15} src={icon.src} alt={icon.alt} />
-          </div>
+          </button>
         ))}
       </div>
 

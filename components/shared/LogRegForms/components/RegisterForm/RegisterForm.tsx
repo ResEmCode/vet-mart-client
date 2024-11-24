@@ -6,46 +6,20 @@ import { Button, Input, Label } from "@/components/ui";
 
 import styles from "../../Auth.module.css";
 
-export const RegisterForm = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
+import { useRegisterForm } from "@/components/hooks/RegisterFormHook/useRegisterForm";
 
-  const [formData, setFormData] = useState({
+export const RegisterForm = () => {
+  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, validateForm, resetForm } = useRegisterForm({
     username: "",
     email: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const { username, email, password } = formData;
-
-    if (!username) {
-      setErrorMessage("Введите имя");
-      return;
+    if (validateForm()) {
+      resetForm();
     }
-    if (!email) {
-      setErrorMessage("Введите email");
-      return;
-    }
-    if (!password) {
-      setErrorMessage("Введите пароль");
-      return;
-    }
-
-    setErrorMessage("");
   };
 
   return (
@@ -92,12 +66,7 @@ export const RegisterForm = () => {
             className="absolute right-4 top-4 transform cursor-pointer transition-all duration-200"
             aria-label={passwordVisible ? "Hide password" : "Show password"}
           >
-            <img
-              src="/images/EyeIcon.png"
-              alt="" // Empty alt since the button's aria-label describes the action
-              width={30}
-              height={30}
-            />
+            <img src="/images/EyeIcon.svg" alt="" width={30} height={30} />
           </button>
         </div>
 
@@ -108,7 +77,7 @@ export const RegisterForm = () => {
         </Button>
 
         <Button type="submit" className={styles.googleButton}>
-          <img src="/images/Google.png" alt="Google Logo" className="mr-[6px]" /> Sign In with Google
+          <img src="/images/GoogleIcon.svg" alt="Google Logo" className="mr-[6px]" /> Sign In with Google
         </Button>
       </form>
     </div>
