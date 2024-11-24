@@ -27,6 +27,7 @@ module.exports = {
       },
     ],
     "@next/next/no-img-element": "off",
+    "jsx-a11y/label-has-associated-control":"off",
     "jsx-a11y/anchor-has-content": "off",
     "react/jsx-no-constructed-context-values": "off",
     "max-len": "off",
