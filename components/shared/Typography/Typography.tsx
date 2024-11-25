@@ -7,12 +7,14 @@ type Tag = "h1" | "h2" | "h3" | "p" | "span";
 
 type TypographyVariant =
   | "title48_semibold"
+  | "title36_semibold"
   | "title24_semibold"
   | "title18_semibold"
   | "title16_bold"
   | "title24_bold"
   | "paragraph15_medium"
-  | "paragraph14_regular";
+  | "paragraph14_regular"
+  | "paragraph12_regular";
 
 type TypographyVariantColor = "default" | "accent" | "primary" | "subtitle";
 
