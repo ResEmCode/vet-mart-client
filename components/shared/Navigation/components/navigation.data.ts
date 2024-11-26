@@ -31,7 +31,7 @@ export const CATEGORIES: Category[] = [
   { id: 1, name: "Кошки", href: "/cats", description: "Корма, ветпрепараты, игрушки" },
   { id: 2, name: "Собаки", href: "/dogs", description: "Корма, ветпрепараты, игрушки" },
   { id: 3, name: "Птицы", href: "/birds", description: "Корма, ветпрепараты, игрушки" },
-  { id: 4, name: "Ветпрепараты", href: "/vet-medicines", description: "Препараты и лекарственные добавки" },
+  { id: 4, name: "Грызуны", href: "/vet-medicines", description: "Корма, ветпрепараты, игрушки" },
 ];
 
 export const ICONS: Icon[] = [
