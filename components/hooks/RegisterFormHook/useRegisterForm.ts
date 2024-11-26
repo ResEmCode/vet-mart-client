@@ -40,6 +40,12 @@ export const useRegisterForm = (initialState: RegisterFormData) => {
       setErrorMessage("Введите пароль");
       return false;
     }
+
+    if (password.length < 6) {
+      setErrorMessage("Пароль должен содержать минимум 6 символов");
+      return false;
+    }
+
     setErrorMessage("");
     return true;
   };

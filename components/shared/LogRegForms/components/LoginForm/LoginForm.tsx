@@ -3,22 +3,15 @@
 import React, { useState } from "react";
 
 import { useLoginForm } from "@/components/hooks/LoginFormHook/useLoginForm";
-
 import { Button, Checkbox, Input, Label } from "@/components/ui";
 
 import styles from "../../Auth.module.css";
 
 export const LoginForm = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
-
-  const { formData, errorMessage, handleChange, validateForm, resetForm } = useLoginForm({
+  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, validateForm, resetForm } = useLoginForm({
     loginOrEmail: "",
     password: "",
   });
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,16 +52,17 @@ export const LoginForm = () => {
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            onKeyDown={(e) => {
+            onKeyPress={(e) => {
               if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
                 togglePasswordVisibility();
               }
             }}
             tabIndex={0}
-            className="absolute right-4 top-12 transform cursor-pointer transition-all duration-200"
+            className="absolute right-4 top-[50px] transform cursor-pointer transition-all duration-200"
             aria-label={passwordVisible ? "Hide password" : "Show password"}
           >
-            <img src="/images/EyeIcon.svg" alt="" width={30} height={30} />
+            <img src={passwordVisible ? "/images/eyeClosedIcon.svg" : "/images/eyeOpenIcon.svg"} alt="" width={30} height={30} />
           </button>
         </div>
         <div className="flex items-center justify-between mt-[68px] mb-[30px]">

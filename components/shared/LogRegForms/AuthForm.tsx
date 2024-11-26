@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 
-import { LoginForm } from "./components";
-import { RegisterForm } from "./components";
+import { LoginForm, RegisterForm } from "./components";
 
 export const AuthForm = ({ closeModal }: { closeModal: () => void }) => {
   const [isRegistering, setIsRegistering] = useState(true);
@@ -14,7 +13,12 @@ export const AuthForm = ({ closeModal }: { closeModal: () => void }) => {
         <div className=" text-center mb-6">
           <h1 className="text-[32px] font-[500] leading-[38.73px] text-black mt-[48px]">{isRegistering ? "Регистрация" : "Авторизация"}</h1>
 
-          <button onClick={closeModal} className="absolute top-8 right-10 bg-transparent text-gray-700 hover:text-black " aria-label="Close modal">
+          <button
+            type="button"
+            onClick={closeModal}
+            className="absolute top-8 right-10 bg-transparent text-gray-700 hover:text-black "
+            aria-label="Close modal"
+          >
             <img src="/images/CloseIcon.svg" alt="Close" className="w-5 h-5" />
           </button>
         </div>

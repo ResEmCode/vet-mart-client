@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
+import { useRegisterForm } from "@/components/hooks/RegisterFormHook/useRegisterForm";
 import { Button, Input, Label } from "@/components/ui";
 
 import styles from "../../Auth.module.css";
-
-import { useRegisterForm } from "@/components/hooks/RegisterFormHook/useRegisterForm";
 
 export const RegisterForm = () => {
   const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, validateForm, resetForm } = useRegisterForm({
@@ -57,16 +56,17 @@ export const RegisterForm = () => {
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            onKeyDown={(e) => {
+            onKeyPress={(e) => {
               if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
                 togglePasswordVisibility();
               }
             }}
             tabIndex={0}
-            className="absolute right-4 top-4 transform cursor-pointer transition-all duration-200"
+            className="absolute right-4 top-4 transform cursor-pointer transition-all duration-200 text-[#E8E3E3]"
             aria-label={passwordVisible ? "Hide password" : "Show password"}
           >
-            <img src="/images/EyeIcon.svg" alt="" width={30} height={30} />
+            <img src={passwordVisible ? "/images/eyeClosedIcon.svg" : "/images/eyeOpenIcon.svg"} alt="" width={30} height={30} />
           </button>
         </div>
 
