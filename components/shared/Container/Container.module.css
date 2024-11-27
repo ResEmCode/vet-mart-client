@@ -7,3 +7,7 @@
 .default {
   max-width: 1440px;
 }
+
+.footer {
+  max-width: 900px;
+}

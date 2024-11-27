@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import styles from "./Container.module.css";
 
-type Variant = "default";
+type Variant = "default" | "footer";
 
 interface ContainerProps {
   children: ReactNode;
