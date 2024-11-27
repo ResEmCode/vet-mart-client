@@ -1,8 +1,8 @@
+export { AuthForm } from "../ui/Modal/components/AuthForm";
 export { BrendsSection } from "./BrendsSection/BrendsSection";
 export { CategoryCard } from "./CategoryCard/CategoryCard";
 export { Container } from "./Container/Container";
 export { DiscountedProducts } from "./DiscountedProducts/DiscountedProducts";
-export { AuthForm } from "./LogRegForms/AuthForm";
 export { LoginForm } from "./LogRegForms/components/LoginForm/LoginForm";
 export { RegisterForm } from "./LogRegForms/components/RegisterForm/RegisterForm";
 export { TopBar } from "./Navigation";

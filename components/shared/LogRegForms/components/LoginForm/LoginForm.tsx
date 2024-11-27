@@ -1,24 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
-import { useLoginForm } from "@/components/hooks/LoginFormHook/useLoginForm";
+import { useForm } from "@/components/hooks/useForm";
 import { Button, Checkbox, Input, Label } from "@/components/ui";
 
 import styles from "../../Auth.module.css";
 
 export const LoginForm = () => {
-  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, validateForm, resetForm } = useLoginForm({
-    loginOrEmail: "",
-    password: "",
-  });
+  const validateForm = (formData) => {
+    const { loginOrEmail, password } = formData;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      resetForm();
+    if (!loginOrEmail) {
+      setErrorMessage("Введите свою почту или логин");
+      return false;
     }
+
+    if (!password) {
+      setErrorMessage("Введите свой пароль");
+      return false;
+    }
+
+    if (password.length < 6) {
+      setErrorMessage("Пароль должен содержать минимум 6 символов");
+      return false;
+    }
+
+    setErrorMessage("");
+    return true;
   };
+
+  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, handleSubmit, setErrorMessage } = useForm(
+    { loginOrEmail: "", password: "" },
+    validateForm,
+  );
 
   return (
     <div className="space-y-4">
@@ -31,7 +46,7 @@ export const LoginForm = () => {
           name="loginOrEmail"
           placeholder="Введите свою почту или логин"
           className={`${styles.inputField} mt-1`}
-          value={formData.loginOrEmail}
+          value={formData.loginOrEmail || ""}
           onChange={handleChange}
         />
 
@@ -43,7 +58,7 @@ export const LoginForm = () => {
             placeholder="Введите свой пароль"
             type={passwordVisible ? "text" : "password"}
             name="password"
-            value={formData.password}
+            value={formData.password || ""}
             onChange={handleChange}
             className={`${styles.inputField} mt-1`}
           />
@@ -52,13 +67,6 @@ export const LoginForm = () => {
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            onKeyPress={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                togglePasswordVisibility();
-              }
-            }}
-            tabIndex={0}
             className="absolute right-4 top-[50px] transform cursor-pointer transition-all duration-200"
             aria-label={passwordVisible ? "Hide password" : "Show password"}
           >

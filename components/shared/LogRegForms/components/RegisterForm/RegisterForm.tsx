@@ -2,24 +2,39 @@
 
 import React from "react";
 
-import { useRegisterForm } from "@/components/hooks/RegisterFormHook/useRegisterForm";
+import { useForm } from "@/components/hooks/useForm";
 import { Button, Input, Label } from "@/components/ui";
 
 import styles from "../../Auth.module.css";
 
 export const RegisterForm = () => {
-  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, validateForm, resetForm } = useRegisterForm({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      resetForm();
+  const validateForm = (formData) => {
+    const { username, email, password } = formData;
+    if (!username) {
+      setErrorMessage("Введите логин");
+      return false;
     }
+
+    if (!email) {
+      setErrorMessage("Введите свою почту");
+    }
+
+    if (!password) {
+      setErrorMessage("Введите свой пароль");
+    }
+
+    if (password.length < 6) {
+      setErrorMessage("Пароль должен содержать минимум 6 символов");
+      return false;
+    }
+    setErrorMessage("");
+    return true;
   };
+
+  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, handleSubmit, setErrorMessage } = useForm(
+    { username: "", email: "", password: "" },
+    validateForm,
+  );
 
   return (
     <div className="space-y-4">
@@ -27,7 +42,7 @@ export const RegisterForm = () => {
         <Label htmlFor="username" className="text-[20px]">
           Логин
         </Label>
-        <Input type="text" placeholder="Введите имя" className={styles.inputField} name="username" value={formData.username} onChange={handleChange} />
+        <Input type="text" placeholder="Введите логин" className={styles.inputField} name="username" value={formData.username || ""} onChange={handleChange} />
 
         <Label htmlFor="email" className="text-[20px]">
           E-mail
@@ -36,7 +51,7 @@ export const RegisterForm = () => {
           type="email"
           name="email"
           placeholder="Введите свою почту"
-          value={formData.email}
+          value={formData.email || ""}
           onChange={handleChange}
           className={styles.inputField}
           required
@@ -49,20 +64,13 @@ export const RegisterForm = () => {
             placeholder="Введите свой пароль"
             type={passwordVisible ? "text" : "password"}
             name="password"
-            value={formData.password}
+            value={formData.password || ""}
             onChange={handleChange}
             className={styles.inputField}
           />
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            onKeyPress={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                togglePasswordVisibility();
-              }
-            }}
-            tabIndex={0}
             className="absolute right-4 top-4 transform cursor-pointer transition-all duration-200 text-[#E8E3E3]"
             aria-label={passwordVisible ? "Hide password" : "Show password"}
           >

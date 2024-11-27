@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import { AuthForm } from "@/components/shared/LogRegForms/AuthForm";
 import { Input } from "@/components/ui";
+import { AuthForm } from "@/components/ui/Modal/components/AuthForm";
 
 import { ICONS } from "../navigation.data";
 
