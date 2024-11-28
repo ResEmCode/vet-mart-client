@@ -1,16 +1,31 @@
 "use client";
 
-import React from "react";
+
+import React, { useState } from "react";
+
 import Image from "next/image";
 
 import { Drawer } from "@/components/shared/Drawer/Drawer";
 import { Typography } from "@/components/shared/Typography/Typography";
 import { Input } from "@/components/ui";
+import { AuthForm } from "@/components/shared/LogRegForms/AuthForm";
 
 import { ICONS } from "../navigation.data";
 
 export const TopBar = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const [openDrawer, setOpenDrawer] = React.useState(false);
+
 
   const onOpenDrawer = (text: string) => {
     if (text === "Корзина") {
