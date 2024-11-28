@@ -2,6 +2,7 @@
 
 import { About, Advantages, BrendsSection, DiscountedProducts, Header, PopularCategory, Reviews } from "@/components/shared";
 import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
+import Footer from "@/components/shared/Footer/Footer";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
@@ -22,10 +23,12 @@ const Home = async ({ searchParams }: HomeProps) => {
       <DiscountedProducts product={productItem} />
 
       <BrendsSection />
-
-      <Advantages />
-      <Reviews />
-      <About />
+      <Container>
+        <Advantages />
+        <Reviews />
+        <About />
+      </Container>
+      <Footer />
     </>
   );
 };

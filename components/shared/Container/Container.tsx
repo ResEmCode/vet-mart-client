@@ -5,6 +5,7 @@ import styles from "./Container.module.css";
 
 type Variant = "default" | "short";
 
+
 interface ContainerProps {
   children: ReactNode;
   variant?: Variant;
