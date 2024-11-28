@@ -13,6 +13,7 @@ type TypographyVariant =
   | "title16_bold"
   | "title24_bold"
   | "paragraph15_medium"
+  | "paragraph20_regular"
   | "paragraph14_regular"
   | "paragraph12_regular";
 

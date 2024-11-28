@@ -5,6 +5,7 @@ export { CategoryCard } from "./CategoryCard/CategoryCard";
 export { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
 export { Container } from "./Container/Container";
 export { DiscountedProducts } from "./DiscountedProducts/DiscountedProducts";
+export { Drawer } from "./Drawer/Drawer";
 export { Filters } from "./Filters/Filters";
 export { Header } from "./Header/Header";
 export { TopBar } from "./Navigation/components/TopBar/TopBar";

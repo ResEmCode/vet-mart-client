@@ -35,7 +35,7 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const ICONS: Icon[] = [
-  { id: 1, src: "/images/profile.png", alt: "Favorites", text: "Любимые" },
-  { id: 2, src: "/images/profile.png", alt: "Profile", text: "Профиль" },
-  { id: 3, src: "/images/profile.png", alt: "Cart", text: "Корзина" },
+  { id: 1, src: "/navigation/cart.png", alt: "cart", text: "Корзина" },
+  { id: 2, src: "/navigation/like.png", alt: "like", text: "Избранное" },
+  { id: 3, src: "/navigation/profile.png", alt: "profile", text: "Профиль" },
 ];

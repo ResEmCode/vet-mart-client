@@ -27,6 +27,11 @@
   font-weight: 400;
 }
 
+.paragraph20_regular {
+  font-size: 20px;
+  font-weight: 400;
+}
+
 .default {
   color: var(--primary-color);
 }
