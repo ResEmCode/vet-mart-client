@@ -1,0 +1,19 @@
+.inputField {
+  @apply mb-[28px] rounded-[5px] w-[428px] h-[63px] !text-[24px] placeholder:!text-[24px] placeholder:text-[#D3D3D3] placeholder:leading-[29.05px] p-[17px] leading-[29.05px];
+}
+
+.googleButton {
+  @apply w-full py-8 mt-4 text-black text-xl leading-[24.2px] rounded-[20px] bg-white border-2 flex items-center justify-center space-x-4 whitespace-nowrap;
+}
+
+.googleButton:hover {
+  @apply bg-white opacity-80;
+}
+
+.eyeIcon {
+  @apply absolute right-4 top-4 transform  cursor-pointer  transition-all duration-200;
+}
+
+.eyeIcon:hover {
+  @apply scale-110 opacity-80;
+}

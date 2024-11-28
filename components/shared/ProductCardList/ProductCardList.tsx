@@ -10,7 +10,7 @@ const ProductCardList = () => {
       <Typography variant="title48_semibold" tag="h2">
         Сухой корм
       </Typography>
-      <div className="grid grid-cols-3 gap-[50px]">
+      <div className="grid grid-cols-3 gap-[20px]">
         <ProductCard title="Сухий корм для котів happy pet" weight="10 000г" price="329 ₴" />
         <ProductCard title="Сухий корм для котів happy pet" weight="10 000г" price="329 ₴" />
         <ProductCard title="Сухий корм для котів happy pet" weight="10 000г" price="329 ₴" />
