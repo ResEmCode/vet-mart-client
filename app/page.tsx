@@ -1,5 +1,8 @@
+
 import { About, Advantages, BrendsSection, Container, DiscountedProducts, Header, Navigation, PopularCategory, ProductDetails, Reviews } from "@/components/shared";
+
 import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
+import Footer from "@/components/shared/Footer/Footer";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
@@ -15,12 +18,10 @@ const Home = async ({ searchParams }: HomeProps) => {
 
   return (
     <>
-      <Container>
-        <Navigation />
-        <Header />
-        <PopularCategory />
-        <DiscountedProducts product={productItem} />
-      </Container>
+      <Header />
+      <PopularCategory />
+      <DiscountedProducts product={productItem} />
+
       <BrendsSection />
       <Container>
         <Advantages />
@@ -28,6 +29,7 @@ const Home = async ({ searchParams }: HomeProps) => {
         <About />
         <ProductDetails />
       </Container>
+      <Footer />
     </>
   );
 };

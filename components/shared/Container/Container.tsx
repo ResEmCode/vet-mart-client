@@ -3,7 +3,8 @@ import clsx from "clsx";
 
 import styles from "./Container.module.css";
 
-type Variant = "default";
+type Variant = "default" | "short";
+
 
 interface ContainerProps {
   children: ReactNode;

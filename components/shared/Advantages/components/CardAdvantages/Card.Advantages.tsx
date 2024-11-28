@@ -46,7 +46,7 @@ export const CardAdvantages = () => {
           <Typography color="accent" className="text-lg font-bold text-center mt-4" tag="h3" variant="title24_bold">
             {card.title}
           </Typography>
-          <Typography className="text-sm text-center mt-2" tag="span" variant="paragraph15_medium">
+          <Typography color="subtitle" className="text-sm text-center mt-2" tag="span" variant="paragraph15_medium">
             {card.text}
           </Typography>
         </div>

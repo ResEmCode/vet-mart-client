@@ -7,3 +7,7 @@
 .default {
   max-width: 1440px;
 }
+
+.short {
+  max-width: 900px;
+}

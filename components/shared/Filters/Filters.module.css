@@ -1,0 +1,13 @@
+
+.active {
+    transition: all 0.2s ease;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transform: translateY(-8px);
+}

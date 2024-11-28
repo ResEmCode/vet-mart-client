@@ -1,5 +1,8 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
+import { Container, Navigation } from "@/components/shared";
 
 import "../styles/global.css";
 
@@ -17,7 +20,13 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Container>
+          <Navigation />
+          {children}
+          <footer>1</footer>
+        </Container>
+      </body>
     </html>
   );
 };
