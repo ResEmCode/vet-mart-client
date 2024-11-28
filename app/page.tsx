@@ -1,7 +1,7 @@
-import { BrendsSection, Container, DiscountedProducts, Navigation, PopularCategory } from "@/components/shared";
-import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
 
-import "./globals.css";
+
+import { About, Advantages, BrendsSection, DiscountedProducts, Header, PopularCategory, Reviews } from "@/components/shared";
+import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
@@ -17,12 +17,15 @@ const Home = async ({ searchParams }: HomeProps) => {
 
   return (
     <>
-      <Container>
-        <Navigation />
-        <PopularCategory />
-        <DiscountedProducts product={productItem} />
-      </Container>
+      <Header />
+      <PopularCategory />
+      <DiscountedProducts product={productItem} />
+
       <BrendsSection />
+
+      <Advantages />
+      <Reviews />
+      <About />
     </>
   );
 };

@@ -1,9 +1,11 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import "./globals.css";
+import { Container, Navigation } from "@/components/shared";
 
-// const nunito = Nunito({ subsets: ["cyrillic"], variable: "--font-nunito", weight: ["400", "500", "600", "700", "800", "900"] });
+import "../styles/global.css";
+
 const inter = Inter({ subsets: ["cyrillic"], variable: "--font-nunito", weight: ["400", "500", "600", "700", "800", "900"] });
 
 export const metadata: Metadata = {
@@ -18,7 +20,13 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Container>
+          <Navigation />
+          {children}
+          <footer>1</footer>
+        </Container>
+      </body>
     </html>
   );
 };

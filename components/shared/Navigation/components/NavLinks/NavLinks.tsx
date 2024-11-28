@@ -1,18 +1,19 @@
 import Link from "next/link";
 
+import { Typography } from "@/components/shared/Typography/Typography";
 import { Button } from "@/components/ui";
 
 import { NAV_LINKS } from "../navigation.data";
 
 export const NavLinks: React.FC = () => {
   return (
-    <nav className="flex justify-between items-center w-full font-medium mb-4 flex-nowrap">
-      <ul className="flex list-none">
+    <nav className="flex justify-between items-center w-full font-medium flex-nowrap">
+      <ul className="flex">
         {NAV_LINKS.map((link) => (
           <li key={link.id} className="mr-2 flex text-start">
             <Link
               href={link.href}
-              className="bg-white px-8 py-3 no-underline text-black rounded-[48px] transition-colors duration-300 text-[15px] leading-5 whitespace-nowrap hover:text-white hover:bg-[#ff8732]"
+              className="bg-white px-[32px] py-[12px] text-black rounded-[48px] transition-colors duration-200 text-[15px] leading-5 hover:text-white hover:bg-[#ff8732]"
             >
               {link.name}
             </Link>
@@ -20,11 +21,15 @@ export const NavLinks: React.FC = () => {
         ))}
       </ul>
 
-      <Button className="bg-[#FF8732] rounded-[48px] px-8 py-3 mr-5">Обратный звонок</Button>
+      <Button className="bg-[#FF8732] px-[32px] py-[12px]">Обратный звонок</Button>
 
       <div className="flex items-end ml-auto flex-col">
-        <div className="text-[20px] leading-6 text-right font-[600] ml-auto whitespace-nowrap">+ 38 (099) 967-87-57</div>
-        <div className="text-[15px] leading-[18.15px] text-[#ff8732] align-right">vetmart@ukr.net</div>
+        <Typography tag="span" variant="title18_semibold">
+          + 38 (099) 967-87-57
+        </Typography>
+        <Typography tag="span" variant="paragraph15_medium" color="accent">
+          vetmart@ukr.net
+        </Typography>
       </div>
     </nav>
   );

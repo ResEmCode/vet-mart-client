@@ -8,14 +8,16 @@ interface CategoryCardProps {
   url: string;
 }
 
-export const CategoryCard = ({ title, text, url }: CategoryCardProps) => {
+export const CategoryCard = ({ title, text }: CategoryCardProps) => {
   return (
     <li className={styles.inner}>
-      <img src={url} alt="icon" className="w-20 h-20 rounded-full object-cover mb-2" />
-      <Typography variant="title18_semibold" tag="h3">
+      <img src="./image.png" alt="icon" className="w-20 h-20 rounded-full object-cover mb-2" />
+      <Typography variant="title18_semibold" tag="h3" className="text-center">
         {title}
       </Typography>
-      <p className="text-sm text-gray-300 text-center">{text}</p>
+      <Typography variant="paragraph14_regular" tag="span" color="subtitle" className="text-center">
+        {text}
+      </Typography>
     </li>
   );
 };

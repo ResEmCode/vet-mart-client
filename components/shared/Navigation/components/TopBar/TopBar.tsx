@@ -1,14 +1,19 @@
 "use client";
 
+
 import React, { useState } from "react";
+
 import Image from "next/image";
 
+import { Drawer } from "@/components/shared/Drawer/Drawer";
+import { Typography } from "@/components/shared/Typography/Typography";
 import { Input } from "@/components/ui";
 import { AuthForm } from "@/components/shared/LogRegForms/AuthForm";
 
 import { ICONS } from "../navigation.data";
 
 export const TopBar = () => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -19,37 +24,53 @@ export const TopBar = () => {
     setIsModalOpen(false);
   };
 
+  const [openDrawer, setOpenDrawer] = React.useState(false);
+
+
+  const onOpenDrawer = (text: string) => {
+    if (text === "Корзина") {
+      setOpenDrawer(true);
+    }
+  };
+
+  const closeDrawer = () => {
+    setOpenDrawer(false);
+  };
+
   return (
-    <div className="flex justify-between items-center w-full box-border mb-6">
-      <div className="flex items-center">
-        <div className="text-[32px] leading-8 font-bold">
-          Вет<span className="text-[#ff8732]">март</span>
+    <>
+      {openDrawer && <Drawer closeDrawer={closeDrawer} />}
+      <div className="flex justify-between items-center w-full box-border">
+        <div className="flex items-center gap-[32px]">
+          <div className="flex">
+            <Typography variant="title36_semibold" tag="h2">
+              Вет
+            </Typography>
+            <Typography variant="title36_semibold" tag="h2" color="accent">
+              март
+            </Typography>
+          </div>
+          <Typography variant="paragraph14_regular" tag="h2" className="leading-[16px] max-w-[300px]">
+            Ветеринарный магазин в Виннице с 2022 года
+          </Typography>
         </div>
-        <div className="ml-8 text-[14px] font-medium leading-[16.8px] text-black mr-10">Ветеринарный магазин в Виннице с 2022 года</div>
+        <Input placeholder="Поиск товара..." className="w-[950px] h-[46px] px-6 py-1 rounded-[48px] bg-white border-none placeholder:text-[#8598a7]" />
+        <div className="flex gap-2 ml-[35px]">
+          {ICONS.map((icon) => (
+            <div
+              onClick={() => onOpenDrawer(icon.text)}
+              onKeyDown={(e) => e.key === "Enter" && onOpenDrawer(icon.text)}
+              key={icon.id}
+              className="flex justify-center items-center w-[46px] h-[45px] bg-white rounded-full justify-around cursor-pointer"
+              role="button"
+              tabIndex={0}
+              aria-label={icon.text}
+            >
+              <Image width={15} height={15} src={icon.src} alt={icon.alt} />
+            </div>
+          ))}
+        </div>
       </div>
-
-      <Input placeholder="Поиск товара" className="w-[950px] h-[46px] px-6 py-1 text-sm rounded-[48px]" />
-
-      <div className="flex gap-2 ml-[35px] cursor-pointer">
-        {ICONS.map((icon) => (
-          <button
-            type="button"
-            key={icon.id}
-            className="flex justify-center items-center w-[46px] h-[45px] bg-white rounded-full justify-around"
-            onClick={openModal}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                openModal();
-              }
-            }}
-            tabIndex={0}
-          >
-            <Image width={15} height={15} src={icon.src} alt={icon.alt} />
-          </button>
-        ))}
-      </div>
-
-      {isModalOpen && <AuthForm closeModal={closeModal} />}
-    </div>
+    </>
   );
 };

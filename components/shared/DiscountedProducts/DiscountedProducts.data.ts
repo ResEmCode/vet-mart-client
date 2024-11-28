@@ -1,6 +1,6 @@
 export const productsData: DiscountedProduct[] = [
   {
-    title: "все",
+    title: "Все",
     query: "all",
     slider: [
       {

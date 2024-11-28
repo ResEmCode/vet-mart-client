@@ -2,6 +2,12 @@
   font-size: 48px;
   font-weight: 600;
 }
+
+.title36_semibold {
+  font-size: 36px;
+  font-weight: 600;
+}
+
 .title24_semibold {
   font-size: 24px;
   font-weight: 600;
@@ -10,4 +16,30 @@
 .title18_semibold {
   font-size: 18px;
   font-weight: 600;
+}
+.title16_bold {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.paragraph14_regular {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.paragraph20_regular {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.default {
+  color: var(--primary-color);
+}
+
+.accent {
+  color: var(--accent-color);
+}
+
+.subtitle {
+  color: var(--subtitle-color);
 }
