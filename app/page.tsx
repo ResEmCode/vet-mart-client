@@ -1,6 +1,6 @@
 
+import { About, Advantages, BrendsSection, Container, DiscountedProducts, Header, Navigation, PopularCategory, ProductDetails, Reviews } from "@/components/shared";
 
-import { About, Advantages, BrendsSection, DiscountedProducts, Header, PopularCategory, Reviews } from "@/components/shared";
 import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
 import Footer from "@/components/shared/Footer/Footer";
 
@@ -27,6 +27,7 @@ const Home = async ({ searchParams }: HomeProps) => {
         <Advantages />
         <Reviews />
         <About />
+        <ProductDetails />
       </Container>
       <Footer />
     </>

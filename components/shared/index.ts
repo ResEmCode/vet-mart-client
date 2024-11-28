@@ -26,3 +26,4 @@ export { Navigation } from "./Navigation/Navigation";
 export { PopularCategory } from "./PopularCategory/PopularCategory";
 export { Reviews } from "./Reviews/Reviews";
 export { Typography } from "./Typography/Typography";
+export { ProductDetails } from "./ProductDetails/ProductDetails";
