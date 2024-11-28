@@ -1,4 +1,4 @@
-export { AuthForm } from "../ui/Modal/components/AuthForm";
+export { AuthForm } from "./LogRegForms/AuthForm";
 export { BrendsSection } from "./BrendsSection/BrendsSection";
 export { CategoryCard } from "./CategoryCard/CategoryCard";
 export { Container } from "./Container/Container";

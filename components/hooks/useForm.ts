@@ -4,10 +4,10 @@ interface FormData {
   [key: string]: string;
 }
 
-export const useForm = (initialState: FormData, validateForm: () => boolean) => {
-  const [formData, setFormData] = useState<FormData>(initialState);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(false);
+export const useForm = <T extends FormData>(initialState: T, validateForm: (formData: T, setErrorMessage: (message: string) => void) => boolean) => {
+  const [formData, setFormData] = useState<T>(initialState);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,7 +23,7 @@ export const useForm = (initialState: FormData, validateForm: () => boolean) => 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (validateForm(formData, setErrorMessage)) {
       setFormData(initialState);
     }
   };

@@ -8,7 +8,7 @@ import { Button, Checkbox, Input, Label } from "@/components/ui";
 import styles from "../../Auth.module.css";
 
 export const LoginForm = () => {
-  const validateForm = (formData) => {
+  const validateForm = (formData: { loginOrEmail: string; password: string }, setErrorMessage: (message: string) => void) => {
     const { loginOrEmail, password } = formData;
 
     if (!loginOrEmail) {
@@ -26,11 +26,11 @@ export const LoginForm = () => {
       return false;
     }
 
-    setErrorMessage("");
+    setErrorMessage(""); // очистить сообщение об ошибке
     return true;
   };
 
-  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, handleSubmit, setErrorMessage } = useForm(
+  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, handleSubmit } = useForm(
     { loginOrEmail: "", password: "" },
     validateForm,
   );

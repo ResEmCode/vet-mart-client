@@ -8,7 +8,7 @@ import { Button, Input, Label } from "@/components/ui";
 import styles from "../../Auth.module.css";
 
 export const RegisterForm = () => {
-  const validateForm = (formData) => {
+  const validateForm = (formData: { email: string; username: string; password: string }, setErrorMessage: (message: string) => void) => {
     const { username, email, password } = formData;
     if (!username) {
       setErrorMessage("Введите логин");
@@ -31,7 +31,7 @@ export const RegisterForm = () => {
     return true;
   };
 
-  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, handleSubmit, setErrorMessage } = useForm(
+  const { formData, errorMessage, passwordVisible, handleChange, togglePasswordVisibility, handleSubmit } = useForm(
     { username: "", email: "", password: "" },
     validateForm,
   );
