@@ -6,6 +6,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        "accent-color": "#ff8732",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -46,6 +47,9 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+      },
+      borderColor: {
+        "border-accent-color": "#ff8732",
       },
       borderRadius: {
         lg: "var(--radius)",

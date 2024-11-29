@@ -12,3 +12,5 @@ export { Navigation } from "./Navigation/Navigation";
 export { PopularCategory } from "./PopularCategory/PopularCategory";
 export { Reviews } from "./Reviews/Reviews";
 export { Typography } from "./Typography/Typography";
+export { ProductSlider } from "./ProductSlider/ProductSlider";
+export { ProductBuyMenu } from "./ProductBuyMenu/ProductBuyMenu";
