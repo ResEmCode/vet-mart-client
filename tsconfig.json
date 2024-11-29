@@ -29,6 +29,7 @@
     "target": "ES2017"
   },
   "include": [
+    "prisma/**/*.ts", "src/**/*.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

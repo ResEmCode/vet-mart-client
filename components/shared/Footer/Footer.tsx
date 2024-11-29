@@ -33,7 +33,7 @@ const Footer = () => {
   return (
     <div className="bg-[#FF8732]">
       <footer className="py-4">
-        <Container variant="footer">
+        <Container variant="short">
           <div className="flex flex-col lg:flex-row justify-around items-start lg:items-center space-y-4 lg:space-y-0 lg:space-x-4">
             <div className="flex flex-col items-start space-y-2">
               <h2 className="text-xl font-bold text-white">Ветмарт</h2>
@@ -62,6 +62,5 @@ const Footer = () => {
     </div>
   );
 };
-
 
 export default Footer;

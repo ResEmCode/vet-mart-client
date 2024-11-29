@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 import { LoginForm } from "@/components/shared/LogRegForms/components/LoginForm/LoginForm";
 import { RegisterForm } from "@/components/shared/LogRegForms/components/RegisterForm/RegisterForm";
-
 import { Modal } from "@/components/ui/Modal";
 
 export const AuthForm = ({ closeModal }: { closeModal: () => void }) => {
