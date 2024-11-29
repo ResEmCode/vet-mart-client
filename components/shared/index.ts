@@ -19,3 +19,5 @@ export { PopularCategory } from "./PopularCategory/PopularCategory";
 export { ProductDetails } from "./ProductDetails/ProductDetails";
 export { Reviews } from "./Reviews/Reviews";
 export { Typography } from "./Typography/Typography";
+export { ProductSlider } from "./ProductSlider/ProductSlider";
+export { ProductBuyMenu } from "./ProductBuyMenu/ProductBuyMenu";
