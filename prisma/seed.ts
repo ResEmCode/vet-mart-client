@@ -1,29 +1,22 @@
-import { hashSync } from "bcrypt";
+import { categories, products, users } from "./constants";
 import { prisma } from "./prisma-client";
 
 async function up() {
   await prisma.user.createMany({
-    data: [
-      {
-        fullName: "User Test",
-        email: "user@test.com",
-        password: hashSync("111111", 10),
-        verified: false,
-        role: "USER",
-      },
-      {
-        fullName: "Admin Admin",
-        email: "admin@test.com",
-        password: hashSync("111111", 10),
-        verified: true,
-        role: "ADMIN",
-      },
-    ],
+    data: users,
+  });
+
+  await prisma.category.createMany({
+    data: categories,
+  });
+  await prisma.product.createMany({
+    data: products,
   });
 }
 
 async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {
