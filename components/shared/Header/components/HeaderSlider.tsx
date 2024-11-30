@@ -17,7 +17,7 @@ export const HeaderSlider = () => {
     >
       <CarouselContent className="flex w-full h-full">
         {Array.from({ length: 3 }).map((_, index) => (
-          <CarouselItem key={index} className="flex-shrink-0 w-full h-full ">
+          <CarouselItem key={`item-${index}`} className="flex-shrink-0 w-full h-full ">
             <div className="flex items-center justify-center w-full h-full bg-white rounded-md ">
               <div className="text-lg font-semibold text-gray-800">Item {index + 1}</div>
             </div>

@@ -3,7 +3,9 @@ import clsx from "clsx";
 
 import styles from "./Container.module.css";
 
-type Variant = "default" | "short";
+
+type Variant = "default" | "short" | "footer";
+
 
 interface ContainerProps {
   children: ReactNode;
