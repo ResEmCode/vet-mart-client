@@ -10,6 +10,22 @@ import { Input } from "@/components/ui";
 import { ICONS } from "../navigation.data";
 
 export const TopBar = () => {
+
+
+  // !!!!!!!!!!!!!НЕУДАЛЯТЬ, НУЖНЫЙ КОД!!!!!!!!!!!!!!!!!!!!!!!!!
+  // -----------------------------------------------------------------
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const openModal = () => {
+  //   setIsModalOpen(true);
+  // };
+
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
+  // -----------------------------------------------------------------
+
+
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
   const onOpenDrawer = (text: string) => {
@@ -48,7 +64,7 @@ export const TopBar = () => {
               onClick={() => onOpenDrawer(icon.text)}
               onKeyDown={(e) => e.key === "Enter" && onOpenDrawer(icon.text)}
               key={icon.id}
-              className="flex justify-center items-center w-[46px] h-[45px] bg-white rounded-full justify-around cursor-pointer"
+              className="flex items-center w-[46px] h-[45px] bg-white rounded-full justify-around cursor-pointer"
               role="button"
               tabIndex={0}
               aria-label={icon.text}
