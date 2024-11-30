@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-import { Checkbox } from "@/components/ui";
+import { Button, Checkbox } from "@/components/ui";
 
 import { CheckboxGroup } from "../CheckboxGroup/CheckboxGroup";
 
@@ -36,7 +36,7 @@ export const Filters = () => {
       ))}
       {DataFilters.length > 2 && (
         <div className="text-primary">
-          <button onClick={handleShowAll}>{!showAll ? "+ показать всё" : "скрыть"}</button>
+          <Button onClick={handleShowAll}>{!showAll ? "+ показать всё" : "скрыть"}</Button>
         </div>
       )}
     </div>

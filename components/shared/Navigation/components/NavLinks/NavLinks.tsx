@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { Typography } from "@/components/shared/Typography/Typography";
-import { Button } from "@/components/ui";
 
 import { NAV_LINKS } from "../navigation.data";
 
@@ -20,8 +19,6 @@ export const NavLinks: React.FC = () => {
           </li>
         ))}
       </ul>
-
-      <Button className="bg-[#FF8732] px-[32px] py-[12px]">Обратный звонок</Button>
 
       <div className="flex items-end ml-auto flex-col">
         <Typography tag="span" variant="title18_semibold">

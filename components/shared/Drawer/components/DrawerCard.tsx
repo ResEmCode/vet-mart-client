@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 
+import { Button } from "@/components/ui";
 import { useCountChange } from "@/hooks/useCountChange";
 
 import { Typography } from "../../Typography/Typography";
@@ -31,15 +32,15 @@ export const DrawerCard = () => {
               </Typography>
             </div>
             <div>
-              <button className="bg-orange-500 text-white p-2" onClick={decrement}>
+              <Button className="bg-orange-500 text-white p-2" onClick={decrement}>
                 -
-              </button>
+              </Button>
               <Typography className="px-2 py-1" variant="paragraph14_regular" tag="span">
                 {count}
               </Typography>
-              <button className="bg-orange-500 text-white p-2" onClick={increment}>
+              <Button className="bg-orange-500 text-white p-2" onClick={increment}>
                 +
-              </button>
+              </Button>
             </div>
           </div>
         </div>

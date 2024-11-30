@@ -27,15 +27,15 @@ const ProductCard = ({ title, weight, price }: ProductCardProps) => {
         </Typography>
         <div className="flex items-center gap-4">
           <div>
-            <button className="bg-orange-500 text-white p-2" onClick={decrement}>
+            <Button className="bg-orange-500 text-white p-2" onClick={decrement}>
               -
-            </button>
+            </Button>
             <Typography className="px-2 py-1" variant="paragraph14_regular" tag="span">
               {count}
             </Typography>
-            <button className="bg-orange-500 text-white p-2" onClick={increment}>
+            <Button className="bg-orange-500 text-white p-2" onClick={increment}>
               +
-            </button>
+            </Button>
           </div>
           <Typography variant="title18_semibold" tag="h2">
             {price}
