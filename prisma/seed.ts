@@ -1,4 +1,4 @@
-import { categories, products, users } from "./constants";
+import { categories, users, products } from "./constants";
 import { prisma } from "./prisma-client";
 
 async function up() {

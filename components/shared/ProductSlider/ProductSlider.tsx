@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { Button } from "@/components/ui";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +17,7 @@ const ImageVariants = [
 
 export const ProductSlider = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
+
   return (
     <>
       <Carousel
@@ -26,18 +28,18 @@ export const ProductSlider = () => {
         className="w-full max-w-xs h-[365px] text-center"
       >
         <CarouselContent className="-mt-1 h-[360px]">
-          {ImageVariants.map((iamge, index) => (
-            <CarouselItem key={index} className="pt-1 md:basis-1/3">
+          {ImageVariants.map((image) => (
+            <CarouselItem key={image} className="pt-1 md:basis-1/3">
               <div className="p-1">
                 <div>
-                  <button
+                  <Button
                     className={cn("border-[3px] border-transparent", {
-                      [styles.active]: index === activeIndex,
+                      [styles.active]: image === ImageVariants[activeIndex],
                     })}
-                    onClick={() => setActiveIndex(index)}
+                    onClick={() => setActiveIndex(ImageVariants.indexOf(image))}
                   >
-                    <img className="w-[100px] h-[100px] object-cover" src={iamge} alt="product" />
-                  </button>
+                    <img className="w-[100px] h-[100px] object-cover" src={image} alt="product" />
+                  </Button>
                 </div>
               </div>
             </CarouselItem>
