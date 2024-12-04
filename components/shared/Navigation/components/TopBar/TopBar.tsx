@@ -10,8 +10,6 @@ import { Input } from "@/components/ui";
 import { ICONS } from "../navigation.data";
 
 export const TopBar = () => {
-
-
   // !!!!!!!!!!!!!НЕУДАЛЯТЬ, НУЖНЫЙ КОД!!!!!!!!!!!!!!!!!!!!!!!!!
   // -----------------------------------------------------------------
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +22,6 @@ export const TopBar = () => {
   //   setIsModalOpen(false);
   // };
   // -----------------------------------------------------------------
-
 
   const [openDrawer, setOpenDrawer] = React.useState(false);
 

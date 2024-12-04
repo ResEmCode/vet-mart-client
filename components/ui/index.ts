@@ -2,6 +2,7 @@ export { Accordion } from "./accordion";
 export { Breadcrumb } from "./breadcrumb";
 export { Button } from "./button";
 export { Carousel } from "./carousel";
+export { CategoriesModal } from "./categoriesModal";
 export { CategoryModal } from "./categoryModal";
 export { Checkbox } from "./checkbox";
 export { Drawer } from "./drawer";

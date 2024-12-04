@@ -34,7 +34,7 @@ export const ProductBuyMenu = () => {
       <MenuRow title="Фасовка">
         <div className="flex items-center gap-8">
           {packingVariants.map((variant, index) => (
-            <button
+            <Button
               className={cn("flex flex-col border-[3px] p-2 rounded-[20px] border-transparent", {
                 "border-accent-color": index === activePriceIndex,
               })}
@@ -43,7 +43,7 @@ export const ProductBuyMenu = () => {
             >
               <span className="font-medium text-subtitle">{variant.weight}г.</span>
               <span className="font-medium">{variant.payment} грн.</span>
-            </button>
+            </Button>
           ))}
         </div>
       </MenuRow>
@@ -53,7 +53,7 @@ export const ProductBuyMenu = () => {
       <MenuRow title="Самовывоз">
         <div>
           <span className="text-[14px] w-full text-subtitle mr-2">сегодня в нашем магазине</span>
-          <button className="text-[14px] border-b-2 text-accent-color border-accent">Где забрать?</button>
+          <Button className="text-[14px] border-b-2 text-accent-color border-accent">Где забрать?</Button>
         </div>
       </MenuRow>
       <hr />

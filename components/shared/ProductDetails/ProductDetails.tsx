@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 
+import { Button } from "@/components/ui";
+
 const navButtons = [
   { id: "description", label: "Описание" },
   { id: "reviews", label: "Отзывы" },
@@ -15,7 +17,7 @@ export const ProductDetails = () => {
     <div className="max-w-[800px]">
       <div className="flex justify-start gap-7 border-b border-gray-300 mt-[200px] mb-[70px]">
         {navButtons.map((button) => (
-          <button
+          <Button
             key={button.id}
             onClick={() => setActiveTab(button.id)}
             className={`px-6 py-2 text-lg font-medium rounded-full transition-all w-[200px] h-[45px] ${
@@ -25,7 +27,7 @@ export const ProductDetails = () => {
             }`}
           >
             {button.label}
-          </button>
+          </Button>
         ))}
       </div>
 

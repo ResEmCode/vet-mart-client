@@ -50,19 +50,6 @@ export interface Category {
 }
 
 export interface CategoryWithModalProps {
-  id: number;
-  name: string;
-  href: string;
-  description: string;
-  modalContent: {
-    title: string;
-    sections: {
-      id: number;
-      images: string[];
-      title: string;
-      links?: { text: string; to: string }[];
-    }[];
-  };
   category: Category;
   activeCategoryId: number | null;
   setActiveCategoryId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -75,7 +62,7 @@ export interface Icon {
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { id: 1, name: "Главная", href: "/" },
+  { id: 1, name: "Каталог", href: "/" },
   { id: 2, name: "О нас", href: "/about" },
   { id: 3, name: "Оплата и доставка", href: "/payment" },
   { id: 4, name: "Возврат и обмен", href: "/return" },
@@ -87,7 +74,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 1,
     name: "Кошки",
-    href: "/cats",
+    href: "/category",
     description: "Корма, ветпрепараты, игрушки",
     modalContent: {
       sections: [
@@ -136,7 +123,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 2,
     name: "Собаки",
-    href: "/dogs",
+    href: "/category/dogs",
     description: "Корма, ветпрепараты, игрушки",
     modalContent: {
       sections: [
@@ -181,7 +168,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 3,
     name: "Птицы",
-    href: "/birds",
+    href: "/category/birds",
     description: "Корма, ветпрепараты, игрушки",
     modalContent: {
       sections: [
@@ -197,7 +184,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 4,
     name: "Грызуны",
-    href: "/rodents",
+    href: "/category/rodents",
     description: "Корма, ветпрепараты, игрушки",
     modalContent: {
       sections: [
