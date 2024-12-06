@@ -5,7 +5,7 @@ generator client {
 datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
-    // directUrl = env("POSTGRES_URL_NON_POOLING")
+    directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
@@ -41,11 +41,11 @@ model Category {
 model Product {
     id          Int @id @default(autoincrement())
 
-    article            String
+    article            Int
     country            String
     name               String
     imageUrl           String
-    price              String
+    price              Int
     description        String
     isAvailable        Boolean
     composition        String
