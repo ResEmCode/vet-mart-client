@@ -27,3 +27,4 @@ export const products = [
     categoryId: 2,
   },
 ];
+
