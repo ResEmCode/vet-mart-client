@@ -8,6 +8,12 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export const HeaderSlider = () => {
   const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
+  const items = [
+    { id: "item-1", name: "Item 1", description: "Description 1" },
+    { id: "item-2", name: "Item 2", description: "Description 2" },
+    { id: "item-3", name: "Item 3", description: "Description 3" },
+  ];
+
   return (
     <Carousel
       plugins={[plugin.current]}
@@ -16,10 +22,10 @@ export const HeaderSlider = () => {
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent className="flex w-full h-full">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <CarouselItem key={index} className="flex-shrink-0 w-full h-full ">
+        {items.map((item) => (
+          <CarouselItem key={item.id} className="flex-shrink-0 w-full h-full ">
             <div className="flex items-center justify-center w-full h-full bg-white rounded-md ">
-              <div className="text-lg font-semibold text-gray-800">Item {index + 1}</div>
+              <div className="text-lg font-semibold text-gray-800">{item.name}</div>
             </div>
           </CarouselItem>
         ))}

@@ -1,4 +1,5 @@
-import { users } from "./constants";
+
+import { categories, users, products, users } from "./constants";
 import { prisma } from "./prisma-client";
 import fs from "fs";
 import csv from "csv-parser";

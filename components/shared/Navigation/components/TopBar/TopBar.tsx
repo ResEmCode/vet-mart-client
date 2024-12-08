@@ -37,7 +37,7 @@ export const TopBar = () => {
 
   return (
     <>
-      {openDrawer && <Drawer closeDrawer={closeDrawer} />}
+      {openDrawer && <Drawer closeDrawer={closeDrawer} />} {/* Render Drawer if open */}
       <div className="flex justify-between items-center w-full box-border">
         <div className="flex items-center gap-[32px]">
           <div className="flex">
@@ -52,7 +52,9 @@ export const TopBar = () => {
             Ветеринарный магазин в Виннице с 2022 года
           </Typography>
         </div>
+
         <Input placeholder="Поиск товара..." className="w-[950px] h-[46px] px-6 py-1 rounded-[48px] bg-white border-none placeholder:text-[#8598a7]" />
+
         <div className="flex gap-2 ml-[35px]">
           {ICONS.map((icon) => (
             <div
