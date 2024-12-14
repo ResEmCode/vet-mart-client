@@ -41,11 +41,11 @@ model Category {
 model Product {
     id          Int @id @default(autoincrement())
 
-    article            String
+    article            Int
     country            String
     name               String
     imageUrl           String
-    price              String
+    price              Int
     description        String
     isAvailable        Boolean
     composition        String

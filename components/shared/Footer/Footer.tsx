@@ -1,6 +1,4 @@
-import React from "react";
-
-import { Container } from "@/components/shared/";
+import { Container } from "@/components/shared/Container/Container";
 
 const menuLinks = [
   {
@@ -29,7 +27,7 @@ const menuLinks = [
   },
 ];
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div className="bg-[#FF8732]">
       <footer className="py-4">
@@ -62,5 +60,3 @@ const Footer = () => {
     </div>
   );
 };
-
-export default Footer;

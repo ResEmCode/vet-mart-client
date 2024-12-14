@@ -4,40 +4,34 @@ import React from "react";
 import Image from "next/image";
 
 import { Drawer } from "@/components/shared/Drawer/Drawer";
+import { AuthForm } from "@/components/shared/LogRegForms/AuthForm";
 import { Typography } from "@/components/shared/Typography/Typography";
 import { Input } from "@/components/ui";
 
 import { ICONS } from "../navigation.data";
 
 export const TopBar = () => {
-  // !!!!!!!!!!!!!НЕУДАЛЯТЬ, НУЖНЫЙ КОД!!!!!!!!!!!!!!!!!!!!!!!!!
-  // -----------------------------------------------------------------
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
-  // -----------------------------------------------------------------
-
   const [openDrawer, setOpenDrawer] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
 
-  const onOpenDrawer = (text: string) => {
-    if (text === "Корзина") {
-      setOpenDrawer(true);
+  const onOpen = (text: string) => {
+    switch (text) {
+      case "Корзина":
+        setOpenDrawer(true);
+        break;
+      case "Профиль":
+        setModalOpen(true);
+        break;
+      default:
+        break;
     }
-  };
-
-  const closeDrawer = () => {
-    setOpenDrawer(false);
   };
 
   return (
     <>
-      {openDrawer && <Drawer closeDrawer={closeDrawer} />} {/* Render Drawer if open */}
+      {openDrawer && <Drawer closeDrawer={() => setOpenDrawer(false)} />}
+      {modalOpen && <AuthForm closeModal={() => setModalOpen(false)} />}
+
       <div className="flex justify-between items-center w-full box-border">
         <div className="flex items-center gap-[32px]">
           <div className="flex">
@@ -58,8 +52,8 @@ export const TopBar = () => {
         <div className="flex gap-2 ml-[35px]">
           {ICONS.map((icon) => (
             <div
-              onClick={() => onOpenDrawer(icon.text)}
-              onKeyDown={(e) => e.key === "Enter" && onOpenDrawer(icon.text)}
+              onClick={() => onOpen(icon.text)}
+              onKeyDown={(e) => e.key === "Enter" && onOpen(icon.text)}
               key={icon.id}
               className="flex items-center w-[46px] h-[45px] bg-white rounded-full justify-around cursor-pointer"
               role="button"
