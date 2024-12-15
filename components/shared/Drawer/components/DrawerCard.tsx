@@ -9,26 +9,38 @@ import { useCountChange } from "@/hooks/useCountChange";
 
 import { Typography } from "../../Typography/Typography";
 
-export const DrawerCard = () => {
+interface DrawerCardProps {
+  title: string;
+  weight: string;
+  price: string;
+  oldPrice: string;
+}
+
+export const DrawerCard = ({ title, weight, price, oldPrice }: DrawerCardProps) => {
   const { count, increment, decrement } = useCountChange();
+
+  const handlePrice = () => {
+    return Number(price) * count;
+  };
+
   return (
-    <div className="p-5 border border-gray-300 rounded-[20px] bg-white">
+    <div className="py-5 bg-white">
       <div className="flex items-center justify-between">
         <Image src="/image.png" alt="image" width={100} height={100} />
         <div className="flex flex-col gap-2">
           <Typography variant="title16_bold" tag="h2" className="max-w-[200px]">
-            Сухий корм для котів happy pet
+            {title}
           </Typography>
           <Typography variant="paragraph12_regular" tag="span" color="subtitle">
-            Вага:10 000г
+            Вага: {weight} г
           </Typography>
           <div className="flex items-center gap-10">
             <div className="flex flex-col">
               <Typography variant="paragraph20_regular" tag="span">
-                329 ₴
+                {handlePrice()} ₴
               </Typography>
               <Typography variant="title18_semibold" tag="span" color="accent">
-                500 ₴
+                {oldPrice} ₴
               </Typography>
             </div>
             <div>

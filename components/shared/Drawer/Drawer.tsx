@@ -19,9 +19,18 @@ export const Drawer = ({ closeDrawer }: Props) => {
           </Typography>
           <X className="cursor-pointer" onClick={closeDrawer} />
         </div>
-        <ul>
+        <ul className="overflow-y-auto h-full">
           <li>
-            <DrawerCard />
+            <DrawerCard title="Сухий корм для котів happy pet" weight="10 000" price="329" oldPrice="500" />
+          </li>
+          <li>
+            <DrawerCard title="Сухий корм для котів happy pet" weight="10 000" price="329" oldPrice="500" />
+          </li>
+          <li>
+            <DrawerCard title="Сухий корм для котів happy pet" weight="10 000" price="329" oldPrice="500" />
+          </li>
+          <li>
+            <DrawerCard title="Сухий корм для котів happy pet" weight="10 000" price="329" oldPrice="500" />
           </li>
         </ul>
       </div>
