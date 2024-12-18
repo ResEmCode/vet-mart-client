@@ -17,11 +17,7 @@ interface DrawerCardProps {
 }
 
 export const DrawerCard = ({ title, weight, price, oldPrice }: DrawerCardProps) => {
-  const { count, increment, decrement } = useCountChange();
-
-  const handlePrice = () => {
-    return Number(price) * count;
-  };
+  const { count, increment, decrement, handlePrice } = useCountChange();
 
   return (
     <div className="py-5 bg-white">
@@ -37,7 +33,7 @@ export const DrawerCard = ({ title, weight, price, oldPrice }: DrawerCardProps) 
           <div className="flex items-center gap-10">
             <div className="flex flex-col">
               <Typography variant="paragraph20_regular" tag="span">
-                {handlePrice()} ₴
+                {handlePrice(price)} ₴
               </Typography>
               <Typography variant="title18_semibold" tag="span" color="accent">
                 {oldPrice} ₴
