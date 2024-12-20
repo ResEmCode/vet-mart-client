@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [];
   },
+  images: {
+    domains: ["vetmart.com.ua"],
+  },
 };
 
 export default nextConfig;

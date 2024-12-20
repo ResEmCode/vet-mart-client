@@ -27,7 +27,7 @@ module.exports = {
       },
     ],
     "@next/next/no-img-element": "off",
-    "jsx-a11y/label-has-associated-control":"off",
+    "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-has-content": "off",
     "react/jsx-no-constructed-context-values": "off",
     "max-len": "off",
@@ -90,12 +90,14 @@ module.exports = {
         "plugin:prettier/recommended",
       ],
       rules: {
-        "import/order": "off",
-        "import/extensions": "off",
-        "import/prefer-default-export": "off",
-        "import/no-extraneous-dependencies": "off",
-        "@typescript-eslint/no-explicit-any": "off",
+        // Отключение правил для небезопасных операций
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-return": "off",
+
+        // Остальные правила TypeScript
+        "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-shadow": "off",
         "@typescript-eslint/restrict-template-expressions": ["warn", { allowBoolean: true, allowNullish: true }],

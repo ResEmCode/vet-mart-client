@@ -7,5 +7,9 @@ export const useCountChange = (defaultCount: number = 1) => {
 
   const decrement = useCallback(() => setCount((prev) => Math.max(0, prev - 1)), []);
 
-  return { count, increment, decrement, setCount };
+  const handlePrice = (price: number | string): number => {
+    return Number(price) * count;
+  };
+
+  return { count, increment, decrement, handlePrice, setCount };
 };

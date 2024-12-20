@@ -43,7 +43,9 @@ export const Footer = () => {
 
             <div className="flex flex-col space-y-1 text-white text-sm">
               {menuLinks.map((link) => (
-                <a href={link.href}>{link.name}</a>
+                <a key={link.name} href={link.href}>
+                  {link.name}
+                </a>
               ))}
             </div>
 
