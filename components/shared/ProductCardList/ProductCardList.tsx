@@ -25,7 +25,7 @@ interface Product {
 const fetchProducts = async (): Promise<Product[]> => {
   const res = await fetch(`http://localhost:3000/api/products/`);
   if (!res.ok) {
-    throw new Error("Failed to fetch products");
+    throw new Error("Failed to fetch products", { cause: res });
   }
   return res.json();
 };

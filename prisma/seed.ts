@@ -3,6 +3,7 @@ import { prisma } from "./prisma-client";
 import fs from "fs";
 import csv from "csv-parser";
 import path from "path";
+import { productsVariant } from "./constants/product-variant";
 
 async function up() {
   await prisma.user.createMany({
@@ -80,6 +81,9 @@ async function up() {
         await prisma.product.createMany({
           data: records2,
         });
+        await prisma.productVariant.createMany({
+          data: productsVariant,
+        });
         console.log("Данные успешно импортированы.");
       } catch (error) {
         console.error("Ошибка при импорте данных:", error);
@@ -87,12 +91,16 @@ async function up() {
         await prisma.$disconnect();
       }
     });
+
+    
 }
+
 
 async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "ProductVariant" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {
