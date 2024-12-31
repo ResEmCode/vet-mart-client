@@ -1,6 +1,6 @@
 
 .googleButton {
-  @apply w-full py-6 mt-4 text-black text-xl rounded-[4px] bg-white border-2 flex items-center justify-center space-x-4 whitespace-nowrap;
+  @apply w-full py-6 text-black text-xl rounded-[4px] bg-white border-2 flex items-center justify-center space-x-4 whitespace-nowrap;
 }
 
 .googleButton:hover {

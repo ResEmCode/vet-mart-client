@@ -3,7 +3,7 @@ import React from "react";
 
 import { Typography } from "../Typography/Typography";
 
-import ProductCard from "./components/ProductCard/ProductCard";
+import { ProductCard } from "./components/ProductCard/ProductCard";
 
 interface Product {
   id: number;
@@ -30,7 +30,7 @@ const fetchProducts = async (): Promise<Product[]> => {
   return res.json();
 };
 
-const ProductCardList: FC = async () => {
+export const ProductCardList: FC = async () => {
   try {
     const data: Product[] = await fetchProducts();
 
@@ -50,5 +50,3 @@ const ProductCardList: FC = async () => {
     return <div>Ошибка загрузки данных: {error instanceof Error ? error.message : "Неизвестная ошибка"}</div>;
   }
 };
-
-export default ProductCardList;

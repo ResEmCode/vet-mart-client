@@ -26,6 +26,13 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        checksVoidReturn: false,
+      },
+    ],
+    "import/no-cycle":"off",
     "@next/next/no-img-element": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-has-content": "off",

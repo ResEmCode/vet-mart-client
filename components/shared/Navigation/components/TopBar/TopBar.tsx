@@ -3,8 +3,8 @@
 import React from "react";
 import Image from "next/image";
 
+import { AuthForm } from "@/components/shared";
 import { Drawer } from "@/components/shared/Drawer/Drawer";
-import { AuthForm } from "@/components/shared/LogRegForms/AuthForm";
 import { Typography } from "@/components/shared/Typography/Typography";
 import { Input } from "@/components/ui";
 

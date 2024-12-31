@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Filters } from "@/components/shared";
-import ProductCardList from "@/components/shared/ProductCardList/ProductCardList";
+import { ProductCardList } from "@/components/shared/ProductCardList/ProductCardList";
 
 const Category = () => {
   return (

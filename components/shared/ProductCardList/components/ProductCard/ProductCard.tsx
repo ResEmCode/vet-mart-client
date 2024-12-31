@@ -13,7 +13,7 @@ interface ProductCardProps {
   imageUrl: string;
 }
 
-const ProductCard = ({ name, price, imageUrl }: ProductCardProps) => {
+export const ProductCard = ({ name, price, imageUrl }: ProductCardProps) => {
   const { count, increment, decrement, handlePrice } = useCountChange();
 
   return (
@@ -47,5 +47,3 @@ const ProductCard = ({ name, price, imageUrl }: ProductCardProps) => {
     </div>
   );
 };
-
-export default ProductCard;
