@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import type { LoginSchema } from "../constants/LoginSchema";
 import { loginSchema } from "../constants/LoginSchema";
+import { signIn } from "next-auth/react";
 
 export const useLoginForm = () => {
   const loginForm = useForm<LoginSchema>({
@@ -10,8 +11,16 @@ export const useLoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = loginForm.handleSubmit((values: LoginSchema) => {
-    console.log(values);
+  const onSubmit = loginForm.handleSubmit(async (values: LoginSchema) => {
+    try {
+      const resp = await signIn("credentials", {
+        ...values,
+        redirect: false,
+      });
+
+      if(resp?.ok) return alert("Ошибка аккаунта")
+
+    } catch (error) {}
   });
 
   return {

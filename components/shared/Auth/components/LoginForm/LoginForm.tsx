@@ -10,10 +10,10 @@ import { useLoginForm } from "../../hooks";
 import styles from "../../Auth.module.css";
 
 export const LoginForm = () => {
-  const { errors, register } = useLoginForm();
+  const { errors, register, functions } = useLoginForm();
 
   return (
-    <form className="flex flex-col gap-[12px]">
+    <form className="flex flex-col gap-[12px]" onSubmit={functions.onSubmit}>
       <InputLabel text="E-mail" type="email" placeholder="E-mail" {...register("email")} error={errors.email?.message} />
       <InputLabel text="Пароль" type="password" placeholder="Пароль" {...register("password")} error={errors.password?.message} />
 
