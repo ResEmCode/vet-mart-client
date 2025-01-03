@@ -1,13 +1,11 @@
 {
-  "extends": [
-    "development"
-  ],
+  "extends": ["development"],
   "hints": {
     "axe/forms": [
       "default",
       {
-        "label": "off"
-      }
-    ]
-  }
+        "label": "off",
+      },
+    ],
+  },
 }
