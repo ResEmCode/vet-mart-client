@@ -4,10 +4,15 @@ import fs from "fs";
 import csv from "csv-parser";
 import path from "path";
 import { productsVariant } from "./constants/product-variant";
+import { filters } from "./constants/filters";
 
 async function up() {
   await prisma.user.createMany({
     data: users,
+  });
+
+  await prisma.filters.createMany({
+    data: filters,
   });
 
   const records: any = [];
@@ -91,10 +96,7 @@ async function up() {
         await prisma.$disconnect();
       }
     });
-
-    
 }
-
 
 async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
