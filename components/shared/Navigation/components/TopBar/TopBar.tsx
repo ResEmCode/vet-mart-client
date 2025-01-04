@@ -9,10 +9,15 @@ import { Typography } from "@/components/shared/Typography/Typography";
 import { Input } from "@/components/ui";
 
 import { ICONS } from "../navigation.data";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { useModalAuth } from "@/components/shared/Auth/store";
 
 export const TopBar = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
-  const [modalOpen, setModalOpen] = React.useState(false);
+  // const [modalOpen, setModalOpen] = React.useState(false);
+
+  const { isAuthOpen, setIsAuthOpen } = useModalAuth();
 
   const onOpen = (text: string) => {
     switch (text) {
@@ -20,17 +25,19 @@ export const TopBar = () => {
         setOpenDrawer(true);
         break;
       case "Профиль":
-        setModalOpen(true);
+        setIsAuthOpen(true);
         break;
       default:
         break;
     }
   };
 
+  const { data } = useSession();
+
   return (
     <>
       {openDrawer && <Drawer closeDrawer={() => setOpenDrawer(false)} />}
-      {modalOpen && <AuthForm closeModal={() => setModalOpen(false)} />}
+      {isAuthOpen && <AuthForm closeModal={() => setIsAuthOpen(false)} />}
 
       <div className="flex justify-between items-center w-full box-border">
         <div className="flex items-center gap-[32px]">
@@ -50,7 +57,7 @@ export const TopBar = () => {
         <Input placeholder="Поиск товара..." className="w-[950px] h-[46px] px-6 py-1 rounded-[48px] bg-white border-none placeholder:text-[#8598a7]" />
 
         <div className="flex gap-2 ml-[35px]">
-          {ICONS.map((icon) => (
+          {[ICONS[0], ICONS[1]].map((icon) => (
             <div
               onClick={() => onOpen(icon.text)}
               onKeyDown={(e) => e.key === "Enter" && onOpen(icon.text)}
@@ -63,6 +70,16 @@ export const TopBar = () => {
               <Image width={15} height={15} src={icon.src} alt={icon.alt} />
             </div>
           ))}
+
+          {data ? (
+            <Link href={`/profile/${data.user.id}`} className="flex items-center w-[46px] h-[45px] bg-white rounded-full justify-around cursor-pointer ">
+              <img src={data.user?.image ?? "/user/image.png"} alt={ICONS[2].alt} className="rounded-full object-cover w-full h-full" />
+            </Link>
+          ) : (
+            <button onClick={() => onOpen(ICONS[2].text)} className="flex items-center w-[46px] h-[45px] bg-white rounded-full justify-around cursor-pointer">
+              <img src={ICONS[2].src} alt={ICONS[2].alt} className="rounded-full object-cover" />
+            </button>
+          )}
         </div>
       </div>
     </>

@@ -5,35 +5,38 @@ import React, { useState } from "react";
 import { Modal } from "@/components/ui/modal";
 
 import { LoginForm, RegisterForm } from "./components";
+import { Button } from "@/components/ui";
+
+import styles from "./Auth.module.css";
+import { signIn } from "next-auth/react";
 
 export const AuthForm = ({ closeModal }: { closeModal: () => void }) => {
-  const [isRegistering, setIsRegistering] = useState(true);
+  const [isRegistering, setIsRegistering] = useState(false);
 
   return (
     <Modal isOpen closeModal={closeModal} classNameBody="max-w-[560px]">
-      <div className="text-center mb-6">
-        <h1 className="text-[32px] font-[500] leading-[38.73px] text-black">{isRegistering ? "Регистрация" : "Авторизация"}</h1>
-      </div>
-
-      <div className="mb-[30px]">{isRegistering ? <RegisterForm /> : <LoginForm />}</div>
-      <button
-        type="button"
-        onClick={() => setIsRegistering(!isRegistering)}
-        className="text-base cursor-pointer text-center mx-auto block"
-        aria-label={isRegistering ? "Switch to login" : "Switch to registration"}
+      <h1 className="text-[32px] font-[500] leading-[38.73px] text-black mb-6">{isRegistering ? "Регистрация" : "Авторизация"}</h1>
+      <div className="mb-[12px]">{isRegistering ? <RegisterForm /> : <LoginForm />}</div>
+      <Button
+        type="submit"
+        className={styles.googleButton + " mb-[20px]"}
+        onClick={() =>
+          signIn("google", {
+            callbackUrl: "/",
+            redirect: true,
+          })
+        }
       >
-        {isRegistering ? (
-          <div>
-            <span className="text-[#7C7C7C]">Уже есть аккаунт?</span>
-            <span className="ml-[22px] text-[#FF8732]">Войдите</span>
-          </div>
-        ) : (
-          <div>
-            <span className="text-[#7C7C7C]">Нет аккаунта?</span>
-            <span className="ml-[22px] text-[#FF8732]">Зарегистрируйтесь</span>
-          </div>
-        )}
-      </button>
+        <img src="/images/GoogleIcon.svg" alt="Google Logo" className="mr-[6px]" />
+        Войти с помощью google
+      </Button>
+
+      <div className="text-base text-center mx-auto block">
+        <span className="text-[#7C7C7C]">{isRegistering ? "Есть аккаунт?" : "Нет аккаунта?"}</span>
+        <button className="ml-[22px] text-[#FF8732]" onClick={() => setIsRegistering((prev) => !prev)}>
+          {isRegistering ? "Войдите" : "Зарегистрируйтесь"}
+        </button>
+      </div>
     </Modal>
   );
 };

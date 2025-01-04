@@ -6,11 +6,11 @@ import { Button, Checkbox, Label } from "@/components/ui";
 import { InputLabel } from "@/components/ui/InputLabel/input-label";
 
 import { useLoginForm } from "../../hooks";
-
-import styles from "../../Auth.module.css";
+import { useRemember } from "../../store/useRemember";
 
 export const LoginForm = () => {
   const { errors, register, functions } = useLoginForm();
+  const { remember, setRemember } = useRemember();
 
   return (
     <form className="flex flex-col gap-[12px]" onSubmit={functions.onSubmit}>
@@ -19,8 +19,8 @@ export const LoginForm = () => {
 
       <div className="flex items-center justify-between my-4">
         <div className="flex items-center space-x-2">
-          <Checkbox className="rounded-[4px] w-[27px] h-[27px]" />
-          <Label htmlFor="remember" className="text-base leading-[19.26px] text-[#7C7C7C]">
+          <Checkbox className="rounded-[4px] w-[27px] h-[27px]" id="remember" checked={remember} onClick={() => setRemember(null)} />
+          <Label htmlFor="remember" className="text-base leading-[19.26px] text-[#7C7C7C] cursor-pointer">
             Запомнить меня
           </Label>
         </div>
@@ -32,10 +32,6 @@ export const LoginForm = () => {
 
       <Button type="submit" className="w-full py-6 bg-[#FF8732] text-white text-xl rounded-[4px]">
         Войти
-      </Button>
-      <Button type="button" className={styles.googleButton}>
-        <img src="/images/GoogleIcon.svg" alt="Google Logo" width={20} height={20} className="mr-[6px]" />
-        Sign In with Google
       </Button>
     </form>
   );
