@@ -6,6 +6,6 @@ interface FiltersState {
 }
 
 export const useFiltersStore = create<FiltersState>((set) => ({
-  weight: null,
+  weight: "0.9",
   setWeight: (weight) => set({ weight }),
 }));

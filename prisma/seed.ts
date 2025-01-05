@@ -1,4 +1,4 @@
-import { categories, products, users } from "./constants";
+import { users } from "./constants";
 import { prisma } from "./prisma-client";
 import fs from "fs";
 import csv from "csv-parser";
@@ -103,6 +103,7 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "ProductVariant" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Filters" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {
@@ -117,6 +118,7 @@ async function main() {
 main()
   .then(async () => {
     await prisma.$disconnect();
+    return;
   })
   .catch(async (e) => {
     console.error(e);

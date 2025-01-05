@@ -22,49 +22,25 @@ interface Product {
   updatedAt: string;
 }
 
-const fetchProducts = async (weight: string | null): Promise<Product[]> => {
-  const queryString = weight ? `?${new URLSearchParams({ weight })}` : "";
-  const res = await fetch(`http://localhost:3000/api/products/${queryString}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
-  return res.json();
-};
-
 const ProductCardList: React.FC = () => {
   const { weight } = useFiltersStore();
   const [products, setProducts] = useState<Product[] | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadProducts = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await fetchProducts(weight);
+    fetch(`/api/products${weight ? `?weight=${weight}` : ""}`, {
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((data) => {
         setProducts(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Неизвестная ошибка");
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadProducts();
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   }, [weight]);
 
-  if (loading) {
-    return <div>Загрузка данных...</div>;
-  }
-
-  if (error) {
-    return (
-      <div>
-        <p>Ошибка загрузки данных: {error}</p>
-        <button onClick={() => window.location.reload()}>Попробовать снова</button>
-      </div>
-    );
-  }
+  console.log(products);
 
   return (
     <div>

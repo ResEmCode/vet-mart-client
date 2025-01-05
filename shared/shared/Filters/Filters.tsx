@@ -1,57 +1,54 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-
-import { Button, Checkbox } from "@/shared/ui";
+import { useRef, useState } from "react";
 
 import { CheckboxGroup } from "../CheckboxGroup/CheckboxGroup";
 
 import styles from "./Filters.module.css";
+import { DataFilters } from "./DataFilters";
+import { Button, Checkbox } from "@/shared/ui";
+import { useFiltersStore } from "@/shared/store/filters";
 
-type FilterGroup = {
+export interface DataFilterGroup {
   title: string;
-  checkbox: string[];
-};
+  checkboxes: string[];
+}
 
 export const Filters = () => {
-  const [showAll, setShowAll] = useState(false);
-  const [filtersData, setFiltersData] = useState<FilterGroup[]>([]);
+  const [showAll, setShopAll] = useState(false);
   const limit = useRef<number>(2);
 
   const handleShowAll = () => {
-    setShowAll(!showAll);
-    limit.current = !showAll ? filtersData.length : 2;
+    setShopAll(!showAll);
+    if (!showAll) {
+      limit.current = DataFilters.length;
+    } else {
+      limit.current = 2;
+    }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/api/filters/");
-        console.log("Response:", res);
-        if (!res.ok) {
-          throw new Error(`Ошибка HTTP: ${res.status}`);
-        }
-        const data: FilterGroup[] = await res.json();
-        setFiltersData(data);
-      } catch (error) {
-        console.error("Ошибка при загрузке данных:", error);
-      }
-    };
-    fetchData();
-  }, []);
+  const setWeight = useFiltersStore((state) => state.setWeight);
+
+  const onClickCheckbox = (group: DataFilterGroup, value: string) => {
+    if (group.title === "Вага упаковки") {
+      setWeight(value);
+    }
+
+    console.log(group.title, value);
+  };
 
   return (
-    <div className="flex flex-col gap-6 w-[260px]">
-      {filtersData.slice(0, limit.current).map((group, index) => (
-        <CheckboxGroup title={group.title} key={group.title}>
-          {group.checkbox.map((checkbox) => (
-            <CheckboxGroup.Item title={checkbox} key={checkbox}>
+    <div className="flex flex-col gap-6 w-[260px] ">
+      {DataFilters.map((group, index) => (
+        <CheckboxGroup title={group.title} key={group.title} className={index < limit.current ? styles.active : styles.hidden}>
+          {group.checkboxes.map((checkbox) => (
+            <CheckboxGroup.Item onClick={() => onClickCheckbox(group, checkbox)} title={checkbox} key={checkbox}>
               <Checkbox />
             </CheckboxGroup.Item>
           ))}
         </CheckboxGroup>
       ))}
-      {filtersData.length > 2 && (
+      {DataFilters.length > 2 && (
         <div className="text-primary">
           <Button onClick={handleShowAll}>{!showAll ? "+ показать всё" : "скрыть"}</Button>
         </div>
