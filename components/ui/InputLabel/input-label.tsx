@@ -8,7 +8,7 @@ import styles from "./input-label.module.css";
 
 interface Props extends ComponentProps<"input"> {
   text: string;
-  error: string | undefined;
+  error?: string;
 }
 
 export const InputLabel = ({ text, error, ...props }: Props) => {

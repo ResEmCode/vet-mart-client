@@ -1,12 +1,11 @@
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { LoginSchema, loginSchema } from "../constants";
-import { signIn } from "next-auth/react";
+import type { LoginSchema } from "../constants";
+import { loginSchema } from "../constants";
 import { useModalAuth } from "../store";
-import { useRemember } from "../store/useRemember";
-
-import { parseCookies, setCookie, destroyCookie } from "nookies";
 
 export const useLoginForm = () => {
   const loginForm = useForm<LoginSchema>({
@@ -14,7 +13,7 @@ export const useLoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
   const setIsAuthOpen = useModalAuth((state) => state.setIsAuthOpen);
-  const remember = useRemember((state) => state.remember);
+  const ResponseError = useRef<string | null>(null);
 
   const onSubmit = loginForm.handleSubmit(async (values: LoginSchema) => {
     try {
@@ -27,8 +26,14 @@ export const useLoginForm = () => {
         setIsAuthOpen(false);
       }
 
+      if (resp?.error) {
+        ResponseError.current = resp?.error;
+      }
+
       // if(resp?.ok) return alert("Ошибка аккаунта")
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   return {
@@ -37,5 +42,6 @@ export const useLoginForm = () => {
     functions: { onSubmit },
     register: loginForm.register,
     errors: loginForm.formState.errors,
+    responseError: ResponseError.current,
   };
 };

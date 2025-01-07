@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { RegisterSchema, registerSchema } from "../constants";
-
 import { registerUser } from "@/app/actions";
+
+import type { RegisterSchema } from "../constants";
+import { registerSchema } from "../constants";
 import { useModalAuth } from "../store";
 
 export const useRegisterForm = () => {
@@ -12,6 +14,7 @@ export const useRegisterForm = () => {
     resolver: zodResolver(registerSchema),
   });
   const setIsAuthOpen = useModalAuth((state) => state.setIsAuthOpen);
+
   const onSubmit = loginForm.handleSubmit(async (values: RegisterSchema) => {
     try {
       await registerUser({
@@ -19,9 +22,15 @@ export const useRegisterForm = () => {
         fullName: values.login,
         password: values.password,
       });
-
+      await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+        redirect: false,
+      });
       setIsAuthOpen(false);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   return {

@@ -1,13 +1,13 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
 import React from "react";
+import { signOut, useSession } from "next-auth/react";
 
 const ProfilePage = () => {
   const { data } = useSession();
 
-  const onClickSignOut = () => {
-    signOut({
+  const onClickSignOut = async () => {
+    await signOut({
       callbackUrl: "/",
     });
   };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -23,11 +23,13 @@ const RootLayout = ({
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Container>
-            <Navigation />
-            {children}
-          </Container>
-          <Footer />
+          <Suspense fallback={null}>
+            <Container>
+              <Navigation />
+              {children}
+            </Container>
+            <Footer />
+          </Suspense>
         </AuthProvider>
       </body>
     </html>

@@ -1,25 +1,28 @@
 "use client";
 
 import React, { useState } from "react";
+import { signIn } from "next-auth/react";
 
+import { Button } from "@/components/ui";
 import { Modal } from "@/components/ui/modal";
 
 import { LoginForm, RegisterForm } from "./components";
-import { Button } from "@/components/ui";
 
 import styles from "./Auth.module.css";
-import { signIn } from "next-auth/react";
 
 export const AuthForm = ({ closeModal }: { closeModal: () => void }) => {
   const [isRegistering, setIsRegistering] = useState(false);
 
   return (
     <Modal isOpen closeModal={closeModal} classNameBody="max-w-[560px]">
-      <h1 className="text-[32px] font-[500] leading-[38.73px] text-black mb-6">{isRegistering ? "Регистрация" : "Авторизация"}</h1>
+      {/* <h2 className="text-[32px] font-[500] leading-[38.73px] text-black mb-6">{isRegistering ? "Регистрация" : "Авторизация"}</h2> */}
       <div className="mb-[12px]">{isRegistering ? <RegisterForm /> : <LoginForm />}</div>
+      {/* <div className="mb-[12px]">{isRegistering ? <RegisterForm /> : <VerifyForm />}</div> */}
+      {/* <div className="mb-[12px]">{isRegistering ? <RegisterForm /> : <RecoveryPswForm />}</div> */}
+      {/* <RecoveryPswForm /> */}
       <Button
         type="submit"
-        className={styles.googleButton + " mb-[20px]"}
+        className={`${styles.googleButton} mb-[20px]`}
         onClick={() =>
           signIn("google", {
             callbackUrl: "/",

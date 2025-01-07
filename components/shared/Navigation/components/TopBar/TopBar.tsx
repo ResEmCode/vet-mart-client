@@ -2,16 +2,16 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 import { AuthForm } from "@/components/shared";
+import { useModalAuth } from "@/components/shared/Auth/store";
 import { Drawer } from "@/components/shared/Drawer/Drawer";
 import { Typography } from "@/components/shared/Typography/Typography";
 import { Input } from "@/components/ui";
 
 import { ICONS } from "../navigation.data";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
-import { useModalAuth } from "@/components/shared/Auth/store";
 
 export const TopBar = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
