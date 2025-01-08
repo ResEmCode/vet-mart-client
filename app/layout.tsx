@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { Container, Footer, Navigation } from "@/shared/shared";
+import { Container, Footer, Navigation } from "@/shared/components";
+import { AuthProvider } from "@/shared/providers";
 
 import "../styles/global.css";
 
@@ -21,11 +22,15 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Container>
-          <Navigation />
-          {children}
-        </Container>
-        <Footer />
+        <AuthProvider>
+          <Suspense fallback={null}>
+            <Container>
+              <Navigation />
+              {children}
+            </Container>
+            <Footer />
+          </Suspense>
+        </AuthProvider>
       </body>
     </html>
   );

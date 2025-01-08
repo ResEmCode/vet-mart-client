@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { CATEGORIES } from "../shared/Navigation/components/navigation.data";
+import { CATEGORIES } from "../Navigation/components/navigation.data";
 
 export const CategoriesModal: React.FC = () => {
   return (

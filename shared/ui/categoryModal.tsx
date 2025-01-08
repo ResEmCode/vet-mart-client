@@ -1,6 +1,6 @@
 import React from "react";
 
-import type { CategoryModalProps } from "../shared/Navigation/components/navigation.data";
+import type { CategoryModalProps } from "../Navigation/components/navigation.data";
 
 export const CategoryModal: React.FC<CategoryModalProps> = ({ category, closeModal, maxWidthClass }) => {
   return (

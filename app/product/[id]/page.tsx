@@ -1,4 +1,4 @@
-import { ProductBuyMenu, ProductSlider, Typography } from "@/shared/shared";
+import { ProductBuyMenu, ProductSlider, Typography } from "@/shared/components";
 
 import styles from "./page.module.css";
 
