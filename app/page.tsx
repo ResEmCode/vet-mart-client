@@ -1,5 +1,5 @@
-import { About, Advantages, BrendsSection, Container, DiscountedProducts, Header, PopularCategory, ProductDetails, Reviews } from "@/components/shared";
-import { productsData } from "@/components/shared/DiscountedProducts/DiscountedProducts.data";
+import { About, Advantages, BrendsSection, Container, DiscountedProducts, Header, PopularCategory, ProductDetails, Reviews } from "@/shared/components";
+import { productsData } from "@/shared/components/DiscountedProducts/DiscountedProducts.data";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";

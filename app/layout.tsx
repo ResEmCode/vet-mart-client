@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { AuthProvider } from "@/components/providers";
-import { Container, Footer, Navigation } from "@/components/shared";
+import { Container, Footer, Navigation } from "@/shared/components";
+import { AuthProvider } from "@/shared/providers";
 
 import "../styles/global.css";
 

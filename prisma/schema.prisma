@@ -67,6 +67,13 @@ model Product {
   updatedAt DateTime @updatedAt
 }
 
+model Filters {
+  id      Int @id @default(autoincrement())
+
+  title    String
+  checkbox String[]
+}
+
 model ProductVariant {
   id Int @id @default(autoincrement())
 

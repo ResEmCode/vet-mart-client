@@ -1,17 +1,21 @@
-import { categories, products, users } from "./constants";
+import { users } from "./constants";
 import { prisma } from "./prisma-client";
-import fs from "fs";
-import csv from "csv-parser";
-import path from "path";
-import { productsVariant } from "./constants/product-variant";
+// import fs from "fs";
+// import csv from "csv-parser";
+// import path from "path";
+// import { productsVariant } from "./constants/product-variant";
+// import { filters } from "./constants/filters";
 
 async function up() {
   await prisma.user.createMany({
     data: users,
   });
 
+
+
   // const records: any = [];
   // const filePath = path.join(__dirname, "excel", "category.csv");
+
 
   // // ---------------------Category
 
@@ -60,6 +64,7 @@ async function up() {
   //       categoryId: categoryId,
   //     });
 
+
   //     if (!isNaN(article) && !isNaN(price) && !isNaN(categoryId)) {
   //       records2.push({
   //         article: article,
@@ -94,7 +99,6 @@ async function up() {
 
     
 }
-
 
 async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
