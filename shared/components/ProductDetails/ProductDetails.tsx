@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/shadcn";
 
 const navButtons = [
   { id: "description", label: "Описание" },

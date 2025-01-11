@@ -1,10 +1,11 @@
-import { resetPassword } from "@/app/actions";
-import { Button } from "@/shared/ui";
-import { InputLabel } from "@/shared/ui/InputLabel/input-label";
+import { resetPassword } from "@/server/actions/actions";
+import { Button } from "@/shared/ui/shadcn";
+
 
 import type { RecoveryPswSchema } from "../../constants";
 import { useRecoveryPswForm } from "../../hooks";
 import { useModalResetPws } from "../../store";
+import { InputLabel } from "@/shared/ui/custom";
 
 export const NewPswForm = ({ link }: { link: string | null }) => {
   const { errors, register, handleSubmit } = useRecoveryPswForm();

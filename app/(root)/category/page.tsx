@@ -1,20 +1,22 @@
 import React from "react";
 
-import { Filters, ProductCardList } from "@/shared/components";
+import { Container, Filters, ProductCardList } from "@/shared/components";
 
 const Category = () => {
   return (
-    <div className="flex gap-[20px] justify-between">
-      <div className="w-[250px]">
-        <Filters />
-      </div>
+    <Container className="mb-[60px] mt-[40px]">
+      <div className="flex gap-[40px] justify-between">
+        <div className="w-[250px]">
+          <Filters />
+        </div>
 
-      <div className="flex-1">
-        <div className="flex flex-col gap-16">
-          <ProductCardList />
+        <div className="flex-1">
+          <div className="flex flex-col gap-16">
+            <ProductCardList />
+          </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

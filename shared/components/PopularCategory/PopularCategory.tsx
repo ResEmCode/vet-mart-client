@@ -1,12 +1,12 @@
-import { CategoryCard } from "../CategoryCard/CategoryCard";
+import { CategoryCard } from "./components";
 import { Typography } from "../Typography/Typography";
 
 import { popularCategories } from "./PopularCategory.data";
 
 export const PopularCategory = () => {
   return (
-    <div className="my-24">
-      <Typography variant="title48_semibold" tag="h2" className="mb-8">
+    <div className="my-[60px]">
+      <Typography variant="title48_semibold" tag="h2" className="mb-[20px]">
         Популярные категории
       </Typography>
       <ul className="flex items-center justify-between gap-2 ">

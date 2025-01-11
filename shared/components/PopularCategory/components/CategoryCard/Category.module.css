@@ -1,0 +1,9 @@
+.item {
+  @apply flex flex-col gap-1 items-center justify-between;
+  @apply max-w-[330px] w-full;
+  @apply mx-auto;
+  @apply p-6;
+  @apply shadow-lg rounded-lg;
+  @apply bg-white;
+  @apply h-full;
+}

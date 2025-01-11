@@ -4,7 +4,8 @@ import React, { useState } from "react";
 
 import { LoginForm } from "@/shared/components/LogRegForms/components/LoginForm/LoginForm";
 import { RegisterForm } from "@/shared/components/LogRegForms/components/RegisterForm/RegisterForm";
-import { Modal } from "@/shared/ui/modal";
+import { Modal } from "@/shared/ui/shadcn";
+
 
 export const AuthForm = ({ closeModal }: { closeModal: () => void }) => {
   const [isRegistering, setIsRegistering] = useState(true);

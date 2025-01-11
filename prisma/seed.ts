@@ -1,4 +1,5 @@
-import { users } from "./constants";
+import { categories, products, users } from "./constants";
+import { productsVariant } from "./constants/product-variant";
 import { prisma } from "./prisma-client";
 // import fs from "fs";
 // import csv from "csv-parser";
@@ -7,15 +8,28 @@ import { prisma } from "./prisma-client";
 // import { filters } from "./constants/filters";
 
 async function up() {
+  // Вставка категорий
+  await prisma.category.createMany({
+    data: categories,
+  });
+
+  // Вставка продуктов
+  await prisma.product.createMany({
+    data: products,
+  });
+
+  // Вставка вариантов продуктов
+  await prisma.productVariant.createMany({
+    data: productsVariant,
+  });
+
+  // Вставка пользователей
   await prisma.user.createMany({
     data: users,
   });
 
-
-
   // const records: any = [];
   // const filePath = path.join(__dirname, "excel", "category.csv");
-
 
   // // ---------------------Category
 
@@ -64,7 +78,6 @@ async function up() {
   //       categoryId: categoryId,
   //     });
 
-
   //     if (!isNaN(article) && !isNaN(price) && !isNaN(categoryId)) {
   //       records2.push({
   //         article: article,
@@ -96,15 +109,13 @@ async function up() {
   //       await prisma.$disconnect();
   //     }
   //   });
-
-    
 }
 
 async function down() {
+  await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "ProductVariant" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
-  // await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
-  // await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
-  // await prisma.$executeRaw`TRUNCATE TABLE "ProductVariant" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {

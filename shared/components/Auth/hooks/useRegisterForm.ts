@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { registerUser } from "@/app/actions";
+import { registerUser } from "@/server/actions/actions";
 
 import type { RegisterSchema } from "../constants";
 import { registerSchema } from "../constants";

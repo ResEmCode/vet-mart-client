@@ -2,8 +2,7 @@
 
 import * as React from "react";
 
-import { Button } from "@/shared/ui";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shared/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, Button } from "@/shared/ui/shadcn";
 import { cn } from "@/shared/lib/utils";
 
 import styles from "./ProductSlider.module.css";

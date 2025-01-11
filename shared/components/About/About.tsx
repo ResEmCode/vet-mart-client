@@ -28,8 +28,8 @@ const data = [
 
 export const About = () => {
   return (
-    <div className="flex flex-col gap-2">
-      <Typography className="pb-12" tag="h2" variant="title48_semibold">
+    <div className="my-[60px]">
+      <Typography className="mb-[20px]" tag="h2" variant="title48_semibold">
         Про магазин
       </Typography>
       <Typography tag="p" variant="paragraph15_medium">
@@ -38,11 +38,11 @@ export const About = () => {
         необхідним для їхнього здоров`я і комфорту. У нас ви знайдете широкий асортимент товарів для собак, кішок, гризунів, папуг та багатьох інших пухнастих і
         пернатих друзів. Чого ви отримаєте, вибираючи наш магазин?
       </Typography>
-      <ol>
+      <ul>
         {data.map((item) => (
           <li key={item.id}>{item.title}</li>
         ))}
-      </ol>
+      </ul>
       <Typography tag="p" variant="paragraph15_medium">
         Ми робимо все можливе, щоб ваші пухнасті і пернаті друзі почували себе щасливими та доглянутими. Довіртеся нам і створіть своїм улюбленцям справжній рай
         на землі! Вибирайте якість, вибирайте дбайливість, вибирайте нас. Ласкаво просимо до нашого інтернет-магазину для тварин, де кожен пухнастий момент має

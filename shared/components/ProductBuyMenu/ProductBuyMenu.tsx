@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Button, Checkbox } from "@/shared/ui";
+import { Button, Checkbox } from "@/shared/ui/shadcn";
 import { cn } from "@/shared/lib/utils";
 
 import { MenuRow } from "./components";

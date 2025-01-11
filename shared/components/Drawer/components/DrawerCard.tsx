@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 
-import { Button } from "@/shared/ui";
-import { useCountChange } from "@/shared/hooks/useCountChange";
+import { Button } from "@/shared/ui/shadcn";
+import { useCountChange } from "@/shared/utils/hooks/useCountChange";
 
 import { Typography } from "../../Typography/Typography";
 

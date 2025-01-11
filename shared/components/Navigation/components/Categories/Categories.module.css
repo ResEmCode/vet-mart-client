@@ -1,0 +1,29 @@
+.item {
+  @apply max-w-[320px] w-full cursor-pointer;
+}
+
+.link {
+  @apply flex gap-4;
+  @apply px-[16px] py-[14px] bg-white rounded-full;
+  @apply hover:bg-gray-200;
+}
+
+.img {
+  @apply w-[48px] h-[48px] rounded-full;
+}
+.title {
+  @apply mb-[4px];
+}
+.desc {
+  @apply text-[14px] text-gray-400;
+}
+
+.active {
+  @apply bg-accent-color;
+  @apply hover:bg-accent-color;
+}
+
+.active .desc,
+.active .title {
+  @apply text-white;
+}

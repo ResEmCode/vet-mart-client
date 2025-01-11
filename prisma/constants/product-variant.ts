@@ -1,8 +1,7 @@
 export const productsVariant = [
   {
-    id: 1,
     weight: "0.9кг",
-    brand: "МЯУ!",
+    brand: "Club 4 Paws",
     feedClass: "Premium",
     price: "124",
     purpose: "Для вибагливих",
@@ -11,14 +10,23 @@ export const productsVariant = [
     productId: 1,
   },
   {
-    id: 2,
     weight: "11кг",
-    brand: "4 ЛАПИ",
+    brand: "Мяу!",
     feedClass: "Standard",
     price: "880",
     purpose: "Гипоалергенний",
     age: "Доросли",
     ingredients: "Батат",
     productId: 2,
+  },
+  {
+    weight: "0.3кг",
+    brand: "Josera",
+    feedClass: "Standard",
+    price: "880",
+    purpose: "Гипоалергенний",
+    age: "Доросли",
+    ingredients: "Батат",
+    productId: 3,
   },
 ];

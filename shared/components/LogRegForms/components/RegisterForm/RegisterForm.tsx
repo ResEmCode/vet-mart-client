@@ -6,10 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import type { RegisterSchema } from "@/shared/components/LogRegForms/schemas/register-schema";
 import { registerSchema } from "@/shared/components/LogRegForms/schemas/register-schema";
-import { Button } from "@/shared/ui";
-import { InputLabel } from "@/shared/ui/InputLabel/input-label";
+import { Button } from "@/shared/ui/shadcn";
+
 
 import styles from "../../Auth.module.css";
+import { InputLabel } from "@/shared/ui/custom";
 
 export const RegisterForm = () => {
   const {

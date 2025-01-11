@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 
-import { Button } from "@/shared/ui";
-import { Modal } from "@/shared/ui/modal";
+import { Button, Modal } from "@/shared/ui/shadcn";
 
 import { LoginForm, RegisterForm } from "./components";
 

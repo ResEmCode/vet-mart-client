@@ -2,10 +2,11 @@
 
 import React from "react";
 
-import { Button } from "@/shared/ui";
-import { InputLabel } from "@/shared/ui/InputLabel/input-label";
+import { Button } from "@/shared/ui/shadcn";
+
 
 import { useRegisterForm } from "../../hooks/useRegisterForm";
+import { InputLabel } from "@/shared/ui/custom";
 
 export const RegisterForm = () => {
   const { register, errors, functions } = useRegisterForm();

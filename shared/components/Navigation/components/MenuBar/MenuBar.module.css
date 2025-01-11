@@ -1,0 +1,10 @@
+.link {
+  @apply bg-white px-[32px] py-[12px] rounded-[48px] transition-colors duration-100;
+  @apply text-[15px]  text-black;
+  @apply hover:text-black hover:bg-gray-200;
+}
+
+.active {
+  @apply text-white bg-accent-color;
+  @apply hover:text-white hover:bg-accent-color;
+}

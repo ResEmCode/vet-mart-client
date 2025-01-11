@@ -15,6 +15,7 @@ type TypographyVariant =
   | "paragraph15_medium"
   | "paragraph20_regular"
   | "paragraph14_regular"
+  | "paragraph14_medium"
   | "paragraph12_regular";
 
 type TypographyVariantColor = "default" | "accent" | "primary" | "subtitle";
@@ -31,7 +32,7 @@ const Typography = ({ tag, variant, color = "default", children, className, ...p
   const Component = tag;
 
   return (
-    <Component className={clsx(styles[variant], styles[color], className)} {...props}>
+    <Component className={clsx(styles.typography, styles[variant], styles[color], className)} {...props}>
       {children}
     </Component>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Carousel } from "@/shared/ui";
-import { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shared/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shared/ui/shadcn";
 
 import { Typography } from "../Typography/Typography";
 
@@ -9,11 +8,11 @@ import { ReviewsCard } from "./components/ReviewsCard";
 
 export const Reviews = () => {
   return (
-    <div className="flex flex-col gap-10 pt-12">
-      <Typography tag="h2" variant="title48_semibold">
+    <div className="my-[60px]">
+      <Typography tag="h2" variant="title48_semibold" className="mb-[20px]">
         Отзывы про магазин
       </Typography>
-      <Carousel className="pb-12">
+      <Carousel>
         <CarouselContent>
           <CarouselItem className="basis-1/3">
             <ReviewsCard />

@@ -1,0 +1,16 @@
+.input {
+  @apply max-w-[710px];
+}
+
+.icon {
+  cursor: pointer;
+}
+.icon path,
+.close_icon path {
+  fill: gray;
+}
+
+.close_icon {
+  width: 20px;
+  height: 20px;
+}

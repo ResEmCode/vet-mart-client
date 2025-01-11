@@ -1,0 +1,23 @@
+.inner {
+  margin-block: 20px;
+  width: 100%;
+  max-height: 420px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.slider {
+  grid-row: span 2;
+  @apply rounded-[24px];
+}
+.img {
+  object-fit: cover;
+}
+
+.item {
+  @apply flex items-center justify-center;
+  @apply h-[200px] p-[20px];
+  @apply bg-white;
+  @apply rounded-[12px];
+}

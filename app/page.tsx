@@ -1,29 +1,22 @@
-import { About, Advantages, BrendsSection, Container, DiscountedProducts, Header, PopularCategory, ProductDetails, Reviews } from "@/shared/components";
-import { productsData } from "@/shared/components/DiscountedProducts/DiscountedProducts.data";
+import { About, Advantages, BrendsSection, Container, DiscountedProducts, Information, PopularCategory, Reviews } from "@/shared/components";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
-interface HomeProps {
-  searchParams?: Promise<{ product: ProductsMenu; verify?: string }>;
-}
-
-const Home = async ({ searchParams }: HomeProps) => {
-  const filter = await searchParams;
-  const productQuery = filter?.product ?? "all";
-  const productItem = productsData.find((product) => product.query === productQuery)!;
+const Home = () => {
   return (
     <>
-      <Header />
-      <PopularCategory />
-      <DiscountedProducts product={productItem} />
-
+      <Container className="my-[20px]">
+        <Information />
+        <PopularCategory />
+        <DiscountedProducts />
+      </Container>
       <BrendsSection />
-      <Container>
+
+      <Container className="my-[20px]">
         <Advantages />
         <Reviews />
         <About />
-        <ProductDetails />
       </Container>
     </>
   );

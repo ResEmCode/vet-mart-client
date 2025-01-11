@@ -1,5 +1,5 @@
 import { Typography } from "@/shared/components/Typography/Typography";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/shadcn";
 
 interface ProductCardProps {
   title: string;

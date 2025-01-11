@@ -1,5 +1,4 @@
-import { Carousel } from "@/shared/ui";
-import { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shared/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shared/ui/shadcn";
 
 import { ProductCard } from "../ProductCard/ProductCard";
 

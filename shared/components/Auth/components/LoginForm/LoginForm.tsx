@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 
-import { Button } from "@/shared/ui";
-import { InputLabel } from "@/shared/ui/InputLabel/input-label";
+import { Button } from "@/shared/ui/shadcn";
+
 
 import { useLoginForm } from "../../hooks";
 import { RecoveryPswForm } from "../RecoveryPswForm/RecoveryPswForm";
+import { InputLabel } from "@/shared/ui/custom";
 
 export const LoginForm = () => {
   const { errors, register, functions, responseError } = useLoginForm();

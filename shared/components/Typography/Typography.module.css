@@ -1,3 +1,9 @@
+.typography {
+  line-height: 110%;
+}
+
+/* -------------Titles--------------- */
+
 .title48_semibold {
   font-size: 48px;
   font-weight: 600;
@@ -27,16 +33,22 @@
   font-weight: 700;
 }
 
+/* -------------Paragraphs--------------- */
+
 .paragraph14_regular {
   font-size: 14px;
   font-weight: 400;
 }
-
+.paragraph14_medium {
+  font-size: 14px;
+  font-weight: 500;
+}
 .paragraph20_regular {
   font-size: 20px;
   font-weight: 400;
 }
 
+/* -------------Colors--------------- */
 .default {
   color: var(--primary-color);
 }

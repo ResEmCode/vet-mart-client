@@ -1,6 +1,6 @@
 "use client";
 
-import { Modal } from "@/shared/ui";
+import { Modal } from "@/shared/ui/shadcn";
 
 import { VerifyForm } from "../VerifyForm/VerifyForm";
 

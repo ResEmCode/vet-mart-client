@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import { useForm } from "@/shared/hooks/useForm";
-import { Button, Checkbox, Input, Label } from "@/shared/ui";
+import { useForm } from "@/shared/utils/hooks/useForm";
+import { Button, Checkbox, Input, Label } from "@/shared/ui/shadcn";
 
 import styles from "../../Auth.module.css";
 

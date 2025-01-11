@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Button, Input, Modal } from "@/shared/ui";
+import { Button, Input, Modal } from "@/shared/ui/shadcn";
 
 import { useUser } from "../../store";
 

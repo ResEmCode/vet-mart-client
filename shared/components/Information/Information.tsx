@@ -1,0 +1,21 @@
+import React from "react";
+
+// import { HeaderSlider } from "@/shared/components/Header/components/HeaderSlider";
+
+import styles from "./Information.module.css";
+import { cn } from "@/shared/lib/utils";
+import { InformationSlider } from "./components";
+
+export const Information = () => {
+  return (
+    <div className={styles.inner}>
+      <div className="w-full bg-white rounded-[24px]">
+        <InformationSlider />
+      </div>
+      <div className="flex flex-col gap-[20px]">
+        <div className={styles.item}>Курьер по области</div>
+        <div className={styles.item}>Консультация по ветпрепоратам</div>
+      </div>
+    </div>
+  );
+};

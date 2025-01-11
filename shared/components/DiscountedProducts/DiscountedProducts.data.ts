@@ -1,7 +1,6 @@
 export const productsData: DiscountedProduct[] = [
   {
     title: "Все",
-    query: "all",
     slider: [
       {
         id: 1,
@@ -42,7 +41,6 @@ export const productsData: DiscountedProduct[] = [
   },
   {
     title: "Собаки",
-    query: "dogs",
     slider: [
       {
         id: 1,
@@ -83,7 +81,6 @@ export const productsData: DiscountedProduct[] = [
   },
   {
     title: "Кошки",
-    query: "cats",
     slider: [
       {
         id: 1,
@@ -124,7 +121,6 @@ export const productsData: DiscountedProduct[] = [
   },
   {
     title: "Птицы",
-    query: "birds",
     slider: [
       {
         id: 1,
@@ -165,7 +161,6 @@ export const productsData: DiscountedProduct[] = [
   },
   {
     title: "Грызуны",
-    query: "rodents",
     slider: [
       {
         id: 1,

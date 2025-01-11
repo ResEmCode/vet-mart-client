@@ -2,11 +2,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-import { recoveryPassword } from "@/app/actions";
-import { Button } from "@/shared/ui";
-import { InputLabel } from "@/shared/ui/InputLabel/input-label";
+import { recoveryPassword } from "@/server/actions/actions";
+import { Button } from "@/shared/ui/shadcn";
+
 
 import { useModalAuth } from "../../store";
+import { InputLabel } from "@/shared/ui/custom";
 
 interface EmailSchemaTypes {
   email: string;

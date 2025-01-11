@@ -11,9 +11,9 @@ export const BrendsSection = () => {
     <div className=" bg-white my-20">
       <Container>
         <div className="flex items-center justify-between">
-          {data.map((dat) => (
-            <div className={styles.card}>
-              <Image src={dat} alt="brend" width={153} height={52} />
+          {data.map((brend, index) => (
+            <div className={styles.card} key={index}>
+              <Image src={brend} alt="brend" width={153} height={52} />
             </div>
           ))}
         </div>

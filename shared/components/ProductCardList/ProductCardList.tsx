@@ -1,9 +1,15 @@
+"use client";
+
 import type { FC } from "react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Typography } from "../Typography/Typography";
+import { ProductCard } from "@/shared/components";
+import { CombinedType, useProducts } from "@/shared/store";
+import { useFilters } from "../Filters/store";
+import qs from "qs";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 // import { ProductCard } from "../DiscountedProducts/components";
-
 
 interface Product {
   id: number;
@@ -22,31 +28,40 @@ interface Product {
   updatedAt: string;
 }
 
-const fetchProducts = async (): Promise<Product[]> => {
-  const res = await fetch(`http://localhost:3000/api/products/`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch products", { cause: res });
-  }
-  return res.json();
-};
+export const ProductCardList: FC = () => {
+  const filters = useFilters((state) => state.filters);
+  const setFilters = useFilters((state) => state.setFilters);
+  const [products, setProducts] = useState<CombinedType[]>([]);
+  const params = useSearchParams();
+  const router = useRouter();
 
-export const ProductCardList: FC = async () => {
-  try {
-    const data: Product[] = await fetchProducts();
+  useEffect(() => {
+    const queryString = params.toString();
 
-    return (
-      <div>
-        <Typography variant="title48_semibold" tag="h2">
-          Сухой корм
-        </Typography>
-        {/* <div className="grid grid-cols-3 gap-[20px]">
-          {data.map((item) => (
-            <ProductCard key={item.id} {...item} />
-          ))}
-        </div> */}
+    fetch(`/api/products?${queryString}`)
+      .then((res) => res.json())
+      .then((res) => setProducts(res));
+  }, [filters, params]);
+
+  useEffect(() => {
+    if (params.toString()) {
+      const queryString = decodeURIComponent(params.toString());
+      const data = qs.parse(queryString, { comma: true });
+      console.log(data);
+      setFilters(data);
+    }
+  }, []);
+
+  return (
+    <div>
+      <Typography variant="title48_semibold" tag="h2">
+        Сухой корм
+      </Typography>
+      <div className="grid grid-cols-3 gap-[20px]">
+        {products.map((item) => (
+          <ProductCard key={item.id} {...item} />
+        ))}
       </div>
-    );
-  } catch (error) {
-    return <div>Ошибка загрузки данных: {error instanceof Error ? error.message : "Неизвестная ошибка"}</div>;
-  }
+    </div>
+  );
 };

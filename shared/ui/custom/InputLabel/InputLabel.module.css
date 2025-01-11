@@ -1,0 +1,5 @@
+.inputField {
+  @apply rounded-[4px]  p-[17px] leading-[29.05px];
+  @apply w-full h-[48px] text-[16px];
+  @apply placeholder:text-[16px] placeholder:text-[#D3D3D3] placeholder:leading-[29.05px];
+}
