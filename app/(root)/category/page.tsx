@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Container, Filters, ProductCardList } from "@/shared/components";
+import { Filters, ProductCardList } from "@/shared/components";
+import { Container } from "@/shared/ui/custom";
 
-const Category = () => {
+const CategoryPage = () => {
   return (
     <Container className="mb-[60px] mt-[40px]">
       <div className="flex gap-[40px] justify-between">
@@ -20,4 +21,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default CategoryPage;

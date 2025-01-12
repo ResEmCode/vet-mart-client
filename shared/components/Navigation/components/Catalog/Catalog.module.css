@@ -1,5 +1,5 @@
 .button {
-  @apply flex items-center w-[46px] h-[45px] bg-white rounded-full justify-around cursor-pointer;
+  @apply flex items-center w-[46px] h-[46px] bg-white rounded-full justify-around cursor-pointer;
   @apply duration-75;
   @apply hover:bg-accent-color;
 }

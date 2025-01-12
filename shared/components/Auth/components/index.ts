@@ -1,5 +1,5 @@
 export { LoginForm } from "./LoginForm/LoginForm";
 export { NewPswForm } from "./NewPswForm/NewPswForm";
-export { RecoveryPswForm } from "./RecoveryPswForm/RecoveryPswForm";
+export { ResetPswForm } from "./ResetPswForm/ResetPswForm";
 export { RegisterForm } from "./RegisterForm/RegisterForm";
-export { VerifyForm } from "./VerifyForm/VerifyForm";
+export { FormProvider } from "./FormProvider/FormProvider";

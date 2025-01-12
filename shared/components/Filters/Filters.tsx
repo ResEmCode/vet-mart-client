@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { CheckboxGroup } from "../CheckboxGroup/CheckboxGroup";
+import { CheckboxGroup } from "../../ui/custom/CheckboxGroup/CheckboxGroup";
 
 import styles from "./Filters.module.css";
 import { DataFilters } from "./DataFilters";

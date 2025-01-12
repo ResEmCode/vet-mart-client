@@ -1,4 +1,5 @@
-import { About, Advantages, BrendsSection, Container, DiscountedProducts, Information, PopularCategory, Reviews } from "@/shared/components";
+import { About, Advantages, BrendsSection, DiscountedProducts, Information, PopularCategory, Reviews } from "@/shared/components";
+import { Container } from "@/shared/ui/custom";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";

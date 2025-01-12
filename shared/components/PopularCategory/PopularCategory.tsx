@@ -1,5 +1,5 @@
 import { CategoryCard } from "./components";
-import { Typography } from "../Typography/Typography";
+import { Typography } from "../../ui/custom/Typography/Typography";
 
 import { popularCategories } from "./PopularCategory.data";
 

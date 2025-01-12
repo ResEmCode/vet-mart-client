@@ -1,33 +1,44 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Categories, Header, MenuBar } from "./components";
-import { useModalResetPws } from "../Auth/store";
-import { Container } from "../Container/Container";
+
+import { Container } from "../../ui/custom/Container/Container";
+
+import { useActiveForm } from "../Auth/store";
+import { useAuthModal } from "./store";
+
+
 export const Navigation: React.FC = () => {
   const searchParams = useSearchParams();
 
-  const { setIsResetPwsOpen, isResetPwsOpen } = useModalResetPws();
+  const setActiveForm = useActiveForm((state) => state.setActiveForm);
+  const setIsAuthOpen = useAuthModal((state) => state.setIsAuthOpen);
+  const router = useRouter();
 
   useEffect(() => {
-    if (searchParams.has("recovery")) {
-      setIsResetPwsOpen(true);
-    }
+    (async () => {
+      if (searchParams.has("recovery")) {
+        setActiveForm("new-password");
+        setIsAuthOpen(true);
+        router.replace("/");
+      }
+    })();
   }, []);
 
-  const link = searchParams.get("recovery");
+  useEffect(() => {}, []);
+
+  useEffect(() => {}, []);
 
   return (
     <Container className="mb-[40px]">
+
       <div className="my-4 flex flex-col items-start gap-6">
         <Header />
         <MenuBar />
         <Categories />
-        {/* <Modal isOpen={isResetPwsOpen} closeModal={() => setIsResetPwsOpen(false)}>
-          <NewPswForm link={link} />
-        </Modal> */}
       </div>
     </Container>
   );

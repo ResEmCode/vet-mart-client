@@ -1,4 +1,17 @@
-export const productsData: DiscountedProduct[] = [
+export interface ProductSliderTypes {
+  id: number;
+  title: string;
+  weight: string;
+  price: string;
+  oldPrice: string;
+}
+
+export interface ProductsDataTypes {
+  title: string;
+  slider: ProductSliderTypes[];
+}
+
+export const productsData: ProductsDataTypes[] = [
   {
     title: "Все",
     slider: [

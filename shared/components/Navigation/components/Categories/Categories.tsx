@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { Typography } from "@/shared/components";
+
 
 import styles from "./Categories.module.css";
 import { cn } from "@/shared/lib/utils";
@@ -11,6 +11,7 @@ import { CATEGORIES_MENU } from "./Categories.data";
 import { queryStaking, ROUTES } from "@/shared/utils/constants/routes";
 import { FilterTypes, useFilters } from "@/shared/components/Filters/store";
 import { useEffect } from "react";
+import { Typography } from "@/shared/ui/custom";
 
 export const Categories: React.FC = () => {
   const queryType = useSearchParams().get("type");

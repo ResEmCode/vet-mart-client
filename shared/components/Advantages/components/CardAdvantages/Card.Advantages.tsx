@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import { Typography } from "@/shared/components/Typography/Typography";
+import { Typography } from "@/shared/ui/custom/Typography/Typography";
 
 interface CardAdvantagesProps {
   title: string;

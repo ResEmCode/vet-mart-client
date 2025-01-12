@@ -5,7 +5,7 @@ interface MenuObjectType {
 }
 
 export const MENU_DATA: MenuObjectType[] = [
-  { id: 1, name: "Каталог", href: "/" },
+  { id: 1, name: "Главная", href: "/" },
   { id: 2, name: "О нас", href: "/about" },
   { id: 3, name: "Оплата и доставка", href: "/payment" },
   { id: 4, name: "Возврат и обмен", href: "/return" },

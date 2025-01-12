@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Container, Typography } from "@/shared/components";
+import { Container, Typography } from "@/shared/ui/custom";
 import { ROUTES } from "@/shared/utils/constants";
 
 const NotFound = () => {

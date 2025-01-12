@@ -1,4 +1,4 @@
-import { Typography } from "../../../Typography/Typography";
+import { Typography } from "../../../../ui/custom/Typography/Typography";
 
 import styles from "./Category.module.css";
 

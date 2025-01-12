@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Typography } from "../Typography/Typography";
+import { Typography } from "../../ui/custom/Typography/Typography";
 
 import { ProductsMenu, ProductsSlider } from "./components";
 import { productsData } from "./DiscountedProducts.data";

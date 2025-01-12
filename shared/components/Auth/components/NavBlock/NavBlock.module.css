@@ -1,0 +1,15 @@
+.googleButton {
+  @apply w-full py-6 text-black text-xl rounded-[4px] bg-white border flex items-center justify-center;
+}
+
+.googleButton:hover {
+  @apply bg-white opacity-80;
+}
+
+.eyeIcon {
+  @apply absolute right-4 top-4 transform  cursor-pointer  transition-all duration-200;
+}
+
+.eyeIcon:hover {
+  @apply scale-110 opacity-80;
+}

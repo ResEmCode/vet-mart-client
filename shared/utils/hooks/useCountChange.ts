@@ -5,7 +5,7 @@ export const useCountChange = (defaultCount: number = 1) => {
 
   const increment = useCallback(() => setCount((prev) => prev + 1), []);
 
-  const decrement = useCallback(() => setCount((prev) => Math.max(0, prev - 1)), []);
+  const decrement = useCallback(() => setCount((prev) => Math.max(1, prev - 1)), []);
 
   const handlePrice = (price: number | string): number => {
     return Number(price) * count;

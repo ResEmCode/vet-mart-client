@@ -1,3 +1,3 @@
 export * from "./LoginSchema";
-export * from "./RecoveryPswSchema";
+export * from "./NewPswSchema";
 export * from "./RegisterSchema";

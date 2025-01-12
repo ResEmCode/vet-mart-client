@@ -1,4 +1,4 @@
-import { Container } from "@/shared/components/Container/Container";
+import { Container } from "@/shared/ui/custom/Container/Container";
 import Link from "next/link";
 import { FOOTER_MENU } from "./Footer.data";
 
@@ -17,14 +17,14 @@ export const Footer = () => {
 
           <div className="flex flex-col space-y-1 text-white text-sm">
             {FOOTER_MENU.map((link) => (
-              <a key={link.name} href={link.href}>
+              <a key={link.name} href={link.href} className="hover:underline">
                 {link.name}
               </a>
             ))}
           </div>
 
           <div className="text-white text-sm flex flex-col space-y-1">
-            <Link target="_blank" href="https://maps.app.goo.gl/Az294Ei1TJdUBP3j6" className="flex items-center space-x-2 gap-1">
+            <Link target="_blank" href="https://maps.app.goo.gl/Az294Ei1TJdUBP3j6" className="flex items-center space-x-2 gap-1 hover:underline">
               <img src="/gde.svg" alt="tag" />
               Вінниця, вул. Театральна, буд. 7, кв. 11
             </Link>

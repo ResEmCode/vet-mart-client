@@ -2,7 +2,7 @@ import React from "react";
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shared/ui/shadcn";
 
-import { Typography } from "../Typography/Typography";
+import { Typography } from "../../ui/custom/Typography/Typography";
 
 import { ReviewsCard } from "./components/ReviewsCard";
 

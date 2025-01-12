@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Container } from "../Container/Container";
+import { Container } from "../../ui/custom/Container/Container";
 
 import styles from "./BrendsSection.module.css";
 

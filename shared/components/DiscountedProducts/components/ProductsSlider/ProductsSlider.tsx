@@ -1,9 +1,10 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shared/ui/shadcn";
 
 import { ProductCard } from "../ProductCard/ProductCard";
+import { ProductSliderTypes } from "../../DiscountedProducts.data";
 
 interface ProductsSliderProps {
-  slider: Array<DiscountedProductSlide>;
+  slider: Array<ProductSliderTypes>;
 }
 
 export const ProductsSlider = ({ slider }: ProductsSliderProps) => {

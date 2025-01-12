@@ -1,0 +1,27 @@
+.window {
+  @apply fixed top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-[rgba(0,0,0,0.7)];
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+.body {
+  @apply bg-white p-12 rounded-[4px] w-full max-w-[800px] min-w-[300px];
+  transform: translateY(-30%);
+  transition: transform 0.2s ease;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.active .body {
+  transform: translateY(0px);
+}
+
+.btn {
+  @apply text-end ml-auto block;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}

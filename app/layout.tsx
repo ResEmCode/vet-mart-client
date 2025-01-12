@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
+import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 
 import { Footer, Navigation } from "@/shared/components";
 import { AuthProvider } from "@/shared/providers";
@@ -30,6 +32,8 @@ const RootLayout = ({
               <Footer />
             </div>
           </Suspense>
+          <NextTopLoader />
+          <Toaster />
         </AuthProvider>
       </body>
     </html>

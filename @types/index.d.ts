@@ -1,12 +1,9 @@
-interface DiscountedProduct {
-  title: string;
-  slider: DiscountedProductSlide[];
-}
+import { Product, ProductVariant } from "@prisma/client";
 
-interface DiscountedProductSlide {
-  id: number;
-  title: string;
-  weight: string;
-  price: string;
-  oldPrice: string;
-}
+type ResponseProduct = Product;
+
+type ResponseProducts = ResponseProduct[];
+
+type ResponseProductWithVariant = Product & ProductVariant;
+
+type ResponseProductsWithVariants = ResponseProductWithVariant[];

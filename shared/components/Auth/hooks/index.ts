@@ -1,3 +1,4 @@
 export * from "./useLoginForm";
-export * from "./useRecoveryPswForm";
+export * from "./useNewPswForm";
 export * from "./useRegisterForm";
+export * from "./useResetPswForm";

@@ -1,46 +1,29 @@
 "use client";
 
-import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 
-import { Typography } from "../Typography/Typography";
+import { Typography } from "../../ui/custom/Typography/Typography";
 import { ProductCard } from "@/shared/components";
-import { CombinedType, useProducts } from "@/shared/store";
 import { useFilters } from "../Filters/store";
 import qs from "qs";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-// import { ProductCard } from "../DiscountedProducts/components";
+import { useSearchParams } from "next/navigation";
+import { getProducts } from "@/shared/api/requests";
+import { ResponseProductsWithVariants } from "@/@types";
+import { ProductCardSkeleton } from "./components";
 
-interface Product {
-  id: number;
-  article: number;
-  country: string;
-  name: string;
-  imageUrl: string;
-  price: number;
-  description: string;
-  isAvailable: boolean;
-  composition: string;
-  sale: boolean;
-  salePrice: number | null;
-  categoryId: number;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export const ProductCardList: FC = () => {
+export const ProductCardList = () => {
   const filters = useFilters((state) => state.filters);
   const setFilters = useFilters((state) => state.setFilters);
-  const [products, setProducts] = useState<CombinedType[]>([]);
+  const [products, setProducts] = useState<ResponseProductsWithVariants>([]);
   const params = useSearchParams();
-  const router = useRouter();
 
   useEffect(() => {
     const queryString = params.toString();
 
-    fetch(`/api/products?${queryString}`)
-      .then((res) => res.json())
-      .then((res) => setProducts(res));
+    (async () => {
+      const { data } = await getProducts({ params: { query: queryString } });
+      setProducts(data);
+    })();
   }, [filters, params]);
 
   useEffect(() => {
@@ -54,13 +37,14 @@ export const ProductCardList: FC = () => {
 
   return (
     <div>
-      <Typography variant="title48_semibold" tag="h2">
+      <Typography variant="title48_semibold" tag="h2" className="mb-[20px]">
         Сухой корм
       </Typography>
+
       <div className="grid grid-cols-3 gap-[20px]">
-        {products.map((item) => (
-          <ProductCard key={item.id} {...item} />
-        ))}
+        {products.length > 0
+          ? products.map((item) => <ProductCard key={item.id} {...item} />)
+          : [...new Array(6)].map((_, index) => <ProductCardSkeleton key={index} />)}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Typography } from "../Typography/Typography";
+import { Typography } from "../../ui/custom/Typography/Typography";
 
 import { CardAdvantages } from "./components";
 import { ADVANTAGE_DATA } from "./Advantage.data";

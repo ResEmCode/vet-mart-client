@@ -1,4 +1,4 @@
-import { Typography } from "@/shared/components/Typography/Typography";
+import { Typography } from "@/shared/ui/custom/Typography/Typography";
 
 export const LogoBlock = () => {
   return (

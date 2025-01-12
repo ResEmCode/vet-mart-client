@@ -1,0 +1,21 @@
+.window {
+  @apply fixed inset-0 bg-black bg-opacity-70 flex items-center justify-end z-50;
+  opacity: 0;
+  transition: all 0.2s ease;
+  visibility: hidden;
+}
+
+.body {
+  @apply bg-white w-full max-w-[480px] h-full shadow-lg px-8 py-4;
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.active .body {
+  transform: translateX(0px);
+}

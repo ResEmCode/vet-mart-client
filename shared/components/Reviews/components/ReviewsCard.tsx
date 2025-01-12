@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../../../ui/custom/Typography/Typography";
 
 export const ReviewsCard = () => {
   return (

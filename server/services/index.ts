@@ -10,4 +10,4 @@ export const transporter = nodemailer.createTransport({
 });
 
 export * from "./sendVerificationMail";
-export * from "./sendRecoveryPsw";
+export * from "./sendResetPsw";

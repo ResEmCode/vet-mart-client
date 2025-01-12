@@ -1,0 +1,66 @@
+.typography {
+  line-height: 110%;
+}
+
+/* -------------Titles--------------- */
+
+.title48_semibold {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.title36_semibold {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.title24_semibold {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+}
+.title18_semibold {
+  font-size: 18px;
+  font-weight: 600;
+}
+.title16_semibold {
+  font-size: 16px;
+  font-weight: 600;
+}
+.title16_bold {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.title24_bold {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* -------------Paragraphs--------------- */
+
+.paragraph14_regular {
+  font-size: 14px;
+  font-weight: 400;
+}
+.paragraph14_medium {
+  font-size: 14px;
+  font-weight: 500;
+}
+.paragraph20_regular {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* -------------Colors--------------- */
+.default {
+  color: var(--primary-color);
+}
+
+.accent {
+  color: var(--accent-color);
+}
+
+.subtitle {
+  color: var(--subtitle-color);
+}
