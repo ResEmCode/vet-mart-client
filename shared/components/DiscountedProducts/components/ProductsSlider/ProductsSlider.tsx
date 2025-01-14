@@ -9,7 +9,7 @@ interface ProductsSliderProps {
 
 export const ProductsSlider = ({ slider }: ProductsSliderProps) => {
   return (
-    <Carousel className="w-full">
+    <Carousel className="w-full m-auto">
       <CarouselContent>
         {slider.map((slide) => (
           <CarouselItem key={slide.id} className="md:basis-1/2 lg:basis-1/3 ">
@@ -19,8 +19,8 @@ export const ProductsSlider = ({ slider }: ProductsSliderProps) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious variant={"primary"} className="p-0" />
+      <CarouselNext variant={"primary"} className="p-0" />
     </Carousel>
   );
 };

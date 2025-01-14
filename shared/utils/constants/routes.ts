@@ -6,7 +6,6 @@ export const ROUTES = {
 type RouterStakingType = string[];
 
 export const routerStaking = (...routes: RouterStakingType) => {
-  console.log(routes.join(""));
   return routes.join("");
 };
 

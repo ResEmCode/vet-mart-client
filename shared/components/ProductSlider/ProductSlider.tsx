@@ -32,7 +32,8 @@ export const ProductSlider = () => {
               <div className="p-1">
                 <div>
                   <Button
-                    className={cn("border-[3px] border-transparent", {
+                    variant={"outline"}
+                    className={cn("border-[3px] border-transparent max-w-[120px] w-full h-full rounded-[4px] p-2", {
                       [styles.active]: image === ImageVariants[activeIndex],
                     })}
                     onClick={() => setActiveIndex(ImageVariants.indexOf(image))}

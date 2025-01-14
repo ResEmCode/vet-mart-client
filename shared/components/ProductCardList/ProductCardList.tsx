@@ -8,13 +8,13 @@ import { useFilters } from "../Filters/store";
 import qs from "qs";
 import { useSearchParams } from "next/navigation";
 import { getProducts } from "@/shared/api/requests";
-import { ResponseProductsWithVariants } from "@/@types";
+import { ResponseProductCard } from "@/@types";
 import { ProductCardSkeleton } from "./components";
 
 export const ProductCardList = () => {
   const filters = useFilters((state) => state.filters);
   const setFilters = useFilters((state) => state.setFilters);
-  const [products, setProducts] = useState<ResponseProductsWithVariants>([]);
+  const [products, setProducts] = useState<ResponseProductCard[]>([]);
   const params = useSearchParams();
 
   useEffect(() => {

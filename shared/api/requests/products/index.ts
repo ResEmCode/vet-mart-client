@@ -1,4 +1,4 @@
-import { ResponseProductsWithVariants } from "@/@types";
+import { ResponseProductCard } from "@/@types";
 import { api } from "../../instance";
 import { API_URL } from "../../constants";
 
@@ -8,5 +8,4 @@ interface GetProductsParams {
 
 type GetProductsConfig = AxiosRequestConfig<GetProductsParams>;
 
-export const getProducts = async ({ params, config }: GetProductsConfig) =>
-  api.get<ResponseProductsWithVariants>(`${API_URL.PRODUCTS}?${params.query}`, config);
+export const getProducts = async ({ params, config }: GetProductsConfig) => api.get<ResponseProductCard[]>(`${API_URL.PRODUCTS}?${params.query}`, config);

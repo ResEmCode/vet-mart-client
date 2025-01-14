@@ -15,8 +15,7 @@ export const ProductsMenu = ({ title, onClick }: ProductsMenuProps) => {
         <li key={item.title}>
           <Button
             onClick={() => onClick(index)}
-            variant={item.title === title ? "default" : "secondary"}
-            className={cn(item.title !== title && "hover:bg-gray-200")}
+            variant={item.title === title ? "active" : "primary"}
           >
             {item.title}
           </Button>

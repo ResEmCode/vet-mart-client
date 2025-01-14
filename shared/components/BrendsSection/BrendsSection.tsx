@@ -1,10 +1,15 @@
-import Image from "next/image";
 
 import { Container } from "../../ui/custom/Container/Container";
 
 import styles from "./BrendsSection.module.css";
 
-const data = ["/brends/optimeal.png", "/brends/gourmet.png", "/brends/clubpaws.png", "/brends/royalcanin.png", "/brends/proplan.png"];
+const data = [
+  "/images/brends/optimeal.png",
+  "/images/brends/gourmet.png",
+  "/images/brends/clubpaws.png",
+  "/images/brends/royalcanin.png",
+  "/images/brends/proplan.png",
+];
 
 export const BrendsSection = () => {
   return (
@@ -13,7 +18,7 @@ export const BrendsSection = () => {
         <div className="flex items-center justify-between">
           {data.map((brend, index) => (
             <div className={styles.card} key={index}>
-              <Image src={brend} alt="brend" width={153} height={52} />
+              <img src={brend} alt="brend" className="w-[150px] h-[52px]" />
             </div>
           ))}
         </div>

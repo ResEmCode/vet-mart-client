@@ -34,7 +34,8 @@ export const AuthForm = () => {
           </FormProvider>
         )}
       </div>
-      {activeForm === "register" || (activeForm === "login" && <NavBlock />)}
+      {activeForm === "login" && <NavBlock />}
+      {activeForm === "register" && <NavBlock />}
     </>
   );
 };

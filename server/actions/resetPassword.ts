@@ -14,7 +14,7 @@ export const resetPassword = async (email: string) => {
       {
         email,
       },
-      "test",
+      process.env.NEXTAUTH_SECRET ?? "Sekret",
       {
         expiresIn: "15m",
       },

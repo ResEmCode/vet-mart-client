@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Minus, Plus, X } from "lucide-react";
 
-import { Button } from "@/shared/ui/shadcn";
-import { useCountChange } from "@/shared/utils/hooks/useCountChange";
+
 import styles from "./CartCard.module.css";
 import { Typography } from "../../../ui/custom/Typography/Typography";
 import { cn } from "@/shared/lib/utils";
+import { useCount } from "../hooks";
 
 interface DrawerCardProps {
   title: string;
@@ -18,11 +17,11 @@ interface DrawerCardProps {
 }
 
 export const CartCard = ({ title, weight, price, oldPrice }: DrawerCardProps) => {
-  const { count, increment, decrement, handlePrice } = useCountChange();
+  const { count, increment, decrement } = useCount();
 
   return (
     <div className={styles.card}>
-      <img src="/image.png" alt="images" className="max-w-[100px] w-full" />
+      <img src="/images/products/image.png" alt="images" className="max-w-[100px] w-full" />
       <div className="max-w-[220px] w-full">
         <div className="mb-[20px]">
           <Typography tag="h2" variant="title16_semibold" className="mb[12px]">

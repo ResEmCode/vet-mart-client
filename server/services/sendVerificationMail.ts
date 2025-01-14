@@ -8,7 +8,7 @@ export const sendVerificationMail = async (to: string, code: string) => {
     text: "",
     html: `
         <div>
-            <p>Код потдтверждения: ${code}</p>
+            <p>Для подтверждения регестрации перейдите по ссылке:</p>
             <a href="http://localhost:3000/api/auth/verify?code=${code}">Подтвердить регестрацию</a>
         </div>
     `,

@@ -8,6 +8,7 @@ export const sendResetPsw = async (to: string, code: string) => {
     text: "",
     html: `
         <div>
+            <p>Для сброса пароля перейдите по ссылке:</p>
             <a href="http://localhost:3000/api/auth/recovery-psw?code=${code}">Сменить пароль</a>
         </div>
     `,

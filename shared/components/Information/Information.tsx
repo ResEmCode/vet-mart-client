@@ -9,7 +9,7 @@ import { InformationSlider } from "./components";
 export const Information = () => {
   return (
     <div className={styles.inner}>
-      <div className="w-full bg-white rounded-[24px]">
+      <div className={styles.slider_block}>
         <InformationSlider />
       </div>
       <div className="flex flex-col gap-[20px]">

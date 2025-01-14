@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { Typography } from "../../../ui/custom/Typography/Typography";
@@ -8,7 +7,7 @@ export const ReviewsCard = () => {
   return (
     <div className="rounded-sm flex flex-col gap-3 shadow-md bg-white max-w-[450px] w-full p-[20px]">
       <div className="flex gap-2 items-center">
-        <Image src="/image.png" alt="image" width={50} height={50} />
+        <img src="/images/products/image.png" alt="image" className="w-[50px] h=[50px]"/>
         <div>
           <Typography variant="paragraph15_medium" color="default" tag="h2">
             Александра

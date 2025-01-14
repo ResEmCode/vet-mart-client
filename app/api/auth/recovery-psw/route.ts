@@ -1,8 +1,13 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import type { JwtPayload } from "jsonwebtoken";
 import jwt from "jsonwebtoken";
 
 import { prisma } from "@/prisma/prisma-client";
+
+interface DecodedToken extends JwtPayload {
+  email: string;
+}
 
 export async function GET(req: NextRequest) {
   try {
@@ -12,7 +17,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.redirect(new URL("/", req.url));
     }
 
-    const decoded = jwt.verify(code, "test") as { email: string };
+    const decoded: string | JwtPayload = jwt.verify(code, process.env.NEXTAUTH_SECRET ?? "Sekret") as DecodedToken;
 
     const user = await prisma.user.findFirst({ where: { email: decoded?.email } });
 

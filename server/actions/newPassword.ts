@@ -7,7 +7,7 @@ import { prisma } from "@/prisma/prisma-client";
 
 export const newPassword = async (newPassword: string, link: string) => {
   try {
-    const decoded = jwt.verify(link, "test") as { email: string };
+    const decoded = jwt.verify(link, process.env.NEXTAUTH_SECRET ?? "Sekret") as { email: string };
 
     const { email } = decoded;
 
@@ -29,8 +29,6 @@ export const newPassword = async (newPassword: string, link: string) => {
         password: newHashPsw,
       },
     });
-
-    
   } catch (error) {
     console.log(error);
   }

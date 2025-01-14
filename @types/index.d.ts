@@ -7,3 +7,7 @@ type ResponseProducts = ResponseProduct[];
 type ResponseProductWithVariant = Product & ProductVariant;
 
 type ResponseProductsWithVariants = ResponseProductWithVariant[];
+
+interface ResponseProductCard extends ResponseProduct {
+    variants: ProductVariant[]
+}

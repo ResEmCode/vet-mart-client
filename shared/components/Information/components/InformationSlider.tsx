@@ -6,13 +6,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 export const InformationSlider = () => {
   const items = [
-    { id: "item-1", imageUrl: "/image.png", description: "Description 1" },
-    { id: "item-2", imageUrl: "/image.png", description: "Description 2" },
-    { id: "item-3", imageUrl: "/image.png", description: "Description 3" },
+    { id: "item-1", imageUrl: "/images/products/image.png", description: "Description 1" },
+    { id: "item-2", imageUrl: "/images/products/image.png", description: "Description 2" },
+    { id: "item-3", imageUrl: "/images/products/image.png", description: "Description 3" },
   ];
 
   return (
-    <Carousel className="w-full max-w-[630px] m-auto">
+    <Carousel className="w-full max-w-[540px] m-auto">
       <CarouselContent>
         {items.map((item) => (
           <CarouselItem className="flex justify-center" key={item.id}>
@@ -20,8 +20,8 @@ export const InformationSlider = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious variant={"primary"} className="p-0" />
+      <CarouselNext variant={"primary"} className="p-0" />
     </Carousel>
   );
 };

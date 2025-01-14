@@ -48,8 +48,8 @@ export const Filters = () => {
           {group.checkboxes.map((checkbox) => (
             <CheckboxGroup.Item title={checkbox} key={checkbox}>
               <Checkbox
-                onClick={() => onHandleCheckbox(group.filter as keyof Omit<FilterTypes, "type">, checkbox)}
-                // checked={Boolean(filters[group.filter] === checkbox || filters[group.filter]?.includes(checkbox))}
+                onClick={() => onHandleCheckbox(group.filter, checkbox)}
+                checked={filters[group.filter] === checkbox || filters[group.filter]?.includes(checkbox)}
               />
             </CheckboxGroup.Item>
           ))}

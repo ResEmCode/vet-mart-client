@@ -35,7 +35,8 @@ export const ProductBuyMenu = () => {
         <div className="flex items-center gap-8">
           {packingVariants.map((variant, index) => (
             <Button
-              className={cn("flex flex-col border-[3px] p-2 rounded-[20px] border-transparent", {
+            variant={"outline"}
+              className={cn(" max-h-[65px] h-full flex flex-col border-[3px] p-2 rounded-[4px] border-transparent", {
                 "border-accent-color": index === activePriceIndex,
               })}
               key={variant.id}
@@ -53,7 +54,7 @@ export const ProductBuyMenu = () => {
       <MenuRow title="Самовывоз">
         <div>
           <span className="text-[14px] w-full text-subtitle mr-2">сегодня в нашем магазине</span>
-          <Button className="text-[14px] border-b-2 text-accent-color border-accent">Где забрать?</Button>
+          <Button variant={"link"}>Где забрать?</Button>
         </div>
       </MenuRow>
       <hr />

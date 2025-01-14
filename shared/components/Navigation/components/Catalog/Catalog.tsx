@@ -26,7 +26,7 @@ export const Catalog = () => {
       </Link>
       {session.data ? (
         <Link href={`/profile/${session.data.user.id}`} className="rounded-full">
-          <img src={session.data.user.image ?? "/user/image.png"} alt="profile" className="rounded-full w-[46px] h-[46px] object-cover" />
+          <img src={session.data.user.image ?? "/images/user/image.png"} alt="profile" className="rounded-full w-[46px] h-[46px] object-cover" />
         </Link>
       ) : (
         <button className={styles.button} onClick={onClickAuth}>

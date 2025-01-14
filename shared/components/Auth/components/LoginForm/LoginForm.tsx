@@ -25,7 +25,7 @@ export const LoginForm = () => {
         </div>
       )}
 
-      <Button type="submit" className="w-full py-6 bg-[#FF8732] text-white text-xl rounded-[4px]">
+      <Button type="submit" className="w-full py-6 bg-accent-color text-white text-xl rounded-[4px]">
         {loading ? <Spinner /> : "Войти"}
       </Button>
     </form>

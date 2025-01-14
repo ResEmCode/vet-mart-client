@@ -15,23 +15,15 @@ export const ProductDetails = () => {
 
   return (
     <div className="max-w-[800px]">
-      <div className="flex justify-start gap-7 border-b border-gray-300 mt-[200px] mb-[70px]">
+      <div className="flex justify-start gap-7 border-b border-gray-300 mb-[30px]">
         {navButtons.map((button) => (
-          <Button
-            key={button.id}
-            onClick={() => setActiveTab(button.id)}
-            className={`px-6 py-2 text-lg font-medium rounded-full transition-all w-[200px] h-[45px] ${
-              activeTab === button.id
-                ? "bg-[#FF87321A] text-[#FF8732] border border-orange-500"
-                : "bg-transparent text-gray-600 border border-gray-300 hover:bg-gray-100 hover:text-[#FF8732]"
-            }`}
-          >
+          <Button key={button.id} onClick={() => setActiveTab(button.id)} variant={activeTab === button.id ? "active" : "primary"} className="max-w-[120px] w-full">
             {button.label}
           </Button>
         ))}
       </div>
 
-      <div className="mb-[100px] text-[#7C7C7C]">
+      <div className="mb-[100px] text-gray-400">
         {activeTab === "description" && (
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the

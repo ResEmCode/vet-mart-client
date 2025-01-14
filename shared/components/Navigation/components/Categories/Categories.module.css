@@ -9,7 +9,7 @@
 }
 
 .img {
-  @apply w-[48px] h-[48px] rounded-full;
+  @apply rounded-full;
 }
 .title {
   @apply mb-[4px];

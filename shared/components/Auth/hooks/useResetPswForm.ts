@@ -7,7 +7,7 @@ import * as z from "zod";
 import toast from "react-hot-toast";
 import { useAuthModal } from "../../Navigation/store";
 import { useActiveForm } from "../store";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 interface EmailSchemaTypes {
   email: string;
@@ -18,12 +18,14 @@ export const useResetPswForm = () => {
     resolver: zodResolver(z.object({ email: z.string().email() })),
     mode: "onBlur",
   });
+  const [isLoading, setIsLoading] = useState(false);
   const ResponseError = useRef<string | null>(null);
   const setIsAuthOpen = useAuthModal((state) => state.setIsAuthOpen);
   const setActiveForm = useActiveForm((state) => state.setActiveForm);
 
   const onSubmit = resetPswForm.handleSubmit(async (values: EmailSchemaTypes) => {
     try {
+      setIsLoading(true);
       ResponseError.current = null;
       const { success, error } = await resetPassword(values.email);
 
@@ -34,7 +36,8 @@ export const useResetPswForm = () => {
         setIsAuthOpen(false);
         setActiveForm("login");
       }
-      ResponseError.current = error as string;
+      ResponseError.current = String(error);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -47,5 +50,6 @@ export const useResetPswForm = () => {
     functions: { onSubmit },
     errors: resetPswForm.formState.errors,
     responseError: ResponseError.current,
+    loading: isLoading,
   };
 };

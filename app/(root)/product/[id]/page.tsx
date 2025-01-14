@@ -1,4 +1,4 @@
-import { ProductBuyMenu, ProductSlider } from "@/shared/components";
+import { ProductBuyMenu, ProductDetails, ProductSlider } from "@/shared/components";
 import { Container, Typography } from "@/shared/ui/custom";
 
 import styles from "./page.module.css";
@@ -33,7 +33,7 @@ const ProductPage = () => {
             <ProductBuyMenu />
           </div>
           <div className={styles.info}>
-            <div>Компонент амеги</div>
+            <ProductDetails />
             <div className="flex flex-col gap-4 max-w-[310px] w-full">
               <Typography variant="title24_bold" tag="h2">
                 Характеристики

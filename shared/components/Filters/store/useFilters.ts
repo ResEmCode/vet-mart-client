@@ -5,12 +5,12 @@ import { create } from "zustand";
 
 export type FilterTypes = {
   type: "cats" | "dogs" | "birds" | "rodents";
-  weight: string[];
-  brand: string[];
-  feedType: string[];
-  purpose: string[];
-  age: string[];
-  ingredients: string[];
+  weight: string[] | string;
+  brand: string[] | string;
+  feedType: string[] | string;
+  purpose: string[] | string;
+  age: string[] | string;
+  ingredients: string[] | string;
 };
 
 type StateValue = { filter: keyof Omit<FilterTypes, "type">; value: string };
@@ -46,8 +46,10 @@ const checkValue = (filters: Partial<FilterTypes>, payload: StateValue) => {
   const { value, filter } = payload;
 
   if (filters[filter]?.includes(value)) {
-    const newValue = filters[filter]?.filter((item) => item !== value);
-    return newValue;
+    if (Array.isArray(filters[filter])) {
+      const newValue = filters[filter]?.filter((item) => item !== value);
+      return newValue;
+    }
   } else {
     const newValue = [...(filters[filter] ?? []), value];
     return newValue;

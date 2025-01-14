@@ -1,4 +1,10 @@
-export const DataFilters = [
+interface DataFiltersTypes {
+  title: string;
+  filter: "weight" | "brand" | "feedType" | "purpose" | "age" | "ingredients";
+  checkboxes: string[];
+}
+
+export const DataFilters: DataFiltersTypes[] = [
   {
     title: "Вага упаковки",
     filter: "weight",

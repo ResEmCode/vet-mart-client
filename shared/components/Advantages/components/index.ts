@@ -1,1 +1,1 @@
-export { CardAdvantages } from "./CardAdvantages/Card.Advantages";
+export { CardAdvantages } from "./CardAdvantages/CardAdvantages";

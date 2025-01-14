@@ -24,7 +24,7 @@ export const ProductCard = ({ title, weight, price, oldPrice }: ProductCardProps
         </div>
         <Button variant="default">Смотреть товарі</Button>
       </div>
-      <img src="/image.png" alt="food" className="w-48 h-48" />
+      <img src="/images/products/image.png" alt="food" className="w-48 h-48" />
     </div>
   );
 };
