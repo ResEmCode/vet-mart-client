@@ -30,7 +30,7 @@ const ProductPage = () => {
         <div>
           <div className={styles.row}>
             <ProductSlider />
-            <ProductBuyMenu />
+            <ProductBuyMenu title={"Сухий корм для котів happy pet"} />
           </div>
           <div className={styles.info}>
             <ProductDetails />

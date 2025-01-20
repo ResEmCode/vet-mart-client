@@ -21,3 +21,4 @@ export const InputLabel = ({ text, error, ...props }: Props) => {
     </label>
   );
 };
+
