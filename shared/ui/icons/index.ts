@@ -5,3 +5,4 @@ export * from "./SearchSvg";
 export * from "./ClearSvg";
 export * from "./PlaceSvg";
 export * from "./GoogleSvg";
+export * from "./CompleteSvg";

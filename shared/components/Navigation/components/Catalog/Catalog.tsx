@@ -25,8 +25,8 @@ export const Catalog = () => {
         <LikeSvg className={styles.icon} />
       </Link>
       {session.data ? (
-        <Link href={`/profile/${session.data.user.id}`} className="rounded-full">
-          <img src={session.data.user.image ?? "/images/user/image.png"} alt="profile" className="rounded-full w-[46px] h-[46px] object-cover" />
+        <Link href={`/profile/personal-data`} className="rounded-full">
+          <img src={"/images/user/image.png"} alt="profile" className="rounded-full w-[46px] h-[46px] object-cover" />
         </Link>
       ) : (
         <button className={styles.button} onClick={onClickAuth}>
