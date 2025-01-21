@@ -3,7 +3,6 @@
 import React from "react";
 import { Minus, Plus, X } from "lucide-react";
 
-
 import styles from "./CartCard.module.css";
 import { Typography } from "../../../ui/custom/Typography/Typography";
 import { cn } from "@/shared/lib/utils";

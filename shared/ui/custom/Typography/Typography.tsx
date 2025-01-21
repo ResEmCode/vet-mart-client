@@ -19,7 +19,7 @@ type TypographyVariant =
   | "paragraph14_medium"
   | "paragraph12_regular";
 
-type TypographyVariantColor = "default" | "accent" | "primary" | "subtitle";
+type TypographyVariantColor = "default" | "accent" | "primary" | "subtitle" | "complete";
 
 interface TypographyProps {
   tag: Tag;

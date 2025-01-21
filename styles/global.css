@@ -103,7 +103,7 @@ footer {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground bg-[#eef1f8];
+    @apply bg-background text-foreground bg-[#F8F9FD];
   }
 }
 

@@ -1,3 +1,3 @@
-export * from "./registerUser"
-export * from "./resetPassword"
-export * from "./newPassword"
+export * from "./registerUser";
+export * from "./resetPassword";
+export * from "./newPassword";

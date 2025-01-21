@@ -3,3 +3,15 @@
   @apply w-full h-[48px] text-[16px];
   @apply placeholder:text-[16px] placeholder:text-[#D3D3D3] placeholder:leading-[29.05px];
 }
+
+.default {
+}
+
+.outline {
+}
+
+.none {
+  border: 1px solid transparent;
+  box-shadow: none;
+  padding: 12px 20px;
+}
