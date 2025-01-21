@@ -6,3 +6,4 @@ export * from "./Container/Container";
 export * from "./CheckboxGroup/CheckboxGroup";
 export * from "./Typography/Typography";
 export * from "./CounterMenu/CounterMenu";
+export * from "./Badge/Badge";

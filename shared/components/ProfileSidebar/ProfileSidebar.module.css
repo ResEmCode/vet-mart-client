@@ -1,0 +1,14 @@
+.inner {
+  @apply max-w-[250px] w-full bg-white h-max mt-16;
+}
+
+.link {
+  @apply py-2 px-4 w-full text-start flex gap-1;
+  @apply hover:bg-gray-200;
+}
+
+.active {
+  @apply bg-accent-color text-white;
+  @apply hover:bg-accent-color;
+}
+

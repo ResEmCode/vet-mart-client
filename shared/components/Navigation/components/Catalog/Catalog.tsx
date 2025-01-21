@@ -21,7 +21,7 @@ export const Catalog = () => {
       <button className={styles.button} onClick={() => setIsDrawerOpen(true)}>
         <CartSvg className={styles.icon} />
       </button>
-      <Link href="/favorites" className={styles.button}>
+      <Link href="/profile/favorite" className={styles.button}>
         <LikeSvg className={styles.icon} />
       </Link>
       {session.data ? (
