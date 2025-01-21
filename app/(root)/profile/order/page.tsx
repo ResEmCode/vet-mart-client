@@ -10,8 +10,8 @@ const OrderPage = () => {
         Мои заказы
       </Typography>
       <div className="flex flex-col gap-5 mb-[40px]">
-        <ProfileOrder order="Заказ No1" data="12.12.2022" status={true}/>
-        <ProfileOrder order="Заказ No2" data="13.12.2022" status={false}/>
+        <ProfileOrder order="Заказ No1" data="12.12.2022" status />
+        <ProfileOrder order="Заказ No2" data="13.12.2022" status={false} />
         {/* <ProfileOrder order="Заказ No2" data="09.05.2024" status="Выполнен" /> */}
       </div>
     </>
