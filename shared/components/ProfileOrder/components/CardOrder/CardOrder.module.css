@@ -1,66 +1,9 @@
-.card {
-  @apply p-[20px] max-h-[150px] h-full;
-  @apply rounded-[12px] border border-solid border-gray-300;
-  @apply flex justify-between items-start;
-}
-
-.btn_close {
-  @apply p-[8px];
-  @apply rounded-[8px] border border-solid border-gray-300;
-  transition: background 0.1s ease;
-}
-
-.icon_close {
-  @apply text-gray-400;
-  transition: color 0.1s ease;
-}
-
-.btn_close:hover {
-  @apply bg-gray-200;
-}
-
-.btn_close:hover > .icon_close {
-  @apply text-gray-500;
-}
-
-.button_count {
-  @apply flex items-center justify-between;
-  @apply rounded-[8px] max-w-[110px] w-full;
-  @apply border-gray-300 border-solid border;
-}
-
-.button {
-  @apply py-[4px] px-[8px] bg-gray-200;
-}
-.right_btn {
-  border-top-right-radius: inherit;
-  border-bottom-right-radius: inherit;
-}
-.left_btn {
-  border-top-left-radius: inherit;
-  border-bottom-left-radius: inherit;
-}
-.icon {
-  @apply text-gray-500 font-bold;
-}
-
-.button:hover {
-  @apply bg-accent-color;
-}
-
-.button:hover .icon {
-  @apply text-white;
-}
-
-.button:disabled {
-  @apply bg-gray-100;
-  @apply cursor-not-allowed;
-}
-
-.button:disabled .icon {
-  @apply text-gray-300;
-}
-
-.count {
-  @apply w-full h-full flex justify-center items-center bg-white;
+.card{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgb(234, 231, 231);
+  border-radius: 4px;
+  background-color: white;
 }

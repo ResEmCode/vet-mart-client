@@ -5,7 +5,7 @@ import { Container } from "@/shared/ui/custom";
 
 const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Container className="flex gap-[100px]">
+    <Container className="flex gap-[30px]">
       <ProfileSidebar />
 
       <main>{children}</main>

@@ -3,7 +3,6 @@
 import React from "react";
 
 import styles from "./CardOrder.module.css";
-import { useCount } from "@/shared/components/Cart/hooks";
 import { Typography } from "@/shared/ui/custom";
 import { cn } from "@/shared/lib/utils";
 
@@ -12,28 +11,28 @@ interface DrawerCardProps {
   weight: string;
   price: string;
   oldPrice: string;
+  count: number;
 }
 
-export const CardOrder = ({ title, weight, price, oldPrice }: DrawerCardProps) => {
-  const { count } = useCount();
-
+export const CardOrder = ({ title, weight, price, oldPrice, count = 1 }: DrawerCardProps) => {
   return (
     <div className={styles.card}>
       <img src="/images/products/image.png" alt="images" className="max-w-[100px] w-full" />
-      <div>
+      <div className="max-w-[160px] w-full">
         <div className="mb-[20px]">
           <Typography tag="h2" variant="title16_semibold" className="mb[12px]">
             {title}
           </Typography>
-          <Typography tag="h2" color="primary" variant="paragraph12_regular">
+          <Typography tag="h2" color="subtitle" variant="paragraph12_regular">
             Вага: {weight}
           </Typography>
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col">
+        <div className="flex items-center justify-between gap-8">
+          <div className="flex flex-col justify-between">
             <span className="font-semibold">{Number(price) * count}₴</span>
             <span className="font-semibold text-accent-color line-through">{Number(oldPrice) * count}₴</span>
           </div>
+          <div>1шт.</div>
         </div>
       </div>
     </div>

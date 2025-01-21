@@ -1,0 +1,20 @@
+.badge {
+  border-radius: 40px;
+  padding: 6px 20px;
+  max-width: max-content;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.default {
+}
+.success {
+  background-color: var(--complete-color);
+  color: white;
+}
+.error {
+    background-color: rgb(220, 8, 8);
+    color: white;
+}

@@ -17,7 +17,9 @@ type TypographyVariant =
   | "paragraph20_regular"
   | "paragraph14_regular"
   | "paragraph14_medium"
-  | "paragraph12_regular";
+  | "paragraph12_regular"
+  | "paragraph16_medium";
+
 
 type TypographyVariantColor = "default" | "accent" | "primary" | "subtitle" | "complete";
 

@@ -51,6 +51,10 @@
   font-size: 20px;
   font-weight: 400;
 }
+.paragraph16_medium{
+  font-size: 16px;
+  font-weight: 500;
+}
 
 /* -------------Colors--------------- */
 .default {

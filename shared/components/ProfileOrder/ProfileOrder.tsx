@@ -1,34 +1,46 @@
-import { Typography } from "@/shared/ui/custom";
+import { Badge, Typography, VariantsBadge } from "@/shared/ui/custom";
 import { CompleteSvg } from "@/shared/ui/icons";
 import React from "react";
 import { CardOrder } from "./components/CardOrder/CardOrder";
+import { CheckCheck, CircleX } from "lucide-react";
 
 interface ProfileOrderProps {
   order: string;
   data: string;
-  status: string;
+  status: boolean;
 }
 
 export const ProfileOrder = ({ order, data, status }: ProfileOrderProps) => {
   return (
-    <div className="flex justify-between items-center bg-white px-6 py-4">
-      <div className="flex gap-5">
-        <Typography variant="paragraph12_regular" tag="p">
-          {order}
-        </Typography>
-        <Typography variant="paragraph12_regular" tag="p">
-          {data}
-        </Typography>
+    <div className="bg-white rounded-[4px] py-4 px-4 flex gap-2" >
+      <div className="max-w-[240px] w-full">
+        <div className="flex items-center gap-1 mb-[12px]">
+          <Typography variant="title16_bold" tag="p" className="mb-[4px]">
+            {order}
+          </Typography>
+          <Typography variant="paragraph14_medium" tag="p" color="subtitle">
+            {data}
+          </Typography>
+        </div>
+
+        {status ? <Badge variant="success" text="Выполнен" icon={<CheckCheck />} /> : <Badge variant="error" text="Отменён" icon={<CircleX />} />}
       </div>
-      <div className="max-w-[600px] w-full">
+
+      <ul className="flex gap-4 flex-wrap">
+        <CardOrder title="Картошка" weight="1кг" price="500" oldPrice="700" count={1} />
+        <CardOrder title="Картошка" weight="1кг" price="200" oldPrice="700" count={3} />
+        <CardOrder title="Картошка" weight="1кг" price="200" oldPrice="700" count={3} />
+        <CardOrder title="Картошка" weight="1кг" price="200" oldPrice="700" count={3} />
+      </ul>
+      {/* <CardOrder title="Картошка" weight="1кг" price="5" oldPrice="7" /> */}
+      {/* <div className="max-w-[600px] w-full">
         <CardOrder title="Картошка" weight="1кг" price="5" oldPrice="7" />
-      </div>
-      <div className="flex items-center gap-3">
-        <CompleteSvg />
-        <Typography variant="paragraph12_regular" tag="p" color="complete">
+      </div> */}
+
+      {/* <CompleteSvg /> */}
+      {/* <Typography variant="paragraph12_regular" tag="p" color="complete">
           {status}
-        </Typography>
-      </div>
+        </Typography> */}
     </div>
   );
 };

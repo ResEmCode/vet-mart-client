@@ -18,7 +18,7 @@ const PersonalPage = () => {
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <div className="bg-white px-6 py-4 flex flex-col gap-4">
           <div className="flex items-end justify-between">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 max-w-[380px] w-full">
               <InputLabel variant={open ? "none" : "default"} text="ФИО" disabled={open} {...form.register("fullName")} />
               <InputLabel
                 variant={open ? "none" : "default"}
