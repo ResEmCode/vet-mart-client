@@ -23,3 +23,4 @@ export const InputLabel = ({ text, error, variant = "default", ...props }: Props
     </label>
   );
 };
+
