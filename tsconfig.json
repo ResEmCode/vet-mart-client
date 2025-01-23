@@ -22,6 +22,15 @@
     },
     "target": "ES2017"
   },
-  "include": ["prisma/**/*.ts", "src/**/*.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "@types/*.d.ts"],
+  "include": [
+    "prisma/**/*.ts",
+    "src/**/*.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "@types/*.d.ts",
+    "shared/components/CartOrderCard"
+  ],
   "exclude": ["node_modules"]
 }
