@@ -1,11 +1,10 @@
 import React from "react";
 
 import { Container, Typography } from "@/shared/ui/custom";
+
 export default function page() {
   return (
     <Container>
-
-
       <div className="flex flex-col gap-4 pb-[100px]">
         <div className="flex gap-8">
           <video controls src="/video.mp4" className="w-full max-w-[600px]">

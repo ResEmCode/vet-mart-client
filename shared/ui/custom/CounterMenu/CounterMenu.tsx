@@ -12,8 +12,6 @@ interface CounterMenuProps {
 }
 
 export const CounterMenu = ({ maxCount, minCount, increment, decrement, count }: CounterMenuProps) => {
-
-
   return (
     <div className={styles.button_count}>
       <button className={cn(styles.button, styles.left_btn)} onClick={decrement} disabled={count <= minCount}>
