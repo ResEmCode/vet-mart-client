@@ -1,7 +1,7 @@
 import React from "react";
 
-import CartOrderCounter from "@/shared/components/CartOrder/components/CartOrderCounter/CartOrderCounter";
 import { Container } from "@/shared/ui/custom";
+import { CartOrderCounter } from "@/shared/components/CartOrder";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (

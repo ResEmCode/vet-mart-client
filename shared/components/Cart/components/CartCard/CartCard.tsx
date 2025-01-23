@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { Minus, Plus, X } from "lucide-react";
+import React from "react";
+import { X } from "lucide-react";
 
 import styles from "./CartCard.module.css";
-import { Typography } from "../../../ui/custom/Typography/Typography";
-import { cn } from "@/shared/lib/utils";
-import { useCartCount } from "../hooks";
+
 import { useCart } from "@/shared/store";
-import { CounterMenu } from "@/shared/ui/custom";
+import { CounterMenu, Typography } from "@/shared/ui/custom";
+import { useCartCount } from "../../hooks";
 
 interface DrawerCardProps {
   title: string;

@@ -6,7 +6,7 @@ import { Button, Checkbox } from "@/shared/ui/shadcn";
 import React from "react";
 import { usePriceCounter } from "../../hooks/usePriceCounter";
 
-export default function CartOrderCounter() {
+export const CartOrderCounter = () => {
   const { price, discount, totalPrice } = usePriceCounter();
 
   return (
@@ -53,4 +53,4 @@ export default function CartOrderCounter() {
       </div>
     </div>
   );
-}
+};
