@@ -23,7 +23,8 @@ model User {
   verified DateTime?
   verificationCode VerificationCode?
 
-  cart Cart?
+  cart Cart[]
+  favorites Favorite[]
 
 
   createdAt DateTime @default(now())
@@ -135,6 +136,12 @@ model CartItem {
   updatedAt DateTime @updatedAt
 }
 
+model Favorite{
+    id Int @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?  @unique   
+}
 
 model VerificationCode {
 id Int @id @default(autoincrement())
