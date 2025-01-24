@@ -10,7 +10,7 @@ interface ProductsMenuProps {
 
 export const ProductsMenu = ({ title, onClick }: ProductsMenuProps) => {
   return (
-    <ul className="flex items-center gap-4">
+    <ul className="flex items-center gap-4 flex-wrap">
       {productsData.map((item, index) => (
         <li key={item.title}>
           <Button

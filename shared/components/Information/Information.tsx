@@ -12,7 +12,7 @@ export const Information = () => {
       <div className={styles.slider_block}>
         <InformationSlider />
       </div>
-      <div className="flex flex-col gap-[20px]">
+      <div className={styles.items}>
         <div className={styles.item}>Курьер по области</div>
         <div className={styles.item}>Консультация по ветпрепоратам</div>
       </div>

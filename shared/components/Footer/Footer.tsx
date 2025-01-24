@@ -2,10 +2,12 @@ import { Container } from "@/shared/ui/custom/Container/Container";
 import Link from "next/link";
 import { FOOTER_MENU } from "./Footer.data";
 import { PlaceSvg } from "@/shared/ui/icons";
+import styles from "./Footer.module.css";
+
 
 export const Footer = () => {
   return (
-    <footer className="bg-accent-color py-4">
+    <footer className={styles.footer}>
       <Container variant="short">
         <div className="flex flex-col lg:flex-row justify-around items-start lg:items-center space-y-4 lg:space-y-0 lg:space-x-4">
           <div className="flex flex-col items-start space-y-2">

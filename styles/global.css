@@ -10,7 +10,9 @@
     scroll-behavior: auto;
   }
 }
-
+body {
+  overflow-x: hidden;
+}
 html {
   scroll-behavior: smooth;
   height: 100%;

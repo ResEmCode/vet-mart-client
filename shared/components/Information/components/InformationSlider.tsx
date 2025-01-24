@@ -20,8 +20,8 @@ export const InformationSlider = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious variant={"primary"} className="p-0" />
-      <CarouselNext variant={"primary"} className="p-0" />
+      <CarouselPrevious variant={"primary"} className="p-0 max-xl:left-2" />
+      <CarouselNext variant={"primary"} className="p-0 max-xl:right-2" />
     </Carousel>
   );
 };

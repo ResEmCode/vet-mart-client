@@ -9,6 +9,7 @@ import { Container } from "../../ui/custom/Container/Container";
 
 import { useActiveForm } from "../Auth/store";
 import { useAuthModal } from "./store";
+import { BurgerMenu } from "./components/BurgerMenu/BurgerMenu";
 
 export const Navigation: React.FC = () => {
   const searchParams = useSearchParams();
@@ -30,12 +31,15 @@ export const Navigation: React.FC = () => {
   useEffect(() => {}, []);
 
   return (
-    <Container className="mb-[40px]">
-      <div className="my-4 flex flex-col items-start gap-6">
-        <Header />
-        <MenuBar />
-        <Categories />
-      </div>
-    </Container>
+    <>
+      <Container className="mb-[40px]">
+        <div className="my-4 flex flex-col items-start gap-6">
+          <Header />
+          <MenuBar />
+          <Categories />
+        </div>
+      </Container>
+      <BurgerMenu />
+    </>
   );
 };

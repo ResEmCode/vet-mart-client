@@ -13,10 +13,10 @@ export const MenuBar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex justify-between items-center w-full">
-      <ul className="flex items-center gap-2">
+    <nav className="flex justify-between items-center w-full gap-4">
+      <ul className={styles.items}>
         {MENU_DATA.map((link) => (
-          <li key={link.id}>
+          <li key={link.id} className={styles.item}>
             <Link href={link.href} className={cn(styles.link, { [styles.active]: link.href === pathname })}>
               {link.name}
             </Link>
@@ -24,14 +24,15 @@ export const MenuBar = () => {
         ))}
       </ul>
 
-      <div className="flex items-end ml-auto flex-col">
-        <Link href="tel:+38099967-87-57" className="text-[18px] font-semibold">
+      <div className={styles.info} >
+        <Link href="tel:+38099967-87-57" className={styles.phone}>
           + 38 (099) 967-87-57
         </Link>
-        <Link href="mailto:vetmart@ukr.net" className="text-accent-color hover:underline">
+        <Link href="mailto:vetmart@ukr.net" className={styles.email}>
           vetmart@ukr.net
         </Link>
       </div>
     </nav>
   );
 };
+

@@ -1,3 +1,7 @@
+.catalog {
+  @apply flex gap-2 max-w-[160px] w-full;
+}
+
 .button {
   @apply flex items-center w-[46px] h-[46px] bg-white rounded-full justify-around cursor-pointer;
   @apply duration-75;
@@ -13,4 +17,50 @@
 .button:hover > .icon > g {
   stroke: white;
   fill: white;
+}
+
+.burger {
+  width: 42px;
+  height: 38px;
+  border-radius: 4px;
+
+  position: relative;
+
+  display: none;
+}
+.burger:hover {
+  background-color: #e5e7eb;
+}
+
+.line {
+  background-color: #ff8732;
+  height: 3px;
+  position: absolute;
+  left: 6px;
+  right: 6px;
+}
+
+.line:nth-child(1) {
+  top: 6px;
+}
+.line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.line:nth-child(3) {
+  bottom: 6px;
+}
+
+@media screen and (max-width: 768px) {
+  .catalog {
+    max-width: 42px;
+  }
+  .button {
+    display: none;
+  }
+
+  .burger {
+    display: inline-block;
+  }
 }

@@ -7,3 +7,42 @@
   @apply bg-white;
   @apply h-full;
 }
+
+.info {
+  @apply h-[60px] text-center flex flex-col gap-1;
+}
+
+@media screen and (max-width: 1180px) {
+  .item {
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: start;
+    gap: 20px;
+  }
+  .info {
+    text-align: start;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .item {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .info {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .item {
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: start;
+    gap: 20px;
+  }
+  .info {
+    text-align: start;
+  }
+}

@@ -14,3 +14,11 @@
   width: 20px;
   height: 20px;
 }
+
+
+@media screen and (max-width: 640px) {
+  .input {
+    display: none;
+  }
+}
+

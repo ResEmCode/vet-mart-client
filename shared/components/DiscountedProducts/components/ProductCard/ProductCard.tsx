@@ -1,5 +1,6 @@
 import { Typography } from "@/shared/ui/custom/Typography/Typography";
 import { Button } from "@/shared/ui/shadcn";
+import styles from "./ProductCard.module.css";
 
 interface ProductCardProps {
   title: string;
@@ -10,7 +11,7 @@ interface ProductCardProps {
 
 export const ProductCard = ({ title, weight, price, oldPrice }: ProductCardProps) => {
   return (
-    <div className="flex gap-2 max-w-[440px] bg-white p-4 rounded-sm">
+    <div className={styles.product}>
       <div>
         <Typography tag="h2" variant="title24_semibold">
           {title}
@@ -24,7 +25,7 @@ export const ProductCard = ({ title, weight, price, oldPrice }: ProductCardProps
         </div>
         <Button variant="default">Смотреть товарі</Button>
       </div>
-      <img src="/images/products/image.png" alt="food" className="w-48 h-48" />
+      <img src="/images/products/image.png" alt="food" className="max-w-48 max-h-48" />
     </div>
   );
 };

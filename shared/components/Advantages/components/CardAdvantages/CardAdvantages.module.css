@@ -1,8 +1,37 @@
 .card {
-  @apply rounded-sm shadow-md bg-white flex flex-col justify-center items-center max-w-[330px] w-full p-[50px] h-[240px];
+  @apply flex flex-col justify-center items-center gap-2;
+  @apply max-w-[330px] w-full p-[50px] h-[240px];
+  @apply rounded-sm shadow-md bg-white text-center;
   overflow: hidden;
 }
 
 .title {
-  @apply font-bold text-center mt-4;
+  @apply font-bold;
+}
+
+@media screen and (max-width: 1180px) {
+  .card {
+    max-width: 100%;
+    flex-direction: row;
+    text-align: start;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .card {
+    flex-direction: row;
+    text-align: start;
+    justify-content: flex-start;
+  }
 }
