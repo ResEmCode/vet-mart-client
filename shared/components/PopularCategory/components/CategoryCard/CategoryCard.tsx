@@ -12,7 +12,7 @@ export const CategoryCard = ({ title, text, url }: CategoryCardProps) => {
   return (
     <li className={styles.item}>
       <img src={url} alt="icon" className="w-20 h-20 rounded-full object-cover mb-2" />
-      <div className="h-[60px] text-center flex flex-col gap-1">
+      <div className={styles.info}>
         <Typography variant="title18_semibold" tag="h3">
           {title}
         </Typography>

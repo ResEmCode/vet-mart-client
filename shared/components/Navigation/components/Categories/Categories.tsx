@@ -24,7 +24,7 @@ export const Categories: React.FC = () => {
   }, [queryType]);
 
   return (
-    <ul className="flex items-center justify-between w-full">
+    <ul className={styles.categories}>
       {CATEGORIES_MENU.map((category) => (
         <li key={category.id} className={styles.item}>
           <Link href={queryStaking([ROUTES.CATEGORY], { type: category.query })} className={cn(styles.link, { [styles.active]: category.query === queryType })}>

@@ -1,0 +1,10 @@
+.footer {
+  display: inline-block;
+  @apply bg-accent-color py-4;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding-bottom: 120px;
+  }
+}

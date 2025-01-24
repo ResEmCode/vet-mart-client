@@ -1,0 +1,9 @@
+.product {
+  @apply flex gap-2 max-w-[440px] bg-white p-4 rounded-sm;
+}
+@media screen and (max-width: 1220px) {
+  .product {
+    max-width: 100%;
+    justify-content: center;
+  }
+}
