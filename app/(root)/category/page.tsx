@@ -3,11 +3,13 @@ import React from "react";
 import { Filters, ProductCardList } from "@/shared/components";
 import { Container } from "@/shared/ui/custom";
 
+import styles from "./page.module.css";
+
 const CategoryPage = () => {
   return (
     <Container className="mb-[60px] mt-[40px]">
       <div className="flex gap-[40px] justify-between">
-        <div className="w-[250px]">
+        <div className={styles.filters}>
           <Filters />
         </div>
 
