@@ -13,7 +13,7 @@ export const Cart = () => {
   const { isDarwerOpen, setIsDrawerOpen } = useCartDrawer();
   const cart = useCart((state) => state.cart);
   return (
-    <Drawer isOpen={isDarwerOpen} closeDrawer={() => setIsDrawerOpen(false)} title="Корзина">
+    <Drawer isOpen={isDarwerOpen} closeDrawer={() => setIsDrawerOpen(false)} title="Корзина" direction="right">
       {cart.length > 0 ? (
         <div className="h-[90vh] flex flex-col justify-between">
           {/* {cart.length === 0 && <span className="text-center text-xl mt-20">Корзина пустая</span>} */}

@@ -1,0 +1,22 @@
+.wrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.btn {
+  display: none;
+}
+
+@media screen and (max-width: 1260px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .btn {
+    margin-bottom: 20px;
+    display: block;
+  }
+}

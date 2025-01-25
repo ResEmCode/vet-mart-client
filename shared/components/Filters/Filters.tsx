@@ -42,7 +42,7 @@ export const Filters = () => {
   }, [filters]);
 
   return (
-    <div className="flex flex-col gap-6 bg-white p-[20px] rounded-[4px]">
+    <div className={styles.filters}>
       {DataFilters.map((group, index) => (
         <CheckboxGroup title={group.title} key={group.title} className={index < limit.current ? styles.active : styles.hidden}>
           {group.checkboxes.map((checkbox) => (
