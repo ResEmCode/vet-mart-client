@@ -5,6 +5,7 @@ import { Filters, ProductCardList } from "@/shared/components";
 import { cn } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui/custom";
 
+
 import { ProductType } from "./product.data";
 
 import styles from "./page.module.css";
@@ -51,7 +52,7 @@ const CategoryPage = async ({ searchParams }: CategoryPageProps) => {
       </ul> */}
       </ul>
       <div className="flex gap-[40px] justify-between">
-        <div className="w-[250px]">
+        <div className={styles.filters}>
           <Filters />
         </div>
 

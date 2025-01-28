@@ -1,7 +1,6 @@
 .button_count {
   @apply flex items-center justify-between;
   @apply rounded-[8px] max-w-[110px] w-full;
-  @apply border-gray-300 border-solid border;
 }
 
 .button {

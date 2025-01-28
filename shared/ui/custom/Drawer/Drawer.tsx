@@ -1,4 +1,3 @@
-
 import { X } from "lucide-react";
 import styles from "./Drawer.module.css";
 import { cn } from "@/shared/lib/utils";
@@ -12,11 +11,14 @@ interface DrawerProps {
   className?: string;
   classNameBody?: string;
   children: ReactNode;
+  direction: Direction;
 }
 
-export const Drawer = ({ closeDrawer, isOpen = false, title, className, classNameBody, children }: DrawerProps) => {
+type Direction = "right" | "left";
+
+export const Drawer = ({ closeDrawer, isOpen = false, title, className, classNameBody, children, direction = "right" }: DrawerProps) => {
   return (
-    <div className={cn(styles.window, className, { [styles.active]: isOpen })} onClick={closeDrawer}>
+    <div className={cn(styles.window, direction === "right" ? styles.right : styles.left, className, { [styles.active]: isOpen })} onClick={closeDrawer}>
       <div className={cn(styles.body, classNameBody)} onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-[20px]">
           <Typography variant="title36_semibold" tag="h2">
