@@ -8,7 +8,7 @@ import PersonalPage from "./personal-data/page";
 
 const ProfilePage = () => {
   return (
-    <Container className="flex gap-[100px]">
+    <Container>
       <PersonalPage />
     </Container>
   );

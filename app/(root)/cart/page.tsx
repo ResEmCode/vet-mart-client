@@ -2,10 +2,9 @@
 
 import React from "react";
 
+import { CartOrderCard, CartOrderEmpty } from "@/shared/components/CartOrder";
 import { useCart } from "@/shared/store";
 import { Container, Typography } from "@/shared/ui/custom";
-
-import { CartOrderCard, CartOrderEmpty } from "@/shared/components/CartOrder";
 
 const CartPage = () => {
   const cart = useCart((state) => state.cart);
