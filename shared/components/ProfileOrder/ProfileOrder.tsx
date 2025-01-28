@@ -3,6 +3,7 @@ import { CompleteSvg } from "@/shared/ui/icons";
 import React from "react";
 import { CardOrder } from "./components/CardOrder/CardOrder";
 import { CheckCheck, CircleX } from "lucide-react";
+import styles from "./ProfileOrder.module.css";
 
 interface ProfileOrderProps {
   order: string;
@@ -12,7 +13,7 @@ interface ProfileOrderProps {
 
 export const ProfileOrder = ({ order, data, status }: ProfileOrderProps) => {
   return (
-    <div className="bg-white rounded-[4px] py-4 px-4 flex gap-2" >
+    <div className={styles.data}>
       <div className="max-w-[240px] w-full">
         <div className="flex items-center gap-1 mb-[12px]">
           <Typography variant="title16_bold" tag="p" className="mb-[4px]">

@@ -14,5 +14,8 @@ export * from "./ProductCardList/ProductCardList";
 export * from "./ProductDetails/ProductDetails";
 export * from "./ProductSlider/ProductSlider";
 export * from "./Reviews/Reviews";
+export * from "./ProductCardList/components/ProductCard/ProductCard";
+export * from "./FavoriteEmpty/FavoriteEmpty";
 export * from "./ProductCardList/ProductCardList";
 export * from "./CharacteristicsProduct/CharacteristicsProduct";
+

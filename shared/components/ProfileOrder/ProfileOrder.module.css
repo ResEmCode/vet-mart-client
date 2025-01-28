@@ -1,0 +1,4 @@
+.data {
+  @apply flex flex-col gap-4 p-4 border border-gray-200 rounded-lg;
+  @apply bg-white shadow-md p-5;
+}
