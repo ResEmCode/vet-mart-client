@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 
-import { ProductCard } from "@/shared/components";
+import { ProductCard } from "@/shared/components/DiscountedProducts/components";
 import { useFavorites } from "@/shared/store";
 import { Typography } from "@/shared/ui/custom";
 

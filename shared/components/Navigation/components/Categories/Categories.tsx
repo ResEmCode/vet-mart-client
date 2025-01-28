@@ -14,7 +14,7 @@ import Image from "next/image";
 import { checkTypeQuery } from "@/shared/utils/helpers";
 
 export const Categories: React.FC = () => {
-  const queryType = useSearchParams().get("type");
+  const queryType = useSearchParams().get("animal");
   const setType = useFilters((state) => state.setType);
 
   useEffect(() => {
@@ -27,7 +27,10 @@ export const Categories: React.FC = () => {
     <ul className={styles.categories}>
       {CATEGORIES_MENU.map((category) => (
         <li key={category.id} className={styles.item}>
-          <Link href={queryStaking([ROUTES.CATEGORY], { type: category.query })} className={cn(styles.link, { [styles.active]: category.query === queryType })}>
+          <Link
+            href={queryStaking([ROUTES.CATEGORY], { animal: category.animal, type: category.type })}
+            className={cn(styles.link, { [styles.active]: category.animal === queryType })}
+          >
             <Image src="/images/products/image.png" width={48} height={48} alt="category" className={styles.img} />
             <div>
               <Typography tag="h2" variant="title18_semibold" className={styles.title}>

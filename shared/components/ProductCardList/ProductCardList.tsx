@@ -3,34 +3,40 @@
 import React, { useEffect, useState } from "react";
 
 import { Typography } from "../../ui/custom/Typography/Typography";
-import { ProductCard } from "@/shared/components";
 import { useFilters } from "../Filters/store";
 import qs from "qs";
-import { useSearchParams } from "next/navigation";
 import { getProducts } from "@/shared/api/requests";
 import { ResponseProductCard } from "@/@types";
-import { ProductCardSkeleton } from "./components";
+import { ProductCard, ProductCardSkeleton } from "./components";
 
-export const ProductCardList = () => {
+interface ProductCardListProps {
+  params: {
+    type: string;
+    animal: string;
+  };
+}
+
+export const ProductCardList = ({ params }: ProductCardListProps) => {
   const filters = useFilters((state) => state.filters);
   const setFilters = useFilters((state) => state.setFilters);
   const [products, setProducts] = useState<ResponseProductCard[]>([]);
-  const params = useSearchParams();
 
   useEffect(() => {
-    const queryString = params.toString();
+    if (params) {
+      const queryString = new URLSearchParams(params).toString();
 
-    (async () => {
-      const { data } = await getProducts({ params: { query: queryString } });
-      setProducts(data);
-    })();
+      (async () => {
+        const { data } = await getProducts({ params: { query: queryString } });
+        setProducts(data);
+      })();
+    }
   }, [filters, params]);
 
   useEffect(() => {
-    if (params.toString()) {
-      const queryString = decodeURIComponent(params.toString());
+    if (params) {
+      const queryString = new URLSearchParams(params).toString();
       const data = qs.parse(queryString, { comma: true });
-      console.log(data);
+
       setFilters(data);
     }
   }, []);
