@@ -15,7 +15,7 @@ export const BrendsSection = () => {
   return (
     <div className=" bg-white my-20">
       <Container>
-        <div className="flex items-center justify-between">
+        <div className={styles.cards}>
           {data.map((brend, index) => (
             <div className={styles.card} key={index}>
               <img src={brend} alt="brend" className="w-[150px] h-[52px]" />

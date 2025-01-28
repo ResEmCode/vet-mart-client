@@ -1,3 +1,20 @@
+
+.item {
+  @apply h-[42px] flex items-center justify-center;
+}
+
+.link {
+  @apply bg-white transition-colors duration-100;
+  @apply h-full;
+  @apply px-[32px] py-[12px] rounded-[48px];
+  @apply text-[15px]  text-black;
+  @apply hover:text-black hover:bg-gray-200;
+}
+
+.active {
+  @apply text-white bg-accent-color;
+  @apply hover:text-white hover:bg-accent-color;
+
 .filters {
   width: 250px;
 }

@@ -1,6 +1,7 @@
 export const ROUTES = {
   MAIN: "/",
   CATEGORY: "/category",
+  FAVORITES:"/profile/favorites"
 };
 
 type RouterStakingType = string[];

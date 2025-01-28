@@ -1,5 +1,15 @@
+.items {
+  @apply flex gap-2 flex-wrap;
+}
+
+.item {
+  @apply h-[42px] flex items-center justify-center;
+}
+
 .link {
-  @apply bg-white px-[32px] py-[12px] rounded-[48px] transition-colors duration-100;
+  @apply bg-white transition-colors duration-100;
+  @apply h-full;
+  @apply px-[32px] py-[12px] rounded-[48px];
   @apply text-[15px]  text-black;
   @apply hover:text-black hover:bg-gray-200;
 }
@@ -7,4 +17,27 @@
 .active {
   @apply text-white bg-accent-color;
   @apply hover:text-white hover:bg-accent-color;
+}
+
+.info {
+  @apply flex items-end ml-auto flex-col max-w-[200px] w-full;
+}
+.email {
+  @apply text-accent-color hover:underline;
+}
+
+.phone {
+  @apply text-[18px] font-semibold;
+}
+
+@media screen and (max-width: 768px) {
+  .info {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .items {
+    display: none;
+  }
 }

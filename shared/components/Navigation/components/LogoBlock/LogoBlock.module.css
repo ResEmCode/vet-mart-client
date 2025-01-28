@@ -1,0 +1,18 @@
+.logo {
+  @apply flex items-center gap-4 justify-between max-w-[400px] w-full;
+}
+.subtitle {
+  @apply max-w-[200px];
+}
+
+@media screen and (max-width: 1020px) {
+  .logo {
+    @apply flex flex-col gap-1 max-w-[210px];
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .subtitle {
+    display: none;
+  }
+}

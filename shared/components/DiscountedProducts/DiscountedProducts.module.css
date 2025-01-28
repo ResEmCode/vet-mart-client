@@ -1,0 +1,12 @@
+.buttons_row {
+  @apply flex items-center gap-16 mb-[20px];
+}
+
+@media screen and (max-width: 1080px) {
+  .buttons_row {
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+
+  }
+}

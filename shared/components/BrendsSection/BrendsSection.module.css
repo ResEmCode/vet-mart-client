@@ -1,5 +1,16 @@
+.cards{
+  @apply flex items-center justify-between
+}
+
 .card {
   @apply py-12 px-6 cursor-pointer;
   @apply border border-solid border-transparent;
   @apply hover:border-gray-300;
+}
+
+@media screen and (max-width: 1020px) {
+  .cards{
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 }

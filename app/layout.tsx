@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 
 import { Footer, Navigation } from "@/shared/components";
-import { AuthProvider } from "@/shared/providers";
+import { AdaptiveProvider, AuthProvider } from "@/shared/providers";
 
 import "../styles/global.css";
 
@@ -25,15 +25,17 @@ const RootLayout = ({
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Suspense fallback={null}>
-            <div className="wrapper">
-              <Navigation />
-              <main>{children}</main>
-              <Footer />
-            </div>
-          </Suspense>
-          <NextTopLoader />
-          <Toaster />
+          <AdaptiveProvider>
+            <Suspense fallback={null}>
+              <div className="wrapper">
+                <Navigation />
+                <main>{children}</main>
+                <Footer />
+              </div>
+            </Suspense>
+            <NextTopLoader />
+            <Toaster />
+          </AdaptiveProvider>
         </AuthProvider>
       </body>
     </html>

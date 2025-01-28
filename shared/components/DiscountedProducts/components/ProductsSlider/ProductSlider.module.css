@@ -1,0 +1,18 @@
+.slider {
+  flex-basis: 33.333333%;
+}
+.card {
+  @apply p-1;
+}
+
+@media screen and (max-width: 1220px) {
+  .slider {
+    flex-basis: 50%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .slider {
+    flex-basis: 100%;
+  }
+}

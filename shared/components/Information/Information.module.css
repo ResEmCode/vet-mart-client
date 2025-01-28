@@ -4,7 +4,7 @@
   max-height: 420px;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1.25fr 1fr;
   gap: 20px;
 }
 .slider {
@@ -14,7 +14,9 @@
 .img {
   object-fit: cover;
 }
-
+.items {
+  @apply flex flex-col gap-[20px];
+}
 .item {
   @apply flex items-center justify-center;
   @apply h-[200px] p-[20px];
@@ -23,5 +25,28 @@
 }
 
 .slider_block {
-  @apply w-full bg-white rounded-[24px];
+  @apply w-full bg-white rounded-[24px] min-w-full;
+}
+
+@media screen and (max-width: 930px) {
+  .inner {
+    max-height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .items {
+    flex-direction: row;
+  }
+
+  .item {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .items {
+    flex-direction: column;
+  }
 }

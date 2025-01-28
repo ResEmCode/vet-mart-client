@@ -1,0 +1,17 @@
+.cards {
+  @apply flex items-center justify-between gap-2;
+}
+
+@media screen and (max-width: 1180px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

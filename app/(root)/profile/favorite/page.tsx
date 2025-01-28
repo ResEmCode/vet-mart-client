@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 
+
 import { FavoriteEmpty, ProductCard } from "@/shared/components";
 import { useFavorites } from "@/shared/store";
 import { Typography } from "@/shared/ui/custom";
