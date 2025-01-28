@@ -7,14 +7,11 @@ import { cn } from "@/shared/lib/utils";
 
 import styles from "./ProductSlider.module.css";
 
-const ImageVariants = [
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_77gcC33wPYvj-PxrU3aPZkEYA8T9dbNCUg&s",
-  "https://www.smurfitkappa.com/-/m/images/spotlight-teaser-image-1250-x-914/pet-food-jpg.jpg?rev=ded9ab4508f948e9aaa04a4a6d12fad5",
-  "https://cs10.pikabu.ru/post_img/2019/12/28/7/1577531889179623112.jpg",
-  "https://memepedia.ru/wp-content/uploads/2023/01/kot-dingus-mem-360x270.jpg",
-];
+interface ProductSliderProps {
+  images: string[];
+}
 
-export const ProductSlider = () => {
+export const ProductSlider = ({ images }: ProductSliderProps) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   return (
@@ -27,16 +24,16 @@ export const ProductSlider = () => {
         className="w-full max-w-xs h-[365px] text-center"
       >
         <CarouselContent className="-mt-1 h-[360px]">
-          {ImageVariants.map((image) => (
+          {images?.map((image, index) => (
             <CarouselItem key={image} className="pt-1 md:basis-1/3">
               <div className="p-1">
                 <div>
                   <Button
                     variant={"outline"}
                     className={cn("border-[3px] border-transparent max-w-[120px] w-full h-full rounded-[4px] p-2", {
-                      [styles.active]: image === ImageVariants[activeIndex],
+                      [styles.active]: index === activeIndex,
                     })}
-                    onClick={() => setActiveIndex(ImageVariants.indexOf(image))}
+                    onClick={() => setActiveIndex(index)}
                   >
                     <img className="w-[100px] h-[100px] object-cover" src={image} alt="product" />
                   </Button>
@@ -49,7 +46,7 @@ export const ProductSlider = () => {
         <CarouselNext />
       </Carousel>
       <div>
-        <img className="w-[450px] h-[470px] object-cover" src={ImageVariants[activeIndex]} alt="" />
+        <img className="w-[450px] h-[470px] object-cover" src={images[activeIndex]} alt="" />
       </div>
     </>
   );

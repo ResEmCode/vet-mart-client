@@ -1,7 +1,8 @@
 interface CategoriesObjectType {
   id: number;
   name: string;
-  query: string;
+  type: string;
+  animal: string;
   description: string;
 }
 
@@ -9,25 +10,29 @@ export const CATEGORIES_MENU: CategoriesObjectType[] = [
   {
     id: 1,
     name: "Кошки",
-    query: "cats",
+    animal: "cats",
+    type: "all",
     description: "Корма, ветпрепараты, игрушки",
   },
   {
     id: 2,
     name: "Собаки",
-    query: "dogs",
+    animal: "dogs",
+    type: "all",
     description: "Корма, ветпрепараты, игрушки",
   },
   {
     id: 3,
     name: "Птицы",
-    query: "birds",
+    animal: "birds",
+    type: "all",
     description: "Корма, ветпрепараты, игрушки",
   },
   {
     id: 4,
     name: "Грызуны",
-    query: "rodents",
+    animal: "rodents",
+    type: "all",
     description: "Корма, ветпрепараты, игрушки",
   },
 ];

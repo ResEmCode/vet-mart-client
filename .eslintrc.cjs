@@ -20,6 +20,8 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    "no-restricted-globals": "off",
+    "react/destructuring-assignment":"off",
     "prettier/prettier": [
       "error",
       {
@@ -32,7 +34,7 @@ module.exports = {
         checksVoidReturn: false,
       },
     ],
-    "import/no-cycle":"off",
+    "import/no-cycle": "off",
     "@next/next/no-img-element": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-has-content": "off",

@@ -1,121 +1,133 @@
-import { categories, products, users } from "./constants";
-import { productsVariant } from "./constants/product-variant";
+import path from "path";
 import { prisma } from "./prisma-client";
-// import fs from "fs";
-// import csv from "csv-parser";
-// import path from "path";
-// import { productsVariant } from "./constants/product-variant";
-// import { filters } from "./constants/filters";
+import xlsx from "xlsx";
+import { $Enums } from "@prisma/client";
+
+type Product = {
+  Артикул: number;
+  Название_позиции: string;
+  Ключевые_слова: string;
+  Описание: string;
+  Цена: string;
+  Валюта: string;
+  Количество: number;
+  Единица_измерения: string;
+  Ссылка_изображения: string;
+  Наличие: string;
+  Страна_производитель: string;
+  Категория: string;
+  Производитель: string;
+  Тип_продукта: "игрушка" | "корм" | "ветпрепорат" | "разное";
+};
+
+const productTypeTranslate = {
+  игрушка: $Enums.productTypeList.toys,
+  корм: $Enums.productTypeList.food,
+  ветпрепорат: $Enums.productTypeList.veterinaryDrugs,
+  разное: $Enums.productTypeList.different,
+};
+
+async function importDataFromExcel(filePath: string) {
+  const workbook = xlsx.readFile(filePath);
+  const sheetName = workbook.SheetNames[0];
+  const sheet = workbook.Sheets[sheetName];
+  const data = xlsx.utils.sheet_to_json(sheet);
+
+  for (const row of data) {
+    const typedRow = row as Product;
+    // Заполняем таблицу Product
+
+    const existingProduct = await prisma.product.findFirst({
+      where: { name: typedRow.Название_позиции },
+    });
+
+    const currentCategory = await prisma.category.findFirst({
+      where: {
+        name: {
+          equals: typedRow.Категория,
+          mode: "insensitive",
+        },
+      },
+    });
+
+    if (!existingProduct && currentCategory) {
+      await prisma.product.create({
+        data: {
+          name: typedRow.Название_позиции,
+          keywords: typedRow.Ключевые_слова.split(", ").map((item) => item.trim()),
+          country: typedRow.Страна_производитель,
+          description: typedRow.Описание,
+          brand: typedRow.Производитель,
+          images: typedRow.Ссылка_изображения.split(", ").map((item) => item.trim()),
+          productType: productTypeTranslate[typedRow.Тип_продукта],
+          categoryId: currentCategory.id,
+        },
+      });
+    }
+
+    // Реализовываем таблицу ProductVariants
+
+    const product = await prisma.product.findFirst({
+      where: {
+        name: {
+          equals: typedRow.Название_позиции,
+          mode: "insensitive",
+        },
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (product) {
+      await prisma.productVariant.create({
+        data: {
+          productId: product.id,
+
+          article: typedRow.Артикул,
+          price: parseFloat(typedRow.Цена),
+          currency: typedRow.Валюта,
+          count: Number(typedRow.Количество),
+          unit: typedRow.Единица_измерения,
+          available: Boolean(typedRow.Наличие === "+"),
+        },
+      });
+    }
+  }
+}
 
 async function up() {
-  // Вставка категорий
-  await prisma.category.createMany({
-    data: categories,
+  await prisma.category.create({
+    data: {
+      name: "кошки",
+      subtitle: "Корма, ветпрепораты, игрушки",
+      imageUrl: "https://avatars.mds.yandex.net/i?id=700c22630d7ef9062c3b9c55a734313c3832b47b-5099351-images-thumbs&n=13",
+    },
   });
 
-  // Вставка продуктов
-  await prisma.product.createMany({
-    data: products,
-  });
+  const filePath = path.join(__dirname, "excel", "VetMarket.xlsx");
 
-  // Вставка вариантов продуктов
-  await prisma.productVariant.createMany({
-    data: productsVariant,
-  });
-
-  // Вставка пользователей
-  await prisma.user.createMany({
-    data: users,
-  });
-
-  // const records: any = [];
-  // const filePath = path.join(__dirname, "excel", "category.csv");
-
-  // // ---------------------Category
-
-  // fs.createReadStream(filePath)
-  //   .pipe(csv({ separator: ";" })) // Указываем разделитель
-  //   .on("data", (data) => records.push(data))
-  //   .on("end", async () => {
-  //     try {
-  //       await prisma.category.createMany({
-  //         data: records.map((record: any) => ({
-  //           name: record["name"],
-  //           subtitle: record["subtitle"],
-  //           imageUrl: record["imageUrl"],
-  //         })),
-  //       });
-  //       console.log("Данные успешно импортированы.");
-  //     } catch (error) {
-  //       console.error("Ошибка при импорте данных:", error);
-  //     }
-  //   });
-
-  // // -------------------------
-  // const records2: any = [];
-  // const filePath2 = path.join(__dirname, "excel", "products.csv");
-
-  // fs.createReadStream(filePath2)
-  //   .pipe(csv({ separator: ";" })) // Указываем разделитель
-  //   .on("data", (data) => {
-  //     // Проверка и парсинг данных
-  //     const article = parseInt(data["article"], 10);
-  //     const price = parseFloat(data["price"]);
-  //     const salePrice = data["salePrice"] === "-" ? null : parseFloat(data["salePrice"]);
-  //     const categoryId = parseInt(data["categoryId"], 10);
-
-  //     console.log({
-  //       article: article,
-  //       country: data["country"] || null, // Если значение отсутствует, установите null
-  //       name: data["name"],
-  //       imageUrl: data["imageUrl"],
-  //       price: price,
-  //       description: data["description"] || null, // Если значение отсутствует, установите null
-  //       isAvailable: data["isAvailable"] === "Да",
-  //       composition: data["composition"] || null, // Если значение отсутствует, установите null
-  //       sale: data["sale"] === "Да",
-  //       salePrice: salePrice || null, // Если значение отсутствует или указано '-', установите null
-  //       categoryId: categoryId,
-  //     });
-
-  //     if (!isNaN(article) && !isNaN(price) && !isNaN(categoryId)) {
-  //       records2.push({
-  //         article: article,
-  //         country: data["country"] || null, // Если значение отсутствует, установите null
-  //         name: data["name"],
-  //         imageUrl: data["imageUrl"],
-  //         price: price,
-  //         description: data["description"] || null, // Если значение отсутствует, установите null
-  //         isAvailable: data["isAvailable"] === "Да",
-  //         composition: data["composition"] || null, // Если значение отсутствует, установите null
-  //         sale: data["sale"] === "Да",
-  //         salePrice: salePrice || null, // Если значение отсутствует или указано '-', установите null
-  //         categoryId: categoryId,
-  //       });
-  //     }
-  //   })
-  //   .on("end", async () => {
-  //     try {
-  //       await prisma.product.createMany({
-  //         data: records2,
-  //       });
-  //       await prisma.productVariant.createMany({
-  //         data: productsVariant,
-  //       });
-  //       console.log("Данные успешно импортированы.");
-  //     } catch (error) {
-  //       console.error("Ошибка при импорте данных:", error);
-  //     } finally {
-  //       await prisma.$disconnect();
-  //     }
-  //   });
+  importDataFromExcel(filePath)
+    .then(() => {
+      console.log("Данные успешно импортированы");
+    })
+    .catch((error) => {
+      console.error("Ошибка при импорте данных:", error);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
 }
 
 async function down() {
-  await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
-  await prisma.$executeRaw`TRUNCATE TABLE "ProductVariant" RESTART IDENTITY CASCADE`;
+  // await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
+  // await prisma.$executeRaw`TRUNCATE TABLE "ProductVariant" RESTART IDENTITY CASCADE`;
+  // await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
+  // await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+  // await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
-  await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "ProductVariant" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {

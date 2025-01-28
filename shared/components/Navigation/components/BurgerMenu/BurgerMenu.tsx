@@ -1,10 +1,21 @@
-"use client"
+"use client";
 
 import { Heart, Home, Search, ShoppingCart, User } from "lucide-react";
 import styles from "./BurgerMenu.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const BurgerMenu = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; // или любой другой компонент-заглушка
+  }
+
   return (
     window.innerWidth <= 768 && (
       <ul className={styles.inner}>

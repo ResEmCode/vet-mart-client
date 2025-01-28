@@ -35,7 +35,7 @@ model Category {
   id       Int    @id @default(autoincrement())
   name     String @unique
   subtitle String
-  imageUrl String[]
+  imageUrl String
 
   products Product[]
 
@@ -43,30 +43,30 @@ model Category {
   updatedAt DateTime @updatedAt
 }
 
-model Product {
-  id Int @id @default(autoincrement())
+// model Product {
+//   id Int @id @default(autoincrement())
 
-  article     Int
-  country     String
-  name        String
-  imageUrl    String
-  price       Int
-  description String
-  isAvailable Boolean
-  composition String
-  sale        Boolean
-  salePrice   Int?
+//   article     Int
+//   country     String
+//   name        String
+//   imageUrl    String
+//   price       Int
+//   description String
+//   isAvailable Boolean
+//   composition String
+//   sale        Boolean
+//   salePrice   Int?
 
-  reviews   ProductReviews[]
-  cartItems CartItem[]
-  variants  ProductVariant[]
+//   reviews   ProductReviews[]
+//   cartItems CartItem[]
+//   variants  ProductVariant[]
 
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
+//   category   Category @relation(fields: [categoryId], references: [id])
+//   categoryId Int
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
 
 model Filters {
   id      Int @id @default(autoincrement())
@@ -75,40 +75,40 @@ model Filters {
   checkbox String[]
 }
 
-model ProductVariant {
-  id Int @id @default(autoincrement())
+// model ProductVariant {
+//   id Int @id @default(autoincrement())
 
-  weight      String
-  brand       String
-  feedClass   String
-  price       String
-  purpose     String
-  age         String
-  ingredients String
+//   weight      String
+//   brand       String
+//   feedClass   String
+//   price       String
+//   purpose     String
+//   age         String
+//   ingredients String
 
 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
+//   product   Product @relation(fields: [productId], references: [id])
+//   productId Int
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
 
-model ProductReviews {
-  id Int @id @default(autoincrement())
+// model ProductReviews {
+//   id Int @id @default(autoincrement())
 
-  name        String
-  imageUrl    String
-  description String
-  date        String
-  rate        Int
+//   name        String
+//   imageUrl    String
+//   description String
+//   date        String
+//   rate        Int
 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
+//   product   Product @relation(fields: [productId], references: [id])
+//   productId Int
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
 
 model Cart {
   id Int @id @default(autoincrement())
@@ -122,19 +122,19 @@ model Cart {
   updatedAt DateTime @updatedAt
 }
 
-model CartItem {
-  id Int @id @default(autoincrement())
+// model CartItem {
+//   id Int @id @default(autoincrement())
 
-  weight String
+//   weight String
 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
+//   product   Product @relation(fields: [productId], references: [id])
+//   productId Int
 
-  quantity Int @default(1)
+//   quantity Int @default(1)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
 
 model Favorite{
     id Int @id @default(autoincrement())
@@ -156,6 +156,68 @@ createdAt DateTime @default(now())
 @@unique([userId, code])
 }
 
+model ProductsExcel {
+  id Int @id @default(autoincrement())
+  attribute Int
+  positionName String
+  keywords String[]
+  description String
+  price Int
+  currency String
+  unit String
+  imageUrl String
+  manufacturerAvailability Boolean
+  manufacturerCountry String
+}
+
+
+model Product {
+  id Int @id @default(autoincrement())
+  
+  country     String
+  name        String
+  description String
+  brand       String
+  images      String[]
+  keywords    String[]
+  productType productTypeList
+
+  // price       Int
+  // isAvailable Boolean
+  // composition String
+  // sale        Boolean
+  // salePrice   Int?
+
+  // reviews   ProductReviews[]
+  // cartItems CartItem[]
+  // variants  ProductVariant[]
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  variants ProductVariant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductVariant {
+  id Int @id @default(autoincrement())
+
+  article     Int
+  price Int
+  currency String
+  count Int
+  unit String
+  available Boolean
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum status {
   PENDING
   SUCCEEDED
@@ -166,3 +228,12 @@ enum userRole {
   USER
   ADMIN
 }
+
+
+enum productTypeList{
+toys
+veterinaryDrugs
+food
+different
+}
+
