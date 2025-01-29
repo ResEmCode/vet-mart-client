@@ -5,7 +5,6 @@ import { Filters, ProductCardList } from "@/shared/components";
 import { cn } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui/custom";
 
-
 import { ProductType } from "./product.data";
 
 import styles from "./page.module.css";

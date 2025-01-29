@@ -46,7 +46,7 @@ export const Catalog = () => {
           <AuthForm />
         </Modal>
         <Cart />
-        <Drawer title="Меню" isOpen={isOpen} closeDrawer={() => setIsOpen(false)}>
+        <Drawer direction="right" title="Меню" isOpen={isOpen} closeDrawer={() => setIsOpen(false)}>
           <div className="flex flex-col gap-4">
             <div>
               <span className="font-bold">Навигация</span>
