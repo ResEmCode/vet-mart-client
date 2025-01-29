@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 
 import { Typography } from "../../ui/custom/Typography/Typography";
 
-
 import { Filters, ProductCard } from "@/shared/components";
 
 import { useFilters } from "../Filters/store";
@@ -12,14 +11,12 @@ import qs from "qs";
 import { getProducts } from "@/shared/api/requests";
 import { ResponseProductCard } from "@/@types";
 
-import { ProductCard, ProductCardSkeleton } from "./components";
-
-import { ProductCardSkeleton } from "./components";
 import styles from "./ProductCardList.module.css";
 
 import { Button } from "@/shared/ui/shadcn";
 import { Drawer } from "@/shared/ui/custom";
-
+import { useSearchParams } from "next/navigation";
+import { ProductCardSkeleton } from "./components";
 
 interface ProductCardListProps {
   params: {
@@ -33,25 +30,23 @@ export const ProductCardList = ({ params }: ProductCardListProps) => {
   const setFilters = useFilters((state) => state.setFilters);
   const [products, setProducts] = useState<ResponseProductCard[]>([]);
 
-
-  const params = useSearchParams();
+  const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
 
-
   useEffect(() => {
-    if (params) {
-      const queryString = new URLSearchParams(params).toString();
+    if (searchParams) {
+      const queryString = new URLSearchParams(searchParams).toString();
 
       (async () => {
         const { data } = await getProducts({ params: { query: queryString } });
         setProducts(data);
       })();
     }
-  }, [filters, params]);
+  }, [filters, searchParams]);
 
   useEffect(() => {
-    if (params) {
-      const queryString = new URLSearchParams(params).toString();
+    if (searchParams) {
+      const queryString = new URLSearchParams(searchParams).toString();
       const data = qs.parse(queryString, { comma: true });
 
       setFilters(data);

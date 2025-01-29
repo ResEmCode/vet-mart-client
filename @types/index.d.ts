@@ -8,8 +8,8 @@ type ResponseProducts = ResponseProduct[];
 
 // type ResponseProductsWithVariants = ResponseProductWithVariant[];
 
-interface ResponseProductPage extends ResponseProduct{
-    variants: ProductVariant[]
+interface ResponseProductPage extends ResponseProduct {
+  variants: ProductVariant[];
 }
 
 interface ResponseProductCard {

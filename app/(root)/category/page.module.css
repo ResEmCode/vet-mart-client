@@ -1,4 +1,3 @@
-
 .item {
   @apply h-[42px] flex items-center justify-center;
 }
@@ -15,8 +14,9 @@
   @apply text-white bg-accent-color;
   @apply hover:text-white hover:bg-accent-color;
 
-.filters {
-  width: 250px;
+  .filters {
+    width: 250px;
+  }
 }
 
 @media screen and (max-width: 950px) {
