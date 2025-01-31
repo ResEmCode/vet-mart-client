@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./page.module.css";
 
 import { Container, Typography } from "@/shared/ui/custom";
 
@@ -6,12 +7,12 @@ export default function page() {
   return (
     <Container>
       <div className="flex flex-col gap-4 pb-[100px]">
-        <div className="flex gap-8">
-          <video controls src="/video.mp4" className="w-full max-w-[600px]">
+        <div className={styles.content}>
+          <video controls src="/video.mp4" className="w-full">
             <track kind="captions" srcLang="en" src="/captions_en.vtt" label="English captions" default />
           </video>
 
-          <div>
+          <div className={styles.text}>
             <Typography tag="h2" variant="title48_semibold" className="mb-[20px]">
               Про нас
             </Typography>
