@@ -1,29 +1,27 @@
-import { useRef, useState } from "react";
-import { FilterTypes, useFilters } from "../store";
-import { DataFilters } from "../components/FiltersFeed/DataFilters";
+// import { useRef, useState } from "react";
+// import { useFilters, AllFilters } from "../store";
 
-export const useFilter = () => {
-  const { filters, setFilter } = useFilters();
-  const limit = useRef<number>(2);
-  const [showAll, setShopAll] = useState(false);
+// export const useFilter = <T extends AllFilters>() => {
+//   const { filters, setFilter, setType } = useFilters((state) => state);
 
-  const handleShowAll = () => {
-    setShopAll(!showAll);
-    if (!showAll) {
-      limit.current = DataFilters.length;
-    } else {
-      limit.current = 2;
-    }
-  };
-  const onHandleCheckbox = async (filter: keyof Omit<FilterTypes, "type">, value: string) => {
-    setFilter({ filter, value });
-  };
+//   const limit = useRef<number>(2);
+//   const [showAll, setShopAll] = useState(false);
 
-  return {
-    filters,
-    onHandleCheckbox,
-    handleShowAll,
-    showAll,
-    limit,
-  };
-};
+//   const handleShowAll = (groups) => {
+//     setShopAll(!showAll);
+//     limit.current = showAll ? 2 : groups.length;
+//   };
+
+//   const onHandleCheckbox = async (filter: keyof T, value: string) => {
+//     setFilter({ filter: filter as keyof AllFilters, value });
+//   };
+
+//   return {
+//     filters,
+//     onHandleCheckbox,
+//     showAll,
+//     limit,
+//     handleShowAll,
+//     setType,
+//   };
+// };

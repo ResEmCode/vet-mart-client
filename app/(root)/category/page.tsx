@@ -18,11 +18,15 @@ interface CategoryPageProps {
 
 const CategoryPage = async ({ searchParams }: CategoryPageProps) => {
   const params = await searchParams;
+  const { animal, type } = params;
+  const productTypes = ProductType[animal as keyof typeof ProductType] || [];
+
+  const currentProduct = productTypes.find((product) => product.type === type);
 
   return (
     <Container className="mb-[60px] mt-[40px]">
-      <ul className="flex gap-4 mb-20">
-        {ProductType.map((data) => (
+      <ul className="flex gap-4 mb-20 flex-wrap">
+        {productTypes.map((data) => (
           <li className={styles.item}>
             <Link
               href={{
@@ -52,11 +56,11 @@ const CategoryPage = async ({ searchParams }: CategoryPageProps) => {
       </ul>
       <div className="flex gap-[40px] justify-between">
         <div className={styles.filters}>
-          <Filters />
+          <Filters params={params} />
         </div>
 
         <div className="flex-1">
-          <div className="flex flex-col gap-16">{params && <ProductCardList params={params} />}</div>
+          <div className="flex flex-col gap-16">{params && <ProductCardList params={params} title={currentProduct?.title || ""} />}</div>
         </div>
       </div>
     </Container>
