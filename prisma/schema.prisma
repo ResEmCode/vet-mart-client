@@ -31,84 +31,83 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
+
+
 model Category {
   id       Int    @id @default(autoincrement())
   name     String @unique
   subtitle String
   imageUrl String
 
-  products Product[]
+  products           Product[]
+  filters   CategoryOnFilter[]
+ 
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-// model Product {
-//   id Int @id @default(autoincrement())
+model CategoryOnFilter {
+  id         Int    @id @default(autoincrement())
 
-//   article     Int
-//   country     String
-//   name        String
-//   imageUrl    String
-//   price       Int
-//   description String
-//   isAvailable Boolean
-//   composition String
-//   sale        Boolean
-//   salePrice   Int?
+  categoryId Int
+  filterId   Int
 
-//   reviews   ProductReviews[]
-//   cartItems CartItem[]
-//   variants  ProductVariant[]
+  category Category @relation(fields: [categoryId], references: [id])
+  filter   Filter   @relation(fields: [filterId], references: [id])
 
-//   category   Category @relation(fields: [categoryId], references: [id])
-//   categoryId Int
-
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
-
-model Filters {
-  id      Int @id @default(autoincrement())
-
-  title    String
-  checkbox String[]
+  @@unique([categoryId, filterId])
 }
 
-// model ProductVariant {
-//   id Int @id @default(autoincrement())
+model Filter {
+  id     Int @id @default(autoincrement())
 
-//   weight      String
-//   brand       String
-//   feedClass   String
-//   price       String
-//   purpose     String
-//   age         String
-//   ingredients String
+  title  String
+  groups FilterOnGroup[]
+
+  categories CategoryOnFilter[]
+}
 
 
-//   product   Product @relation(fields: [productId], references: [id])
-//   productId Int
+model FilterGroup {
+  id        Int @id @default(autoincrement())
 
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
+  title     String
+  values    GroupsOnValue[]
+  filters    FilterOnGroup[]
 
-// model ProductReviews {
-//   id Int @id @default(autoincrement())
+}
 
-//   name        String
-//   imageUrl    String
-//   description String
-//   date        String
-//   rate        Int
+model FilterOnGroup {
+  id  Int @id @default(autoincrement())
 
-//   product   Product @relation(fields: [productId], references: [id])
-//   productId Int
+  filter    Filter @relation(fields: [filterId], references: [id])
+  filterId  Int
+ 
 
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
+  filterGroup FilterGroup @relation(fields: [filterGroupId], references: [id])
+  filterGroupId  Int
+}
+
+model FilterValue {
+  id      Int @id @default(autoincrement())
+
+  label   String
+  groups   GroupsOnValue[]
+  
+}
+
+model GroupsOnValue {
+  id      Int @id @default(autoincrement())
+
+  filterGroup  FilterGroup @relation(fields: [filterGroupId], references: [id])
+  filterGroupId Int
+
+  filterValue   FilterValue @relation(fields: [filterValueId], references: [id])
+  filterValueId Int
+}
+
+
 
 model Cart {
   id Int @id @default(autoincrement())
@@ -122,19 +121,6 @@ model Cart {
   updatedAt DateTime @updatedAt
 }
 
-// model CartItem {
-//   id Int @id @default(autoincrement())
-
-//   weight String
-
-//   product   Product @relation(fields: [productId], references: [id])
-//   productId Int
-
-//   quantity Int @default(1)
-
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
 
 model Favorite{
     id Int @id @default(autoincrement())
@@ -156,41 +142,15 @@ createdAt DateTime @default(now())
 @@unique([userId, code])
 }
 
-model ProductsExcel {
-  id Int @id @default(autoincrement())
-  attribute Int
-  positionName String
-  keywords String[]
-  description String
-  price Int
-  currency String
-  unit String
-  imageUrl String
-  manufacturerAvailability Boolean
-  manufacturerCountry String
-}
-
-
 model Product {
-  id Int @id @default(autoincrement())
-  
-  country     String
-  name        String
+  id        Int    @id @default(autoincrement())
+  country   String
+  name      String
   description String
-  brand       String
-  images      String[]
-  keywords    String[]
+  brand     String
+  images    String[]
+  keywords  String[]
   productType productTypeList
-
-  // price       Int
-  // isAvailable Boolean
-  // composition String
-  // sale        Boolean
-  // salePrice   Int?
-
-  // reviews   ProductReviews[]
-  // cartItems CartItem[]
-  // variants  ProductVariant[]
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
@@ -202,13 +162,12 @@ model Product {
 }
 
 model ProductVariant {
-  id Int @id @default(autoincrement())
-
-  article     Int
-  price Int
-  currency String
-  count Int
-  unit String
+  id        Int    @id @default(autoincrement())
+  article   Int
+  price     Int
+  currency  String
+  count     Int
+  unit      String
   available Boolean
 
   product   Product @relation(fields: [productId], references: [id])

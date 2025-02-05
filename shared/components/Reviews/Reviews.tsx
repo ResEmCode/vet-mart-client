@@ -9,6 +9,7 @@ import { ReviewsCard } from "./components/ReviewsCard";
 export const Reviews = () => {
   return (
     <div className="my-[60px]">
+      
       <Typography tag="h2" variant="title48_semibold" className="mb-[20px]">
         Отзывы про магазин
       </Typography>
