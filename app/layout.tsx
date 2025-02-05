@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 
-import { Footer, Navigation } from "@/shared/components";
 import { AdaptiveProvider, AuthProvider } from "@/shared/providers";
 
 import "../styles/global.css";
@@ -24,19 +23,14 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <AdaptiveProvider>
-            <Suspense fallback={null}>
-              <div className="wrapper">
-                <Navigation />
-                <main>{children}</main>
-                <Footer />
-              </div>
-            </Suspense>
+        <AdaptiveProvider>
+          <AuthProvider>
+            <div id="portal-root" />
+            <Suspense fallback={null}>{children}</Suspense>
             <NextTopLoader />
             <Toaster />
-          </AdaptiveProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </AdaptiveProvider>
       </body>
     </html>
   );

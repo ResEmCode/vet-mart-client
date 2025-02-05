@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Container, Typography } from "@/shared/ui/custom";
+
 import styles from "./page.module.css";
 
 const ContactsPage = () => {
@@ -13,7 +14,7 @@ const ContactsPage = () => {
       <div className={styles.content}>
         <div className="max-w-[600px] w-full">
           <div className="flex gap-10 flex-wrap mb-[60px]">
-            <div >
+            <div>
               <Typography tag="h2" variant="paragraph16_medium" className="mb-[8px]">
                 Адрес
               </Typography>
@@ -25,7 +26,7 @@ const ContactsPage = () => {
               </Typography>
               <p>+ 38 (099) 967-87-57</p>
             </div>
-            <div >
+            <div>
               <Typography tag="h2" variant="paragraph16_medium" className="mb-[8px]">
                 Почта:
               </Typography>

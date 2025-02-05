@@ -5,7 +5,7 @@
   transition: all 0.2s ease;
 }
 .body {
-  @apply bg-white p-12 rounded-[4px] w-full max-w-[800px] min-w-[300px];
+  @apply bg-white p-12 rounded-[4px] w-full min-w-[300px];
   transform: translateY(-30%);
   transition: transform 0.2s ease;
 }

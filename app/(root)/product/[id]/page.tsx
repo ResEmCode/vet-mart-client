@@ -23,7 +23,7 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
     .then((res) => res);
 
   if (!data) return null;
- 
+
   const activeVariant = data.variants.find((variant) => variant.id === Number(article));
 
   return (
