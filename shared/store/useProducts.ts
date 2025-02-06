@@ -3,7 +3,7 @@
 import { Product, ProductVariant } from "@prisma/client";
 import { create } from "zustand";
 
-export type CombinedType = Product & ProductVariant;
+export type CombinedType = Omit<Product, "images"> & ProductVariant & { image: string };
 
 interface ProductTypes {
   products: CombinedType[];

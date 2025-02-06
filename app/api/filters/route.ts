@@ -12,20 +12,12 @@ export const GET = async (req: NextRequest) => {
   const filterType = TYPE_TRANSLATE[searchParams.get("type") as keyof typeof TYPE_TRANSLATE];
   const animal = ANIMAL_TRANSLATE[searchParams.get("animal") as keyof typeof ANIMAL_TRANSLATE];
 
-  console.log(filterType, "type");
-
   const filter = await prisma.filter.findFirst({
     where: {
       title: {
         contains: filterType,
         mode: "insensitive",
       },
-      // category: {
-      //   name: {
-      //     contains: animal,
-      //     mode: "insensitive",
-      //   },
-      // },
       categories: {
         some: {
           category: {

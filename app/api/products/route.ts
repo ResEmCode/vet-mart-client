@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
-import type { $Enums } from "@prisma/client";
+import type { $Enums, Product, ProductVariant } from "@prisma/client";
 
 import { prisma } from "@/prisma/prisma-client";
+import { convertPrismaFilters, toArrayKeyObject } from "@/server/helpers";
 
 export const GET = async (request: Request) => {
   const { searchParams } = new URL(request.url);
@@ -9,37 +10,41 @@ export const GET = async (request: Request) => {
   const type = searchParams.get("type") as $Enums.productTypeList;
   const animal = searchParams.get("animal");
 
-  // console.log(type, animal)
-  const paramsObject: Record<string, string | number | { in: (string | number)[] }> = {};
-  searchParams.forEach((value, key) => {
-    if (key !== "animal" && key !== "type") {
-      if (value.includes(",")) {
-        paramsObject[key] = { in: value.split(",").map((v) => (isNaN(Number(v)) ? v : Number(v))) };
-      } else {
-        paramsObject[key] = isNaN(Number(value)) ? value : Number(value);
-      }
-    }
-  });
+  if (!type || !animal) return NextResponse.json({ message: "Нет нужных параметров" });
 
-  // const productQuery = {
-  //   brand: paramsObject.brand,
-  // };
+  const productKeys: Array<keyof Product> = [
+    "name",
+    "id",
+    "country",
+    "description",
+    "brand",
+    "images",
+    "keywords",
+    "productType",
+    "categoryId",
+    "createdAt",
+    "updatedAt",
+  ];
 
-  // const weight = searchParams.get("weight");
-  // console.log(weight)
+  const productVariantKeys: Array<keyof ProductVariant> = [
+    "id",
+    "article",
+    "price",
+    "currency",
+    "count",
+    "unit",
+    "available",
+    "productId",
+    "createdAt",
+    "updatedAt",
+  ];
 
-  // delete paramsObject?.type;
+  const filteredProduct = toArrayKeyObject(searchParams, productKeys);
 
-  // const products = await prisma.product.findMany({
-  //   include: {
-  //     variants: true,
-  //   },
-  //   where: {
-  //     variants: {
-  //       some: paramsObject,
-  //     },
-  //   },
-  // });
+  const filteredProductVariant = toArrayKeyObject(searchParams, productVariantKeys);
+
+  const newProductObj = convertPrismaFilters<typeof filteredProduct>(filteredProduct);
+  const newProductVariantsObj = convertPrismaFilters<typeof filteredProductVariant>(filteredProductVariant) as any;
 
   const newProducts: any[] = [];
 
@@ -48,80 +53,38 @@ export const GET = async (request: Request) => {
     [key: string]: string;
   } = { cats: "кошки", dogs: "собаки" };
 
-  if (type && animal) {
-    // Ищем categoryId что бы определить какую категорию необходимо нам запросить
-    const { id: categoryId } = (await prisma.category.findFirst({
-      where: { name: data[animal] },
-      select: {
-        id: true,
+  const productVariants = await prisma.productVariant.findMany({
+    where: {
+      ...newProductVariantsObj,
+      product: {
+        ...newProductObj,
+        category: {
+          name: data[animal],
+        },
+        productType: type,
       },
-    })) ?? { id: null };
+    },
+    include: {
+      product: true,
+    },
+  });
 
-    if (categoryId && type) {
-      const productVariants = await prisma.productVariant.findMany({
-        where: {
-          ...paramsObject,
-          product: {
-            categoryId,
-            productType: type,
-          },
-        },
-        include: {
-          product: true,
-        },
+  // ---------------
+
+  // Собираем в массив объекты с данными карточки
+  productVariants.forEach((item) => {
+    if (true) {
+      newProducts.push({
+        id: item.id,
+        count: item.count,
+        unit: item.unit,
+        currency: item.currency,
+        price: item.price,
+        name: item.product.name,
+        image: item.product.images[0],
       });
-
-      // ---------------
-
-      // Собираем в массив объекты с данными карточки
-      productVariants.forEach((item) => {
-        if (true) {
-          newProducts.push({
-            id: item.id,
-            count: item.count,
-            unit: item.unit,
-            currency: item.currency,
-            price: item.price,
-            name: item.product.name,
-            image: item.product.images[0],
-          });
-        }
-      });
-
-      return NextResponse.json(newProducts);
     }
+  });
 
-    // -------------------------------------------------------------------
-    // if (categoryId && type) {
-    //   // Запрашиваем данные нужной категории и нужного типа
-    //   const products = await prisma.product.findMany({
-    //     include: {
-    //       variants: true,
-    //     },
-    //     where: {
-    //       categoryId: categoryId,
-    //       productType: type,
-    //       variants: {
-    //         some: {
-    //           unit: "кг.",
-    //         },
-    //       },
-    //     },
-    //   });
-
-    // -------------------------------------------------------------------
-
-    // const newProducts = products.map((product) =>
-    //   product.variants.map((item) => ({
-    //     ...item,
-    //     name: product.name,
-    //   })),
-    // );
-
-    // return NextResponse.json([]);
-
-    return NextResponse.json([]);
-  }
-
-  return NextResponse.json([]);
+  return NextResponse.json(newProducts);
 };
