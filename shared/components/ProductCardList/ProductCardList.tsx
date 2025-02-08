@@ -61,7 +61,7 @@ export const ProductCardList = ({ params, title }: ProductCardListProps) => {
     setOpen(!open);
   }
 
-  console.log(params);
+  console.log(products, "products");
 
   return (
     <>

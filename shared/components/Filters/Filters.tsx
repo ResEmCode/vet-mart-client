@@ -34,6 +34,7 @@ export const Filters = ({ params }: { params: any }) => {
 
   const { filters, setFilters } = useFilters();
 
+  console.log(data, "data");
   useEffect(() => {
     if (params) {
       (async () => {
@@ -48,7 +49,6 @@ export const Filters = ({ params }: { params: any }) => {
             }
           });
           setFilters(testQuery);
-          console.log(testQuery);
         } catch (error) {
           console.log(error);
         }
@@ -64,6 +64,7 @@ export const Filters = ({ params }: { params: any }) => {
         fetch(`http://localhost:3000/api/products?${filtersStr}`)
           .then((res) => res.json())
           .then((data) => setProducts(data));
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -87,7 +88,6 @@ export const Filters = ({ params }: { params: any }) => {
       const newFilterObj = { ...filters, [group]: [...(filters as MyAny)[group], label] };
       const queryString = qs.stringify(newFilterObj, { arrayFormat: "comma" });
       router.replace(pathname + "?" + queryString);
-
       return null;
     }
 
@@ -104,11 +104,11 @@ export const Filters = ({ params }: { params: any }) => {
             <CheckboxGroup.Item title={filterValue.label} key={filterValue.id}>
               <Checkbox
                 checked={
-                  (filters as MyAny)[(FILTERS as MyAny)[filterGroup.title]]
-                    ? (filters as MyAny)[(FILTERS as MyAny)[filterGroup.title]].some((item: MyAny) => item.toLowerCase() === filterValue.label.toLowerCase())
+                  (filters as MyAny)[filterGroup.titleEn as MyAny]
+                    ? (filters as MyAny)[filterGroup.titleEn as MyAny].some((item: MyAny) => item.toLowerCase() === filterValue.label.toLowerCase())
                     : false
                 }
-                onClick={() => changeHandle(filterValue.label, (FILTERS as MyAny)[filterGroup.title])}
+                onClick={() => changeHandle(filterValue.label, filterGroup.titleEn)}
               />
             </CheckboxGroup.Item>
           ))}

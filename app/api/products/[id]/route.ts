@@ -11,15 +11,18 @@ export async function GET(req: NextRequest) {
     // const queryParams = new URLSearchParams(search);
     // const article = queryParams.get("article");
 
-    const product = await prisma.product.findFirst({
-      where: {
-        id: Number(id),
-      },
-      include: {
-        variants: true,
-      },
+    if (!id || isNaN(Number(id))) {
+      return NextResponse.json({ error: "Некорректный ID продукта" }, { status: 400 });
+    }
+
+    const product = await prisma.product.findUnique({
+      where: { id: Number(id) },
+      include: { variants: true },
     });
 
+    if (!product) {
+      return NextResponse.json({ error: "Продукт не найден" }, { status: 404 });
+    }
     // const productVariant = await prisma.productVariant.findUnique({
     //   where: { id: Number(id) },
     //   select: {
@@ -36,6 +39,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(product);
   } catch (error) {
-    return NextResponse.json(error);
+    console.error("Ошибка API:", error);
+    return NextResponse.json({ error: "Ошибка сервера" }, { status: 500 });
   }
 }

@@ -26,11 +26,24 @@ model User {
   cart Cart[]
   favorites Favorite[]
 
+  discount  DiscountUser?
+
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+model DiscountUser {
+  id        Int    @id @default(autoincrement())
+
+  discount  Int @default(0)
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 
 model Category {
@@ -60,11 +73,12 @@ model CategoryOnFilter {
 }
 
 model Filter {
-  id     Int @id @default(autoincrement())
+  id         Int @id @default(autoincrement())
 
-  title  String
-  groups FilterOnGroup[]
+  title      String
+  titleEn    String
 
+  groups     FilterOnGroup[]
   categories CategoryOnFilter[]
 }
 
@@ -73,6 +87,8 @@ model FilterGroup {
   id        Int @id @default(autoincrement())
 
   title     String
+  titleEn   String
+
   values    GroupsOnValue[]
   filters    FilterOnGroup[]
 
@@ -90,9 +106,10 @@ model FilterOnGroup {
 }
 
 model FilterValue {
-  id      Int @id @default(autoincrement())
+  id       Int @id @default(autoincrement())
 
-  label   String
+  label    String
+
   groups   GroupsOnValue[]
   
 }
@@ -143,23 +160,40 @@ createdAt DateTime @default(now())
 }
 
 model Product {
-  id        Int    @id @default(autoincrement())
-  country   String
-  name      String
+  id          Int    @id @default(autoincrement())
+  country     String
+  name        String
   description String
-  brand     String
-  images    String[]
-  keywords  String[]
+  brand       String
+  images      String[]
+  keywords    String[]
   productType productTypeList
+
+  discount   DiscountProduct? @relation(name: "ProductDiscount") 
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
 
-  variants ProductVariant[]
+  variants   ProductVariant[]
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model DiscountProduct {
+  id            Int    @id @default(autoincrement())
+
+  price         Int
+  discountPrice Int
+
+  product   Product @relation(name: "ProductDiscount", fields: [productId], references: [id]) 
+  productId Int  @unique 
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+
 
 model ProductVariant {
   id        Int    @id @default(autoincrement())
@@ -176,6 +210,9 @@ model ProductVariant {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+
+
 
 enum status {
   PENDING

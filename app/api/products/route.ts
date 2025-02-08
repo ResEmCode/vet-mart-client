@@ -81,6 +81,7 @@ export const GET = async (request: Request) => {
         currency: item.currency,
         price: item.price,
         name: item.product.name,
+        productId: item.product.id,
         image: item.product.images[0],
       });
     }
