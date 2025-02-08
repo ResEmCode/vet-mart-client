@@ -1,0 +1,57 @@
+.item {
+  position: relative;
+  max-width: 320px;
+  border-radius: 12px;
+}
+
+.img {
+  max-width: 320px;
+  object-fit: cover;
+  max-height: 240px;
+  transition: all 0.2s ease;
+  border-radius: inherit;
+}
+
+.content {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  opacity: 0;
+  visibility: hidden;
+  padding: 20px;
+  transition: all 0.2s ease;
+
+  display: flex;
+  gap: 20px;
+
+  border-end-end-radius: 12px;
+  border-end-start-radius: 12px;
+}
+.item:hover .img {
+  filter: brightness(40%);
+}
+.item:hover .content {
+  opacity: 1;
+  visibility: visible;
+  color: white;
+  z-index: 2;
+  background-color: rgb(109, 108, 108);
+}
+
+.trash_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: red;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.2s ease;
+}
+
+.item:hover .trash_btn {
+  opacity: 1;
+  visibility: visible;
+}

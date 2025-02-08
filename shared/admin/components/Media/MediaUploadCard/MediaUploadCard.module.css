@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 320px;
+  width: 100%;
+  border: 2px solid rgb(215, 215, 215);
+  border-radius: 12px;
+}
+
+.icon {
+  width: 60px;
+  height: auto;
+  color: rgb(215, 215, 215);
+}
+
+.input {
+  display: none;
+}
