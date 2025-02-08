@@ -7,21 +7,20 @@ import { cn } from "@/shared/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { CATEGORIES_MENU } from "./Categories.data";
 import { queryStaking, ROUTES } from "@/shared/utils/constants/routes";
-import { FilterTypes, useFilters } from "@/shared/components/Filters/store";
-import { useEffect } from "react";
+
 import { Typography } from "@/shared/ui/custom";
 import Image from "next/image";
-import { checkTypeQuery } from "@/shared/utils/helpers";
 
 export const Categories: React.FC = () => {
   const queryType = useSearchParams().get("animal");
-  const setType = useFilters((state) => state.setType);
 
-  useEffect(() => {
-    if (checkTypeQuery<FilterTypes["type"]>(queryType)) {
-      setType(queryType);
-    }
-  }, [queryType]);
+  // const setType = useFilters((state) => state.setType);
+
+  // useEffect(() => {
+  //   if (checkTypeQuery<FilterTypes["type"]>(queryType)) {
+  //     setType(queryType);
+  //   }
+  // }, [queryType]);
 
   return (
     <ul className={styles.categories}>

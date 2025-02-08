@@ -24,7 +24,7 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
 
   if (!data) return null;
 
-  const activeVariant = data.variants.find((variant) => variant.id === Number(article));
+  const activeVariant = data?.variants?.find((variant) => variant.article === Number(article)) || null;
 
   return (
     <Container>

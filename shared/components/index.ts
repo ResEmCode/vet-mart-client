@@ -18,4 +18,3 @@ export * from "./ProductCardList/components/ProductCard/ProductCard";
 export * from "./FavoriteEmpty/FavoriteEmpty";
 export * from "./ProductCardList/ProductCardList";
 export * from "./CharacteristicsProduct/CharacteristicsProduct";
-
