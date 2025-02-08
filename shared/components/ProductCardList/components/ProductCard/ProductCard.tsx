@@ -26,7 +26,6 @@ export const ProductCard = ({ name, id, price, image, productId, count, unit }: 
     changeFavorite({
       name,
       id,
-      // variants,
     });
   };
 
