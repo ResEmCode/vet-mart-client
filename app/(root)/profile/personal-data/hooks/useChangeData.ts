@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import type { PersonalForm } from "@/shared/components/ProfileSidebar/constants/PersonalSchema";
 import { PersonalSchema } from "@/shared/components/ProfileSidebar/constants/PersonalSchema";
+import type { PhoneVerificationSchemaTypes } from "@/shared/components/ProfileSidebar/constants/PhoneVerificationSchema";
+import { phoneVerificationSchema } from "@/shared/components/ProfileSidebar/constants/PhoneVerificationSchema";
 
 export const useChangeData = () => {
   const [open, setOpen] = React.useState(true);
@@ -19,6 +21,11 @@ export const useChangeData = () => {
       fullName: data?.user.name ?? "",
       email: data?.user.email ?? "",
     },
+  });
+
+  const phone = useForm<PhoneVerificationSchemaTypes>({
+    resolver: zodResolver(phoneVerificationSchema),
+    mode: "onSubmit",
   });
 
   function handleClose(prev: boolean) {
@@ -43,5 +50,6 @@ export const useChangeData = () => {
     form,
     handleClose,
     handleSubmit,
+    phone,
   };
 };
