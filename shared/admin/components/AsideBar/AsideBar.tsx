@@ -17,6 +17,14 @@ export const AsideBar = () => {
       href: "/admin/filters",
     },
     {
+      title: "Скидки",
+      href: "/admin/discounts",
+    },
+    {
+      title: "Заказы",
+      href: "/admin/orders",
+    },
+    {
       title: "Пользователи",
       href: "/admin/users",
     },
