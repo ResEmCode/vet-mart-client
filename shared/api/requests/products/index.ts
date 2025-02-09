@@ -13,3 +13,7 @@ export const getProducts = async ({ params, config }: GetProductsConfig) => {
   const encryptQuery = encryptData(params.query);
   return api.get<ResponseProductCard[]>(`${API_URL.PRODUCTS}?${encryptQuery}`, config);
 };
+
+
+
+

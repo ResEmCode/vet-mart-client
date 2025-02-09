@@ -169,7 +169,8 @@ model Product {
   keywords    String[]
   productType productTypeList
 
-  discount   DiscountProduct? @relation(name: "ProductDiscount") 
+  // discount   DiscountProduct? @relation(name: "ProductDiscount") 
+  discount Int?
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
@@ -180,18 +181,18 @@ model Product {
   updatedAt  DateTime @updatedAt
 }
 
-model DiscountProduct {
-  id            Int    @id @default(autoincrement())
+// model DiscountProduct {
+//   id            Int    @id @default(autoincrement())
 
-  price         Int
-  discountPrice Int
+//   price         Int
+//   discountPrice Int
 
-  product   Product @relation(name: "ProductDiscount", fields: [productId], references: [id]) 
-  productId Int  @unique 
+//   product   Product @relation(name: "ProductDiscount", fields: [productId], references: [id]) 
+//   productId Int  @unique 
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
 
 
 
@@ -204,7 +205,7 @@ model ProductVariant {
   unit      String
   available Boolean
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id],  onDelete: Cascade)
   productId Int
 
   createdAt DateTime @default(now())

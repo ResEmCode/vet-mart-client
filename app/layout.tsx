@@ -25,7 +25,7 @@ const RootLayout = ({
       <body className={inter.className}>
         <AdaptiveProvider>
           <AuthProvider>
-            <div id="portal-root" />
+            {/* <div id="portal-root" /> */}
             <Suspense fallback={null}>{children}</Suspense>
             <NextTopLoader />
             <Toaster />
