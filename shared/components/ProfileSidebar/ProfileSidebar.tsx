@@ -23,17 +23,17 @@ export const ProfileSidebar = () => {
     {
       title: "Персональные данные",
       link: `/profile/personal-data`,
-      icon:<User />
+      icon: <User />,
     },
     {
       title: "Мои заказы",
       link: `/profile/order`,
-      icon: <PackageOpen />
+      icon: <PackageOpen />,
     },
     {
       title: "Любимые товары",
       link: `/profile/favorite`,
-      icon: <Heart />
+      icon: <Heart />,
     },
   ];
 
