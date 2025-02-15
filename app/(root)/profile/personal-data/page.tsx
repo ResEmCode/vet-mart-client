@@ -8,7 +8,7 @@ import { Button } from "@/shared/ui/shadcn";
 import { useChangeData } from "./hooks/useChangeData";
 
 const PersonalPage = () => {
-  const { form, phone, handleClose, handleSubmit, open } = useChangeData();
+  const { form, handleClose, handleSubmit, open } = useChangeData();
 
   return (
     <Container>
@@ -20,23 +20,7 @@ const PersonalPage = () => {
           <div className="flex items-end justify-between">
             <div className="flex flex-col gap-3 max-w-[380px] w-full">
               <InputLabel variant={open ? "none" : "default"} text="ФИО" disabled={open} {...form.register("fullName")} />
-              <InputLabel
-                variant={open ? "none" : "default"}
-                text="Почта"
-                disabled={open}
-                error={form.formState.errors.email?.message}
-                {...form.register("email")}
-              />
-              <div className="flex flex-col gap-3">
-                <InputLabel
-                  variant={open ? "none" : "default"}
-                  text="Номер телефона"
-                  placeholder="+38 (000) 000-00-00"
-                  error={phone.formState.errors.phone?.message}
-                  {...phone.register("phone")}
-                />
-                <Button type="button">Подтвердить номер телефона</Button>
-              </div>
+              <InputLabel variant={open ? "none" : "default"} text="Почта" disabled error={form.formState.errors.email?.message} {...form.register("email")} />
             </div>
           </div>
           <div className="flex gap-4">
