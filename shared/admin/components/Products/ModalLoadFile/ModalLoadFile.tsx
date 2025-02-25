@@ -4,6 +4,7 @@ import { Typography } from "@/shared/ui/custom";
 import { Button, Modal } from "@/shared/ui/shadcn";
 import { ChangeEvent, useRef, useState } from "react";
 import styles from "./ModalLoadFile.module.css";
+import { setProductsByFile } from "@/server/actions/setProductsByFile";
 
 interface ModalLoadFileProps {
   isOpen: boolean;
@@ -25,6 +26,21 @@ export const ModalLoadFile = ({ isOpen, onClose }: ModalLoadFileProps) => {
     fileRef.current?.click();
   };
 
+  const onSaveFile = () => {
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+      fetch("http://localhost:3000/api/upload", {
+        method: "POST",
+        body: formData,
+      }).then((res) => {
+        const name = file.name;
+
+        setProductsByFile(name);
+      });
+    }
+  };
+
   return (
     <Modal closeModal={() => onClose(false)} isOpen={isOpen} classNameBody="max-w-[460px]">
       <div>
@@ -44,7 +60,7 @@ export const ModalLoadFile = ({ isOpen, onClose }: ModalLoadFileProps) => {
           <Button onClick={onLoadFile} variant={"outline"}>
             Загрузить файл
           </Button>
-          <Button variant={"default"} disabled={file ? false : true}>
+          <Button variant={"default"} disabled={file ? false : true} onClick={onSaveFile}>
             Сохранить
           </Button>
         </div>

@@ -1,4 +1,4 @@
-import {  DiscountHeader, DiscountList } from "@/shared/admin/components/Discount/components";
+import { DiscountHeader, DiscountList } from "@/shared/admin/components/Discount/components";
 
 import styles from "./page.module.css";
 
