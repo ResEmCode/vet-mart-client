@@ -27,85 +27,112 @@ const productTypeTranslate = {
   разное: $Enums.productTypeList.different,
 };
 
+type CategoryTypes = {
+  Категории: "Коты" | "Собаки" | "Птицы" | "Гризуны" | "Рептилии";
+  Тип: string;
+};
+// async function importDataFromExcel(filePath: string) {
+//   const workbook = xlsx.readFile(filePath);
+//   const sheetName = workbook.SheetNames[0];
+//   const sheet = workbook.Sheets[sheetName];
+//   const data = xlsx.utils.sheet_to_json(sheet);
+
+//   for (const row of data) {
+//     const typedRow = row as Product;
+//     // Заполняем таблицу Product
+
+//     const existingProduct = await prisma.product.findFirst({
+//       where: { name: typedRow.Название_позиции },
+//     });
+
+//     const currentCategory = await prisma.category.findFirst({
+//       where: {
+//         name: {
+//           equals: typedRow.Категория,
+//           mode: "insensitive",
+//         },
+//       },
+//     });
+
+//     if (!existingProduct && currentCategory) {
+//       await prisma.product.create({
+//         data: {
+//           name: typedRow.Название_позиции,
+//           keywords: typedRow.Ключевые_слова.split(", ").map((item) => item.trim()),
+//           country: typedRow.Страна_производитель,
+//           description: typedRow.Описание,
+//           brand: typedRow.Производитель,
+//           images: typedRow.Ссылка_изображения.split(", ").map((item) => item.trim()),
+//           productType: productTypeTranslate[typedRow.Тип_продукта],
+//           categoryId: currentCategory.id,
+//         },
+//       });
+//     }
+
+//     // Реализовываем таблицу ProductVariants
+
+//     const product = await prisma.product.findFirst({
+//       where: {
+//         name: {
+//           equals: typedRow.Название_позиции,
+//           mode: "insensitive",
+//         },
+//       },
+//       select: {
+//         id: true,
+//       },
+//     });
+
+//     if (product) {
+//       await prisma.productVariant.create({
+//         data: {
+//           productId: product.id,
+
+//           article: typedRow.Артикул,
+//           price: parseFloat(typedRow.Цена),
+//           currency: typedRow.Валюта,
+//           count: Number(typedRow.Количество),
+//           unit: typedRow.Единица_измерения,
+//           available: Boolean(typedRow.Наличие === "+"),
+//         },
+//       });
+//     }
+//   }
+// }
+
 async function importDataFromExcel(filePath: string) {
   const workbook = xlsx.readFile(filePath);
   const sheetName = workbook.SheetNames[0];
   const sheet = workbook.Sheets[sheetName];
-  const data = xlsx.utils.sheet_to_json(sheet);
+  const data = xlsx.utils.sheet_to_json(sheet) as CategoryTypes[];
 
-  for (const row of data) {
-    const typedRow = row as Product;
-    // Заполняем таблицу Product
+  const uniqueItems = [...new Set(data.map((item) => item.Категории))];
 
-    const existingProduct = await prisma.product.findFirst({
-      where: { name: typedRow.Название_позиции },
-    });
+  const newData = uniqueItems.map((item) => ({
+    name: item,
+    subtitle: "food",
+    imageUrl: "https://shop.vsezveri.ru/storage/system/resized/xy_992x559/6fcd2f90d3fa56594cda7e24efc150ee_3953d329.jpg",
+  }));
 
-    const currentCategory = await prisma.category.findFirst({
-      where: {
-        name: {
-          equals: typedRow.Категория,
-          mode: "insensitive",
-        },
-      },
-    });
+  const categoryData = await prisma.category.createManyAndReturn({
+    data: newData,
+  });
+  const categorySet = new Map();
 
-    if (!existingProduct && currentCategory) {
-      await prisma.product.create({
-        data: {
-          name: typedRow.Название_позиции,
-          keywords: typedRow.Ключевые_слова.split(", ").map((item) => item.trim()),
-          country: typedRow.Страна_производитель,
-          description: typedRow.Описание,
-          brand: typedRow.Производитель,
-          images: typedRow.Ссылка_изображения.split(", ").map((item) => item.trim()),
-          productType: productTypeTranslate[typedRow.Тип_продукта],
-          categoryId: currentCategory.id,
-        },
-      });
-    }
+  categoryData.forEach((item) => categorySet.set(item.name, item.id));
 
-    // Реализовываем таблицу ProductVariants
+  const newCategoryType = data.map((item) => ({
+    name: item.Тип,
+    categoryId: categorySet.get(item.Категории),
+  }));
 
-    const product = await prisma.product.findFirst({
-      where: {
-        name: {
-          equals: typedRow.Название_позиции,
-          mode: "insensitive",
-        },
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    if (product) {
-      await prisma.productVariant.create({
-        data: {
-          productId: product.id,
-
-          article: typedRow.Артикул,
-          price: parseFloat(typedRow.Цена),
-          currency: typedRow.Валюта,
-          count: Number(typedRow.Количество),
-          unit: typedRow.Единица_измерения,
-          available: Boolean(typedRow.Наличие === "+"),
-        },
-      });
-    }
-  }
+  await prisma.categoryType.createMany({
+    data: newCategoryType,
+  });
 }
 
-async function up() {
-  await prisma.category.create({
-    data: {
-      name: "кошки",
-      subtitle: "Корма, ветпрепораты, игрушки",
-      imageUrl: "https://avatars.mds.yandex.net/i?id=700c22630d7ef9062c3b9c55a734313c3832b47b-5099351-images-thumbs&n=13",
-    },
-  });
-
-  const filePath = path.join(__dirname, "excel", "VetMarket.xlsx");
+export async function up() {
+  const filePath = path.join(__dirname, "excel", "Categories.xlsx");
 
   importDataFromExcel(filePath)
     .then(() => {
